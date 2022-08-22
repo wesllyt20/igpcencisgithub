@@ -1,8 +1,8 @@
 <template>
 
 
-  <div>
-    <v-container fluid warning>
+  <div >
+    <v-card class="contenedor pt-3" :color="color" fluid>
       <v-row>
         <v-btn color="blue-grey" x-large class="ma-2 mx-5 white--text">
           Publicar
@@ -10,10 +10,11 @@
             mdi-cloud-upload
           </v-icon>
         </v-btn>
-
-        <v-switch v-model="switch1" flat></v-switch>
-        <v-switch v-model="switch2" flat></v-switch>
-        <v-switch v-model="switch3" flat></v-switch>
+<v-col >
+        <v-switch v-model="picked" id="sw1" value="sw1" flat></v-switch>
+        <v-switch v-model="picked" id="sw2" value="sw2" flat></v-switch>
+        <v-switch v-model="picked" id="sw3" value="sw3" flat></v-switch>
+</v-col>
         <v-btn color="blue-grey" x-large class="ma-2 mx-1 white--text">
           <v-icon right dark class="mx-0">
             mdi-plus-thick
@@ -33,7 +34,7 @@
           Reportes
         </v-btn>
       </v-row>
-    </v-container>
+    </v-card>
   </div>
 
 
@@ -46,6 +47,7 @@ export default {
       switch1: true,
       switch2: false,
       switch3: false,
+      
     };
 
 
@@ -54,13 +56,19 @@ export default {
 
   computed: {
     color() {
-      switch (this.switch1) {
+      switch (this.value) {
         case 1: return '#3D5AFE'
         case 2: return '#FF5722'
         case 3: return '#2E7D32'
-        default: return '#3D5AFE'
+        default: return 'warning'
       }
     },
   },
 }
 </script>
+<style>
+
+
+
+
+</style>
