@@ -4,7 +4,7 @@
         <l-map :zoom="zoom" :center="center" style="height: 400px; width: 100%">
             <l-tile-layer :url="url" :attribution="attribution" ></l-tile-layer>
             <l-geo-json v-if="show" :geojson="geojson" :options="options" :options-style="styleFunction" />
-            <l-marker :lat-lng="marker">
+            <l-marker :lat-lng="marker" :icon="icon">
                 <l-popup>
                     <h5 class="text-primary m-0 font-weight-bold">
                         Ubicación
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { latLng } from "leaflet";
+import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker, LGeoJson, LPopup } from "vue2-leaflet";
 
 export default {
@@ -45,7 +45,12 @@ export default {
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             attribution:
                 '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> By: Raphaaa^^,',
-            marker: latLng(-13.56, -76.31)
+            marker: latLng(-13.56, -76.31),
+                  icon: icon({
+        iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Estrella_amarilla.png/800px-Estrella_amarilla.png",
+        iconSize: [32, 37],
+        iconAnchor: [16, 37]
+      }),
         };
     },
     computed: {
