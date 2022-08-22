@@ -44,10 +44,10 @@ export default {
             fillColor: "#e4ce7f",
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             attribution:
-                '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> By: Raphaaa^^,',
+                '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> Equipo de Desarrollo IGP,',
             marker: latLng(-13.56, -76.31),
                   icon: icon({
-        iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Estrella_amarilla.png/800px-Estrella_amarilla.png",
+        iconUrl: "https://www.igp.gob.pe/servicios/centro-sismologico-nacional/img/icon/star_yellow.svg",
         iconSize: [32, 37],
         iconAnchor: [16, 37]
       }),
