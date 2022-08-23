@@ -11,18 +11,21 @@
           label="Preliminar"
           v-model="switch1"
           @change="setTheme()"
+          :disabled="disable1"
           flat
         ></v-switch>
         <v-switch
           label="Simulacro"
           v-model="switch2"
           @change="setTheme2()"
+          :disabled="disable2"
           flat
         ></v-switch>
         <v-switch
           label="Simulacro"
           v-model="switch3"
           @change="setTheme3()"
+          :disabled="disable3"
           flat
         ></v-switch>
 
@@ -50,28 +53,51 @@ export default {
       switch1: true,
       switch2: false,
       switch3: false,
-      color:"warning",
+      color: "#7986CB",
+      disable1: true,
+      disable2: false,
+      disable3: false,
     };
   },
   computed: {
-   
     setTheme() {
       if (this.switch1 == true) {
         console.log("swtich1");
-        return (this.switch2 = false), (this.switch3 = false), (this.color="warning");
+        return (
+          (this.switch2 = false),
+          (this.switch3 = false),
+          (this.color = "#7986CB"),
+          (this.disable1 = true),
+          (this.disable2 = false),
+          (this.disable3 = false)
+        );
       }
     },
 
     setTheme2() {
       if (this.switch2 == true) {
         console.log("swtich2");
-        return (this.switch1 = false), (this.switch3 = false), (this.color="#FF5722");
+        return (
+          (this.switch1 = false),
+          (this.switch3 = false),
+          (this.color = "#FF5722"),
+          (this.disable2 = true),
+          (this.disable1 = false),
+          (this.disable3 = false)
+        );
       }
     },
     setTheme3() {
       if (this.switch3 == true) {
         console.log("swtich3");
-        return (this.switch2 = false), (this.switch1 = false), (this.color="#2E7D32");
+        return (
+          (this.switch2 = false),
+          (this.switch1 = false),
+          (this.color = "#2E7D32"),
+          (this.disable3 = true),
+          (this.disable2 = false),
+          (this.disable1 = false)
+        );
       }
     },
   },
