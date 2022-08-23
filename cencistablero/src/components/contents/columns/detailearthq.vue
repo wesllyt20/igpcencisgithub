@@ -45,7 +45,7 @@
                 <v-subheader>Latitud:</v-subheader>
             </v-col>
             <v-col cols="8">
-                <v-text-field v-model="numberValue" step="0.01" hide-details single-line outlined type="number">
+                <v-text-field step="0.01" hide-details single-line outlined type="number">
                 </v-text-field>
             </v-col>
         </v-row>
@@ -54,7 +54,7 @@
                 <v-subheader>Longitud:</v-subheader>
             </v-col>
             <v-col cols="8">
-                <v-text-field v-model="numberValue" step="0.01" hide-details single-line outlined type="number">
+                <v-text-field step="0.01" hide-details single-line outlined type="number">
                 </v-text-field>
             </v-col>
         </v-row>
@@ -63,7 +63,7 @@
                 <v-subheader>Profundidad:</v-subheader>
             </v-col>
             <v-col cols="8">
-                <v-text-field v-model="numberValue" step="10" hide-details single-line outlined type="number">
+                <v-text-field step="10" hide-details single-line outlined type="number">
                 </v-text-field>
             </v-col>
         </v-row>
@@ -72,7 +72,7 @@
                 <v-subheader>Magnitud:</v-subheader>
             </v-col>
             <v-col cols="4">
-                <v-text-field v-model="numberValue" step="0.1" hide-details single-line outlined type="number">
+                <v-text-field step="0.1" hide-details single-line outlined type="number">
                 </v-text-field>
             </v-col>
 
