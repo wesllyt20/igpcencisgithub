@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row ALIGN=center>
       <v-col cols="12" class="pa-1">
         <v-btn class="ma-1" color="grey" plain>
           <v-icon>mdi-lock</v-icon>
@@ -16,23 +16,24 @@
 
     <v-row>
       <v-col cols="4">
-        <v-subheader>Nº de reporte:</v-subheader>
+        <b style="color: #00000; font-size: large">Nº de reporte:</b>
       </v-col>
-      <v-col md="8">
-        <v-text-field single-line outlined hide-details></v-text-field>
+      <v-col md="6">
+        <v-text-field solo outlined dense hide-details></v-text-field>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Fecha:</v-subheader>
+        <b style="color: #00000; font-size: large">Fecha:</b>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="6">
         <v-text-field
           type="date"
           min="2022-01-01"
           max="2022-12-31"
-          single-line
+          solo
           outlined
+          dense
           hide-details
         >
         </v-text-field>
@@ -40,28 +41,30 @@
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Hora local:</v-subheader>
+        <b style="color: #00000; font-size: large">Hora local:</b>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="6">
         <v-text-field
           type="time"
           value="00:00"
-          single-line
+          solo
           outlined
+          dense
           hide-details
         ></v-text-field>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Latitud:</v-subheader>
+        <b style="color: #00000; font-size: large">Latitud:</b>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="6">
         <v-text-field
           step="0.01"
-          hide-details
-          single-line
+          solo
           outlined
+          dense
+          hide-details
           type="number"
         >
         </v-text-field>
@@ -69,14 +72,15 @@
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Longitud:</v-subheader>
+        <b style="color: #00000; font-size: large">Longitud:</b>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="6">
         <v-text-field
           step="0.01"
-          hide-details
-          single-line
+          solo
           outlined
+          dense
+          hide-details
           type="number"
         >
         </v-text-field>
@@ -84,34 +88,37 @@
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Profundidad:</v-subheader>
+        <b style="color: #00000; font-size: large">Profundidad:</b>
       </v-col>
-      <v-col cols="8">
-        <v-text-field step="10" hide-details single-line outlined type="number">
+      <v-col cols="6">
+        <v-text-field step="10" solo outlined dense hide-details type="number">
         </v-text-field>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="4">
-        <v-subheader>Magnitud:</v-subheader>
+        <b style="color: #00000; font-size: large">Magnitud:</b>
       </v-col>
       <v-col cols="4">
         <v-text-field
           step="0.1"
-          hide-details
-          single-line
+          solo
           outlined
+          dense
+          hide-details
           type="number"
+          :value="magn"
+          @bind="colorcirculo()"
         >
         </v-text-field>
       </v-col>
 
-      <v-icon large color="red darken-2"> mdi-circle </v-icon>
+      <v-icon large :color="color"> mdi-circle </v-icon>
     </v-row>
 
     <v-row class="pa-3">
-      <v-col cols="8">
-        <v-chip color="orange" label x-large>Próximo: 472</v-chip>
+      <v-col cols="5">
+        <v-chip color="orange" label x-large>Próximo: <b>472</b></v-chip>
       </v-col>
       <v-col cols="4">
         <v-dialog v-model="dialog" width="500">
@@ -121,7 +128,7 @@
             </v-btn>
           </template>
 
-          <v-card>
+          <v-card id="codigoqr">
             <v-card-title class="text-h5 grey lighten-2">
               TEXTO EN CÓDIGO QR
             </v-card-title>
@@ -216,7 +223,22 @@ export default {
   data() {
     return {
       dialog: false,
+      magn: "0",
+      color: "#76FF03",
     };
+  },
+  computed: {
+    colorcirculo() {
+      if (this.magn > 4) {
+        console.log("swtich1");
+        return (this.color = "warning");
+      }
+    },
   },
 };
 </script>
+<style>
+#codigoqr {
+  z-index: 1;
+}
+</style>

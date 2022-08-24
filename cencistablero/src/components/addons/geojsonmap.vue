@@ -1,7 +1,7 @@
 <template>
 
-    <div>
-        <l-map :zoom="zoom" :center="center" style="height: 400px; width: 100%">
+    <div >
+        <l-map id="mapa" :zoom="zoom" :center="center" style="height: 400px; width: 100%">
             <l-tile-layer :url="url" :attribution="attribution" ></l-tile-layer>
             <l-geo-json v-if="show" :geojson="geojson" :options="options" :options-style="styleFunction" />
             <l-marker :lat-lng="marker" :icon="icon">
@@ -96,3 +96,9 @@ export default {
     }
 };
 </script>
+<style>
+#mapa{
+    z-index: 0;
+}
+
+</style>

@@ -11,7 +11,7 @@
         <reporteid></reporteid>
       </v-flex>
 
-      <v-flex lg8>
+      <v-flex lg5>
         <v-container>
           <detailubication></detailubication>
 
@@ -26,7 +26,7 @@
           </v-row>
         </v-container>
       </v-flex>
-      <v-flex lg10>
+      <v-flex lg5>
         <v-row>
           <v-container>
             <v-col cols="12">
@@ -37,8 +37,8 @@
           </v-container>
         </v-row>
       </v-flex>
-      <v-flex class="primary" lg3>
-        <h1>5</h1>
+      <v-flex  lg2>
+        <detailcharacter></detailcharacter>
       </v-flex>
     </v-layout>
     <br>
@@ -57,6 +57,7 @@ import profundidadmap from '@/components/addons/profundidadmap.vue';
 import twitterpub from '@/components/contents/publicators/twitterpub.vue';
 import facebookpub from '@/components/contents/publicators/facebookpub.vue';
 import reporteid from '@/components/contents/publicators/reporteid.vue';
+import detailcharacter from '@/components/contents/columns/detailcharacter.vue';
 export default {
   components: {
     geojsonmap,
@@ -65,7 +66,8 @@ export default {
     profundidadmap,
     twitterpub,
     facebookpub,
-    reporteid
+    reporteid,
+    detailcharacter
   },
   data() {
     return {
