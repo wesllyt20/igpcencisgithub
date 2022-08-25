@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row ALIGN=center>
+    <v-row ALIGN="center">
       <v-col cols="12" class="pa-1">
         <v-btn class="ma-1" color="grey" plain>
           <v-icon>mdi-lock</v-icon>
@@ -101,19 +101,20 @@
       </v-col>
       <v-col cols="4">
         <v-text-field
-          step="0.1"
+          step="1"
           solo
           outlined
           dense
           hide-details
           type="number"
           :value="magn"
-          @bind="colorcirculo()"
+          max="10"
+          min="0"
         >
         </v-text-field>
       </v-col>
 
-      <v-icon large :color="color"> mdi-circle </v-icon>
+      <v-icon large :color="circulo"> mdi-circle </v-icon>
     </v-row>
 
     <v-row class="pa-3">
@@ -223,16 +224,16 @@ export default {
   data() {
     return {
       dialog: false,
-      magn: "0",
+      magn: 5,
       color: "#76FF03",
+      circulo: "green"
     };
   },
   computed: {
-    colorcirculo() {
-      if (this.magn > 4) {
-        console.log("swtich1");
-        return (this.color = "warning");
-      }
+   swtich (circulo){
+      if (this.magn > 0) return 'green' 
+      if (this.magn > 4) return 'warning'
+      if (this.magn > 7) return 'red'
     },
   },
 };

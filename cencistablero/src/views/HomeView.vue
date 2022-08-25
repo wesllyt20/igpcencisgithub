@@ -1,4 +1,5 @@
 <template>
+<v-app><barprincipal></barprincipal>
   <v-container fluid>
     <v-layout justify-start>
       <v-flex lg4>
@@ -46,7 +47,7 @@
     <br>
   </v-container>
 
-
+</v-app>
 </template>
 
 <script>
@@ -58,6 +59,7 @@ import twitterpub from '@/components/contents/publicators/twitterpub.vue';
 import facebookpub from '@/components/contents/publicators/facebookpub.vue';
 import reporteid from '@/components/contents/publicators/reporteid.vue';
 import detailcharacter from '@/components/contents/columns/detailcharacter.vue';
+import barprincipal from '@/components/header/barprincipal.vue';
 export default {
   components: {
     geojsonmap,
@@ -67,7 +69,8 @@ export default {
     twitterpub,
     facebookpub,
     reporteid,
-    detailcharacter
+    detailcharacter,
+    barprincipal
   },
   data() {
     return {
