@@ -10,14 +10,18 @@
             <th><b style="font-size: large">Referencia</b></th>
             <th><b style="font-size: large">Telefono</b></th>
           </tr>
-        </thead> 
-        <tbody ALIGN=center>
-            
+        </thead>
+        <tbody ALIGN="center">
           <tr v-for="item in atributos" :key="item.referencia">
             <td></td>
             <td>
-                
-              <v-select style="margin-bottom: -25px" label="--" :items="items" dense outlined></v-select>
+              <v-select
+                style="margin-bottom: -25px"
+                label="--"
+                :items="items"
+                dense
+                outlined
+              ></v-select>
             </td>
             <td>
               <v-switch inset></v-switch>
@@ -38,43 +42,51 @@ export default {
       atributos: [
         {
           referencia: "952 km, al SO de ilo, ilo - Moquegua",
-          telefono: 947669135,
+          telefono: "053-481151 481110 491555",
         },
         {
-          referencia: "Ice cream sandwich",
-          telefono: 237,
+          referencia: "919 km al SO de Tacna, Tacna - Tacna ",
+          telefono: "052-414141 318455 318269 245987 412031",
         },
         {
-          referencia: "Eclair",
-          telefono: 262,
+          referencia: "921 km al SO de Alto De La Alianza, Tacna - Tacna ",
+          telefono: "953638729",
         },
         {
-          referencia: "Cupcake",
-          telefono: 305,
+          referencia: "930 km al SO de Calana, Tacna - Tacna ",
+          telefono: "052-471017",
         },
         {
-          referencia: "Gingerbread",
-          telefono: 356,
+          referencia: "932 km al S de Punta De Bombon, Islay - Arequipa ",
+          telefono: "054-553025",
         },
         {
-          referencia: "Jelly bean",
-          telefono: 375,
+          referencia: "J932 km al SO de Locumba, Jorge Basadre - Tacna ",
+          telefono: "052-505613",
         },
         {
-          referencia: "Lollipop",
-          telefono: 392,
+          referencia: "939 km al S de Mollendo, Islay - Arequipa ",
+          telefono: "054-533333 ",
         },
         {
-          referencia: "Honeycomb",
-          telefono: 408,
+          referencia: "960 km al S de Quilca, Camana - Arequipa ",
+          telefono: "054-619409",
         },
         {
-          referencia: "Donut",
-          telefono: 452,
+          referencia: "962 km al S de Camana, Camana - Arequipa ",
+          telefono: "054-573460 571021 505116",
         },
         {
-          referencia: "KitKat",
-          telefono: 518,
+          referencia: "963 km al SO de Ilabaya, Jorge Basadre - Tacna ",
+          telefono: "052-952922141",
+        },
+        {
+          referencia: "965 km al SO de Moquegua, Mariscal Nieto - Moquegua ",
+          telefono: "053-461271 461665 953694578",
+        },
+        {
+          referencia: "967 km al SO de Toquepala, Jorge Basadre - Tacna ",
+          telefono: "052-466111-2221",
         },
       ],
       select: ["---"],

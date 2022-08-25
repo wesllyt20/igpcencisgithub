@@ -2,7 +2,7 @@
 <v-app><barprincipal></barprincipal>
   <v-container fluid>
     <v-layout justify-start>
-      <v-flex lg4>
+      <v-flex lg4 class="text-center">
         <br>
         <br>
         <detailearthq></detailearthq>
@@ -12,7 +12,7 @@
         <reporteid></reporteid>
       </v-flex>
 
-      <v-flex lg5>
+      <v-flex lg6>
         <v-container>
           <detailubication></detailubication>
 
