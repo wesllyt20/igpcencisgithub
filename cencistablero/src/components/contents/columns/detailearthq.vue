@@ -124,7 +124,7 @@
 
     <v-row class="pa-3">
       <v-col cols="5">
-        <v-chip color="orange" label x-large>Próximo: <b>472</b></v-chip>
+        <v-chip color="orange" label x-large><b>Próximo: 472</b></v-chip>
       </v-col>
       <v-col cols="4">
         <v-dialog v-model="dialog" width="500">

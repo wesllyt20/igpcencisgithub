@@ -2,7 +2,7 @@
   <v-container>
     <v-card color="#385F73" dark>
       <v-card-title class="pa-2 text-h5">
-        ID EVENTO:
+        <b>ID EVENTO:</b>
         <v-btn @click="copy" color="white" icon class="pa-2 ml-auto">
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>

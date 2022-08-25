@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-simple-table fixed-header height="800px">
+    <v-simple-table fixed-header height="660px">
       <template v-slot:default>
         <thead>
           <tr>

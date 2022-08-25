@@ -26,25 +26,33 @@
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
-            label="Search"
+            label="Buscar"
             single-line
             hide-details
           ></v-text-field>
         </v-col>
       </v-card-title>
 
-      <v-data-table
+      <v-data-table 
         class="mx-5"
         :headers="headers"
         :items="desserts"
         :search="search"
+        header-props="width=30"
+       
       >
         <template v-slot:[`item.profundidad`]="{ item }">
           <v-chip :color="getColor(item.profundidad)" dark>
             {{ item.profundidad }}
           </v-chip>
-        </template></v-data-table
-      >
+        </template>
+        <template v-slot:[`item.reporte`]="{ item }">
+          <v-icon color="red" large class="mr-2"  @click="editItem(item)"> mdi-file-pdf-box </v-icon>
+        </template>
+        <template v-slot:no-data>
+          <v-btn color="primary" @click="initialize"> Reset </v-btn>
+        </template>
+      </v-data-table>
     </v-card>
   </div>
 </template>
@@ -59,16 +67,17 @@ export default {
           align: "start",
           filterable: false,
           value: "nreport",
+          sortable: false,
         },
         { text: "Hora Envio", value: "horaEnvio" },
         { text: "Hora Evento", value: "horaEvento" },
         { text: "Latitud", value: "latitud" },
         { text: "Longitud", value: "longitud" },
-        { text: "Profundidad", value: "profundidad" },
+        { text: "Profundidad (km)", value: "profundidad" },
         { text: "Magnitud", value: "magnitud" },
         { text: "Referencia", value: "referencia" },
         { text: "Percibido", value: "percibido" },
-        { text: "Reporte", value: "reporte" },
+        { text: "Reporte", value: "reporte", sortable: false },
       ],
       desserts: [
         {
@@ -81,7 +90,6 @@ export default {
           magnitud: "ML",
           referencia: "902 km al SO de Ilo, Ilo - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 2,
@@ -93,7 +101,6 @@ export default {
           magnitud: "ML",
           referencia: "952 km al SO de Ilo, Ilo - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 3,
@@ -105,7 +112,6 @@ export default {
           magnitud: "ML",
           referencia: "13 km al SO de Atico, Caraveli - Arequipa",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 4,
@@ -117,7 +123,6 @@ export default {
           magnitud: "ML",
           referencia: "53 km al S de Salaverry, Trujillo - La Libertad",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 5,
@@ -129,7 +134,6 @@ export default {
           magnitud: "ML",
           referencia: "32 km al O de Omate, General Sanchez Cerro - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 6,
@@ -141,7 +145,6 @@ export default {
           magnitud: "ML",
           referencia: "122 km al N de Esperanza, Purus - Ucayali",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 7,
@@ -153,7 +156,6 @@ export default {
           magnitud: "ML",
           referencia: "97 km al S de Pisco, Pisco - Ica",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 8,
@@ -165,7 +167,6 @@ export default {
           magnitud: "ML",
           referencia: "10 km al NE de Vitor, Arequipa - Arequipa",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 9,
@@ -177,7 +178,6 @@ export default {
           magnitud: "ML",
           referencia: "100 km al SO de Pisco, Pisco - Ica",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 10,
@@ -189,7 +189,6 @@ export default {
           magnitud: "ML",
           referencia: "87 km al SO de Ica, Ica - Ica",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 11,
@@ -201,7 +200,6 @@ export default {
           magnitud: "ML",
           referencia: "36 km al O de Omate, General Sanchez Cerro - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 12,
@@ -213,7 +211,6 @@ export default {
           magnitud: "ML",
           referencia: "5 km al SE de Cabanaconde, Caylloma - Arequipa",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 13,
@@ -225,7 +222,6 @@ export default {
           magnitud: "ML",
           referencia: "5 km al SE de Cabanaconde, Caylloma - Arequipa",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 14,
@@ -238,7 +234,6 @@ export default {
           referencia:
             " 	50 km al SE de Zorritos, Contralmirante Villar - Tumbes",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 15,
@@ -250,7 +245,6 @@ export default {
           magnitud: "ML",
           referencia: "36 km al O de Omate, General Sanchez Cerro - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 16,
@@ -262,7 +256,6 @@ export default {
           magnitud: "ML",
           referencia: "38 km al O de Omate, General Sanchez Cerro - Moquegua",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 17,
@@ -274,7 +267,6 @@ export default {
           magnitud: "ML",
           referencia: "19 km al SO de Arequipa, Arequipa - Arequipa",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 18,
@@ -286,7 +278,6 @@ export default {
           magnitud: "ML",
           referencia: "106 km al SE de Lagunas, Alto Amazonas - Loreto ",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 19,
@@ -298,7 +289,6 @@ export default {
           magnitud: "ML",
           referencia: "248 km al NO de Pastaza, Alto Amazonas - Loreto",
           percibido: "Sí",
-          reporte: "hola",
         },
         {
           nreport: 20,
@@ -310,17 +300,16 @@ export default {
           magnitud: "ML",
           referencia: "30 km al N de Pucallpa, Coronel Portillo - Ucayali",
           percibido: "Sí",
-          reporte: "hola",
         },
       ],
     };
   },
-   methods: {
-      getColor (profundidad) {
-        if (profundidad > 300) return 'blue'
-        else if (profundidad > 60) return 'green'
-        else return 'red'
-      },
+  methods: {
+    getColor(profundidad) {
+      if (profundidad > 300) return "blue";
+      else if (profundidad > 60) return "green";
+      else return "red";
     },
+  },
 };
 </script>
