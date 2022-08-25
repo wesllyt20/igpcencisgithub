@@ -66,7 +66,7 @@
           <v-icon right dark class="mx-0"> mdi-download </v-icon>
           Athena
         </v-btn>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text">
+        <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text" to="/createlocation">
           <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
           Reportes
         </v-btn>

@@ -101,20 +101,25 @@
       </v-col>
       <v-col cols="4">
         <v-text-field
+          v-model="magnitud"
           step="1"
           solo
           outlined
           dense
           hide-details
           type="number"
-          :value="magn"
           max="10"
           min="0"
         >
         </v-text-field>
       </v-col>
-
-      <v-icon large :color="circulo"> mdi-circle </v-icon>
+      <v-icon v-if="(magnitud >= 0) & (magnitud <= 4)" large color="green"
+        >mdi-circle</v-icon
+      >
+      <v-icon v-if="(magnitud >= 5) & (magnitud <= 6)" large color="warning"
+        >mdi-circle</v-icon
+      >
+      <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
     </v-row>
 
     <v-row class="pa-3">
@@ -224,16 +229,9 @@ export default {
   data() {
     return {
       dialog: false,
-      magn: 5,
       color: "#76FF03",
+      magnitud: 0,
     };
-  },
-  computed: {
-   circulo() {
-      if (this.magn > 0) return 'green' 
-      if (this.magn > 4) return 'warning'
-      if (this.magn < 7) return 'red'
-    },
   },
 };
 </script>
