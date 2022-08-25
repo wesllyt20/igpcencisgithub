@@ -226,14 +226,13 @@ export default {
       dialog: false,
       magn: 5,
       color: "#76FF03",
-      circulo: "green"
     };
   },
   computed: {
-   swtich (circulo){
+   circulo() {
       if (this.magn > 0) return 'green' 
       if (this.magn > 4) return 'warning'
-      if (this.magn > 7) return 'red'
+      if (this.magn < 7) return 'red'
     },
   },
 };
