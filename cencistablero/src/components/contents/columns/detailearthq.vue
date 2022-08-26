@@ -102,7 +102,7 @@
       <v-col cols="4">
         <v-text-field
           v-model="magnitud"
-          step="1"
+          step="0.01"
           solo
           outlined
           dense
