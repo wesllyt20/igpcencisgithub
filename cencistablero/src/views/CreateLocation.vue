@@ -8,7 +8,7 @@
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
       <v-toolbar-title>
-        <h1><b>LISTA DE EVENTOS SÍSMICOS PUBLICADOS </b></h1></v-toolbar-title
+        <h1><b>CREAR LOCALIDAD</b></h1></v-toolbar-title
       >
 
       <v-spacer></v-spacer>
@@ -17,299 +17,183 @@
         <v-icon>mdi-export</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-card>
-      <v-card-title>
-        <v-col cols="3">
-          <h1>REPORTES</h1>
-        </v-col>
-        <v-col cols="3" class="ml-auto">
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Buscar"
-            single-line
-            hide-details
-          ></v-text-field>
-        </v-col>
-      </v-card-title>
+    <br />
+    <br />
 
-      <v-data-table 
-        class="mx-5"
-        :headers="headers"
-        :items="desserts"
-        :search="search"
-        header-props="width=30"
-       
-      >
-        <template v-slot:[`item.profundidad`]="{ item }">
-          <v-chip :color="getColor(item.profundidad)" dark>
-            {{ item.profundidad }}
-          </v-chip>
-        </template>
-        <template v-slot:[`item.reporte`]="{ item }">
-          <v-icon color="red" large class="mr-2"  @click="editItem(item)"> mdi-file-pdf-box </v-icon>
-        </template>
-        <template v-slot:no-data>
-          <v-btn color="primary" @click="initialize"> Reset </v-btn>
-        </template>
-      </v-data-table>
-    </v-card>
+    <v-container>
+      <v-row>
+        <v-col cols="6">
+          <v-row>
+            <v-col cols="6">
+              <v-select
+                label="Región"
+                :items="itemsreg"
+                dense
+                outlined
+              ></v-select>
+            </v-col>
+            <v-col cols="6">
+              <v-select
+                label="Provincia"
+                :items="itemspro"
+                dense
+                outlined
+              ></v-select>
+            </v-col>
+          </v-row>
+          <geojsonmap></geojsonmap>
+        </v-col>
+        <v-divider vertical></v-divider>
+
+        <v-col cols="6">
+          <v-row class="ml-auto">
+            <v-dialog v-model="dialog" persistent max-width="350">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="#26A69A" dark v-bind="attrs" v-on="on">
+                  Crear
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title class="text-h4">
+                  <b> ¿Seguro que desea crear la Localidad?</b>
+                </v-card-title>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn depressed color="error" @click="dialog = false">
+                    Cancelar
+                  </v-btn>
+                  <v-btn cdepressed color="success" to="/"> Crear </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="3">
+              <b style="color: #00000; font-size: x-large">Latitud:</b>
+            </v-col>
+            <v-col cols="4">
+              <v-text-field
+                step="0.01"
+                solo
+                outlined
+                dense
+                hide-details
+                type="number"
+              >
+              </v-text-field>
+            </v-col>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="3">
+              <b style="color: #00000; font-size: x-large">Longitud:</b>
+            </v-col>
+            <v-col cols="4">
+              <v-text-field
+                step="0.000001"
+                solo
+                outlined
+                dense
+                hide-details
+                type="number"
+              >
+              </v-text-field>
+            </v-col>
+          </v-row>
+          <v-row class="text-center">
+            <v-col cols="3">
+              <b style="color: #00000; font-size: x-large">Nombre:</b>
+            </v-col>
+            <v-col cols="4">
+              <v-text-field solo outlined dense hide-details> </v-text-field>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script>
+import geojsonmap from "@/components/addons/geojsonmap.vue";
+
 export default {
+  components: {
+    geojsonmap,
+  },
   data() {
     return {
-      search: "",
-      headers: [
-        {
-          text: "N° Rep.",
-          align: "start",
-          filterable: false,
-          value: "nreport",
-          sortable: false,
-        },
-        { text: "Hora Envio", value: "horaEnvio" },
-        { text: "Hora Evento", value: "horaEvento" },
-        { text: "Latitud", value: "latitud" },
-        { text: "Longitud", value: "longitud" },
-        { text: "Profundidad (km)", value: "profundidad" },
-        { text: "Magnitud", value: "magnitud" },
-        { text: "Referencia", value: "referencia" },
-        { text: "Percibido", value: "percibido" },
-        { text: "Reporte", value: "reporte", sortable: false },
+      dialog: false,
+      itemsreg: [
+        "Seleccione una Región",
+        "AMAZONAS",
+        "ANCASH",
+        "APURIMAC",
+        "AREQUIPA",
+        "AYACUCHO",
+        "CAJAMARCA",
+        "CALLAO",
+        "CUSCO",
+        "HUANCAVELICA",
+        "HUANUCO",
+        "ICA",
+        "JUNIN",
+        "LA LIBERTAD",
+        "LAMBAYEQUE",
+        "LIMA",
+        "LORETO",
+        "MADRE DE DIOS",
+        "MOQUEGUA",
+        "PASCO",
+        "PIURA",
+        "PUNO",
+        "SAN MARTIN",
+        "TACNA",
+        "TUMBES",
+        "UCAYALI",
       ],
-      desserts: [
-        {
-          nreport: 1,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 100,
-          magnitud: "ML",
-          referencia: "902 km al SO de Ilo, Ilo - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 2,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 100,
-          magnitud: "ML",
-          referencia: "952 km al SO de Ilo, Ilo - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 3,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 35,
-          magnitud: "ML",
-          referencia: "13 km al SO de Atico, Caraveli - Arequipa",
-          percibido: "Sí",
-        },
-        {
-          nreport: 4,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 60,
-          magnitud: "ML",
-          referencia: "53 km al S de Salaverry, Trujillo - La Libertad",
-          percibido: "Sí",
-        },
-        {
-          nreport: 5,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 17,
-          magnitud: "ML",
-          referencia: "32 km al O de Omate, General Sanchez Cerro - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 6,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 604,
-          magnitud: "ML",
-          referencia: "122 km al N de Esperanza, Purus - Ucayali",
-          percibido: "Sí",
-        },
-        {
-          nreport: 7,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 27,
-          magnitud: "ML",
-          referencia: "97 km al S de Pisco, Pisco - Ica",
-          percibido: "Sí",
-        },
-        {
-          nreport: 8,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 14,
-          magnitud: "ML",
-          referencia: "10 km al NE de Vitor, Arequipa - Arequipa",
-          percibido: "Sí",
-        },
-        {
-          nreport: 9,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 34,
-          magnitud: "ML",
-          referencia: "100 km al SO de Pisco, Pisco - Ica",
-          percibido: "Sí",
-        },
-        {
-          nreport: 10,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 20,
-          magnitud: "ML",
-          referencia: "87 km al SO de Ica, Ica - Ica",
-          percibido: "Sí",
-        },
-        {
-          nreport: 11,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 15,
-          magnitud: "ML",
-          referencia: "36 km al O de Omate, General Sanchez Cerro - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 12,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 12,
-          magnitud: "ML",
-          referencia: "5 km al SE de Cabanaconde, Caylloma - Arequipa",
-          percibido: "Sí",
-        },
-        {
-          nreport: 13,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 12,
-          magnitud: "ML",
-          referencia: "5 km al SE de Cabanaconde, Caylloma - Arequipa",
-          percibido: "Sí",
-        },
-        {
-          nreport: 14,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 66,
-          magnitud: "ML",
-          referencia:
-            " 	50 km al SE de Zorritos, Contralmirante Villar - Tumbes",
-          percibido: "Sí",
-        },
-        {
-          nreport: 15,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 17,
-          magnitud: "ML",
-          referencia: "36 km al O de Omate, General Sanchez Cerro - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 16,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 15,
-          magnitud: "ML",
-          referencia: "38 km al O de Omate, General Sanchez Cerro - Moquegua",
-          percibido: "Sí",
-        },
-        {
-          nreport: 17,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 15,
-          magnitud: "ML",
-          referencia: "19 km al SO de Arequipa, Arequipa - Arequipa",
-          percibido: "Sí",
-        },
-        {
-          nreport: 18,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 50,
-          magnitud: "ML",
-          referencia: "106 km al SE de Lagunas, Alto Amazonas - Loreto ",
-          percibido: "Sí",
-        },
-        {
-          nreport: 19,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "9/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 144,
-          magnitud: "ML",
-          referencia: "248 km al NO de Pastaza, Alto Amazonas - Loreto",
-          percibido: "Sí",
-        },
-        {
-          nreport: 20,
-          horaEnvio: "8/22/2022, 1:23:14 PM",
-          horaEvento: "8/22/2022, 1:11:00 PM",
-          latitud: "-25",
-          longitud: "-75",
-          profundidad: 152,
-          magnitud: "ML",
-          referencia: "30 km al N de Pucallpa, Coronel Portillo - Ucayali",
-          percibido: "Sí",
-        },
+      itemspro: [
+        "Seleccione una Localidad",
+        "CHACHAPOYAS",
+        "BAGUA",
+        "BONGARA",
+        "CONDORCANQUI",
+        "LUYA",
+        "RODRIGUEZ DE MENDOZA",
+        "UTCUBAMBA",
+        "HUARAZ",
+        "AIJA",
+        "ANTONIO RAYMONDI",
+        "ASUNCION",
+        "BOLOGNESI",
+        "CARHUAZ",
+        "CARLOS FERMIN FITZCARRALD",
+        "CASMA",
+        "CORONGO",
+        "HUARI",
+        "HUARMEY",
+        "HUAYLAS",
+        "MARISCAL LUZURIAGA",
+        "OCROS",
+        "PALLASCA",
+        "POMABAMBA",
+        "RECUAY",
+        "SANTA",
+        "SIHUAS",
+        "YUNGAY",
+        "ABANCAY",
+        "ANDAHUAYLAS",
+        "ANTABAMBA",
+        "AYMARAES",
+        "COTABAMBAS",
+        "CHINCHEROS",
+        "GRAU",
+        "AREQUIPA",
+        "CAMANA",
+        "CARAVELI",
+        "CASTILLA",
+        "CAYLLOMA",
+        "CONDESUYOS",
       ],
     };
-  },
-  methods: {
-    getColor(profundidad) {
-      if (profundidad > 300) return "blue";
-      else if (profundidad > 60) return "green";
-      else return "red";
-    },
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <v-card class="contenedor pt-3" :color="color" fluid>
       <v-row>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-5 white--text">
+        <v-btn color="#2196F3" x-large class="ma-6 mx-5 white--text">
           Publicar
           <v-icon right dark> mdi-cloud-upload </v-icon>
         </v-btn>
@@ -58,15 +58,15 @@
           </v-list-item-content>
         </v-col>
 
-        <v-btn color="blue-grey" x-large class="ma-6 mx-1 ml-0 white--text">
+        <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text" to="/searchlocation">
           <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
           Evento manual
         </v-btn>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-4 white--text">
+        <v-btn color="blue-grey" x-large class="ma-6 mx-4 white--text" to="/createlocation">
           <v-icon right dark class="mx-0"> mdi-download </v-icon>
           Athena
         </v-btn>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text" to="/createlocation">
+        <v-btn color="#E57373" x-large class="ma-6 mx-1 white--text" to="/listevent">
           <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
           Reportes
         </v-btn>
@@ -83,7 +83,7 @@ export default {
       switch1: true,
       switch2: false,
       switch3: false,
-      color: "#DE0000",
+      color: "#FF1744",
       disable1: true,
       disable2: false,
       disable3: false,
@@ -96,7 +96,7 @@ export default {
         return (
           (this.switch2 = false),
           (this.switch3 = false),
-          (this.color = "#DE0000"),
+          (this.color = "#FF1744"),
           (this.disable1 = true),
           (this.disable2 = false),
           (this.disable3 = false)

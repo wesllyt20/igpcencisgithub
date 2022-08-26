@@ -18,12 +18,11 @@
 
           <v-row>
             <v-col cols="6">
-              <twitterpub class="mr-2 ml-10"></twitterpub>
+              <twitterpub class="mr-2 ml-auto"></twitterpub>
             </v-col>
             <v-col cols="6">
               <facebookpub></facebookpub>
             </v-col>
-
           </v-row>
         </v-container>
       </v-flex>
