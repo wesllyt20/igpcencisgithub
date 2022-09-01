@@ -102,7 +102,7 @@
       <v-col cols="4">
         <v-text-field
           v-model="magnitud"
-          step="0.01"
+          step="0.1"
           solo
           outlined
           dense
@@ -113,10 +113,10 @@
         >
         </v-text-field>
       </v-col>
-      <v-icon v-if="(magnitud >= 0) & (magnitud <= 4)" large color="green"
+      <v-icon v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
         >mdi-circle</v-icon
       >
-      <v-icon v-if="(magnitud >= 5) & (magnitud <= 6)" large color="warning"
+      <v-icon v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning"
         >mdi-circle</v-icon
       >
       <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
