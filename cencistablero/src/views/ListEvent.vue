@@ -5,7 +5,7 @@
       prominent
       src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
         <h1><b>LISTA DE EVENTOS SÍSMICOS PUBLICADOS </b></h1></v-toolbar-title
@@ -33,13 +33,12 @@
         </v-col>
       </v-card-title>
 
-      <v-data-table 
+      <v-data-table
         class="mx-5"
         :headers="headers"
         :items="desserts"
         :search="search"
         header-props="width=30"
-       
       >
         <template v-slot:[`item.profundidad`]="{ item }">
           <v-chip :color="getColor(item.profundidad)" dark>
@@ -47,19 +46,36 @@
           </v-chip>
         </template>
         <template v-slot:[`item.reporte`]="{ item }">
-          <v-icon color="red" large class="mr-2"  @click="editItem(item)"> mdi-file-pdf-box </v-icon>
+          <v-icon color="red" large class="mr-2" @click="editItem(item)">
+            mdi-file-pdf-box
+          </v-icon>
         </template>
         <template v-slot:no-data>
           <v-btn color="primary" @click="initialize"> Reset </v-btn>
         </template>
       </v-data-table>
     </v-card>
+    <!--BAR NAVEGATION-->
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <barnavegation></barnavegation>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <!--End Bar NAVEGATION-->
   </div>
 </template>
 <script>
+  import barnavegation from '@/components/header/barnav/barnavegation.vue';
 export default {
   data() {
     return {
+      drawer: false,
+      group: null,
       search: "",
       headers: [
         {
@@ -311,5 +327,13 @@ export default {
       else return "red";
     },
   },
+  components:{
+    barnavegation,
+  },
+  watch: {
+      group () {
+        this.drawer = false
+      },
+    },
 };
 </script>

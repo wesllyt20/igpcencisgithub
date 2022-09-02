@@ -16,8 +16,9 @@
             <v-col cols="3">
               <v-row>
                 <btninstitute>
-                  <v-img src="@/assets/icons/igp.png" aspect-ratio="1.7" contain>
+                  <v-img src="@/assets/icons/igpsismos-32x32.png" aspect-ratio="1.7" contain>
                   </v-img>
+                  <template slot="tooltip">Instituto Geofísico del Perú</template>
                 </btninstitute>
                 <b class="ml-1">Sismos</b>
               </v-row>
@@ -26,8 +27,9 @@
             <v-col cols="3">
               <v-row>
                 <btninstitute>
-                  <v-img src="@/assets/icons/igp.png" aspect-ratio="1.7" contain>
+                  <v-img src="@/assets/icons/gobpe.png" aspect-ratio="1.7" contain>
                   </v-img>
+                  <template slot="tooltip">Gobierno del Perú</template>
                 </btninstitute>
                 <b class="ml-2">Gob.pe</b>
               </v-row>
@@ -35,8 +37,9 @@
             <v-col cols="3">
               <v-row>
                 <btninstitute>
-                  <v-img src="@/assets/icons/igp.png" aspect-ratio="1.7" contain>
+                  <v-img src="@/assets/icons/app-36x36.svg" aspect-ratio="1.7" contain>
                   </v-img>
+                  <template slot="tooltip">APP MOVIL IGP</template>
                 </btninstitute>
                 <b class="ml-3">APP</b>
               </v-row>
@@ -46,6 +49,7 @@
                 <btninstitute>
                   <v-img src="@/assets/icons/igp.png" aspect-ratio="1.7" contain>
                   </v-img>
+                  <template slot="tooltip">Ultimo sismo IGP</template>
                 </btninstitute>
                 <b class="ml-2">Ultimo</b>
               </v-row>

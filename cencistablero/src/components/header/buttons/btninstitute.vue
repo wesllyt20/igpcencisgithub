@@ -1,4 +1,8 @@
 <template>
+
+<v-tooltip top>
+      <template v-slot:activator="{ on, attrs }">
+
   <v-btn
     :loading="loading5"
     :disabled="loading5"
@@ -7,9 +11,17 @@
     fab
     small
     @click="loader = 'loading5'"
+    v-bind="attrs"
+          v-on="on"
   >
     <slot></slot>
   </v-btn>
+
+</template>
+      <span><slot name="tooltip"></slot></span>
+    </v-tooltip>
+
+
 </template>
 <script>
     export default {

@@ -47,7 +47,7 @@ export default {
                 '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> Equipo de Desarrollo IGP,',
             marker: latLng(-13.56, -76.31),
                   icon: icon({
-        iconUrl: "https://www.igp.gob.pe/servicios/centro-sismologico-nacional/img/icon/star_yellow.svg",
+        iconUrl: "https://media0.giphy.com/media/D0zsDFSYYprim87DeR/giphy.gif?cid=790b76119147eeee3075fbb5a1579bbff45a1c18b0d5d432&rid=giphy.gif&ct=s",
         iconSize: [32, 37],
         iconAnchor: [16, 37]
       }),

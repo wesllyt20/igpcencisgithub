@@ -102,6 +102,10 @@
           <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
           Reportes
         </v-btn>
+        <v-app-bar-nav-icon
+          @click.stop="drawer = !drawer"
+          class="ml-auto ma-3"
+        ></v-app-bar-nav-icon>
       </v-row>
 
       <v-row class="mx-5" align="center">
@@ -121,24 +125,34 @@
           <cardsgroup4></cardsgroup4>
         </v-col>
         <v-col sm="1" cols="1" class="ml-auto">
-        <v-list-item-content>
-          <v-list-item-title class="ml-4">
-            <b style="color: #ffff; font-size: large">TESTEO</b>
-          </v-list-item-title>
-          <v-list-item-action>
-            <v-btn fab large>
-              <v-img
-                src="@/assets/icons/peru.png"
-                aspect-ratio="1.7"
-                contain
-              ></v-img> </v-btn
-          ></v-list-item-action>
-        </v-list-item-content>
-      </v-col>
+          <v-list-item-content>
+            <v-list-item-title class="ml-4">
+              <b style="color: #ffff; font-size: large">TESTEO</b>
+            </v-list-item-title>
+            <v-list-item-action>
+              <v-btn fab large>
+                <v-img
+                  src="@/assets/icons/igp-test.png"
+                  aspect-ratio="1.7"
+                  contain
+                ></v-img> </v-btn
+            ></v-list-item-action>
+          </v-list-item-content>
+        </v-col>
       </v-row>
-
-      
     </v-card>
+      <!--BAR NAVEGATION-->
+      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+        <v-list nav dense>
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <barnavegation></barnavegation>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+      <!--End Bar NAVEGATION-->
   </div>
 </template>
 
@@ -148,6 +162,7 @@ import cardsgroup1 from "./cards/cardsgroup1.vue";
 import cardsgroup2 from "./cards/cardsgroup2.vue";
 import cardsgroup3 from "./cards/cardsgroup3.vue";
 import cardsgroup4 from "./cards/cardsgroup4.vue";
+import barnavegation from "./barnav/barnavegation.vue";
 
 export default {
   data: () => {
@@ -161,6 +176,8 @@ export default {
       disable2: false,
       disable3: false,
       disable4: false,
+      drawer: false,
+      group: null,
     };
   },
   computed: {
@@ -186,7 +203,7 @@ export default {
           (this.switch1 = false),
           (this.switch3 = false),
           (this.switch4 = false),
-          (this.color = "#66BB6A"),
+          (this.color = "#FFB300"),
           (this.disable2 = true),
           (this.disable1 = false),
           (this.disable3 = false),
@@ -211,12 +228,12 @@ export default {
     },
     setTheme4() {
       if (this.switch4 == true) {
-        console.log("swtich3");
+        console.log("swtich4");
         return (
           (this.switch3 = false),
           (this.switch2 = false),
           (this.switch1 = false),
-          (this.color = "#FFB300"),
+          (this.color = "#66BB6A"),
           (this.disable4 = true),
           (this.disable3 = false),
           (this.disable2 = false),
@@ -231,6 +248,12 @@ export default {
     cardsgroup2,
     cardsgroup3,
     cardsgroup4,
+    barnavegation,
+  },
+  watch: {
+    group() {
+      this.drawer = false;
+    },
   },
 };
 </script>

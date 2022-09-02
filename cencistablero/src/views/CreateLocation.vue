@@ -5,7 +5,7 @@
       prominent
       src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
         <h1><b>CREAR LOCALIDAD</b></h1></v-toolbar-title
@@ -109,18 +109,33 @@
           </v-row>
         </v-col>
       </v-row>
+      <!--BAR NAVEGATION-->
+      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+        <v-list nav dense>
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <barnavegation></barnavegation>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+      <!--End Bar NAVEGATION-->
     </v-container>
   </div>
 </template>
 <script>
 import geojsonmap from "@/components/addons/geojsonmap.vue";
-
+import barnavegation from "@/components/header/barnav/barnavegation.vue";
 export default {
   components: {
     geojsonmap,
+    barnavegation,
   },
   data() {
     return {
+      drawer: false,
+      group: null,
       dialog: false,
       itemsreg: [
         "Seleccione una Región",
@@ -194,6 +209,11 @@ export default {
         "CONDESUYOS",
       ],
     };
+  },
+  watch: {
+    group() {
+      this.drawer = false;
+    },
   },
 };
 </script>

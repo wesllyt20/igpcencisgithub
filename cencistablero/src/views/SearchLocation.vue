@@ -5,7 +5,7 @@
       prominent
       src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
         <h1><b>Buscar Localidades</b></h1></v-toolbar-title
@@ -101,13 +101,30 @@
         </v-col>
       </v-row>
     </v-layout>
+    <!--BAR NAVEGATION-->
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+        
+          <barnavegation></barnavegation>
+
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <!--End Bar NAVEGATION-->
   </div>
 </template>
 <script>
+import barnavegation from "@/components/header/barnav/barnavegation.vue";
 export default {
   data() {
     return {
       search: "",
+      drawer: false,
+      group: null,
       headers: [
         {
           text: "Localidad",
@@ -131,6 +148,14 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    barnavegation,
+  },
+  watch: {
+    group() {
+      this.drawer = false;
+    },
   },
 };
 </script>
