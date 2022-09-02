@@ -79,7 +79,6 @@
           color="#9CCC65"
           x-large
           class="ma-6 mx-1 ml-0 white--text"
-          to="/searchlocation"
         >
           <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
           Evento manual
@@ -88,7 +87,6 @@
           color="blue-grey"
           x-large
           class="ma-6 mx-4 white--text"
-          to="/createlocation"
         >
           <v-icon right dark class="mx-0"> mdi-download </v-icon>
           Athena
@@ -97,12 +95,11 @@
           color="#E57373"
           x-large
           class="ma-6 mx-1 white--text"
-          to="/listevent"
         >
           <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
           Reportes
         </v-btn>
-        <v-app-bar-nav-icon
+        <v-app-bar-nav-icon x-large
           @click.stop="drawer = !drawer"
           class="ml-auto ma-3"
         ></v-app-bar-nav-icon>

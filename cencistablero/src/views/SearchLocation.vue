@@ -5,7 +5,7 @@
       prominent
       src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
     >
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer" large></v-app-bar-nav-icon>
 
       <v-toolbar-title>
         <h1><b>Buscar Localidades</b></h1></v-toolbar-title

@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ListEvent from '../views/ListEvent.vue'
 import CreateLocation from '../views/CreateLocation.vue'
 import SearchLocation from '../views/SearchLocation.vue'
+import UserLogin from '../views/UserLogin.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/searchlocation',
     name: 'SearchLocation',
     component: SearchLocation
+  },
+  {
+    path: '/userlogin',
+    name: 'UserLogin',
+    component: UserLogin
   },
   {
     path: '/about',
