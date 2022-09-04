@@ -1,7 +1,8 @@
 <template>
     <v-card
+    id="rounded-card"
       class="mx-auto"
-      max-width="344"
+      max-width="350"
       outlined
       elevation="24"
       color="blue-grey lighten-4"
@@ -13,7 +14,7 @@
       <v-list-item-subtitle>
         <v-container>
           <v-row>
-            <v-col cols="3">
+            <v-col cols="3" class="ml-1">
               <v-row>
                 <btninstitute>
                   <v-img src="@/assets/icons/geoidep-32x32.png" aspect-ratio="1.7" contain>
@@ -44,7 +45,7 @@
                 <b class="ml-2">RIMAC</b>
               </v-row>
             </v-col>
-            <v-col cols="3">
+            <v-col cols="2">
               <v-row>
                 <btninstitute>
                   <v-img src="@/assets/icons/igp.png" aspect-ratio="1.7" contain>
@@ -70,3 +71,8 @@
     },
   };
   </script>
+  <style>
+    #rounded-card{
+    border-radius:10px;
+}
+  </style>

@@ -4,12 +4,14 @@
       <template v-slot:activator="{ on, attrs }">
 
   <v-btn
+  id="buttonlogos"
     :loading="loading5"
     :disabled="loading5"
     color="light-green lighten-4"
     class="ma-2 white--text"
     fab
-    small
+    normal
+    icon
     @click="loader = 'loading5'"
     v-bind="attrs"
           v-on="on"
@@ -80,4 +82,7 @@
         transform: rotate(360deg);
       }
     }
+    #buttonlogos:hover{
+      color:#002646 !important;
+}
   </style>

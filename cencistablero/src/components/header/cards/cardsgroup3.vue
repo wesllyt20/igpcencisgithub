@@ -1,9 +1,10 @@
 <template>
     <v-card
       class="mx-auto"
-      max-width="344"
+      max-width="350"
       outlined
       elevation="24"
+      id="rounded-card"
       color="blue-grey lighten-4"
     >
       <v-list-item one-line>
@@ -13,7 +14,7 @@
       <v-list-item-subtitle>
         <v-container>
           <v-row >
-            <v-col cols="3">
+            <v-col cols="3" class="ml-1">
               <v-row>
                 <btninstitute>
                   <v-img src="@/assets/icons/saspe.png" aspect-ratio="2.5" contain>
@@ -44,7 +45,7 @@
                 <b class="ml-2">Twitter</b>
               </v-row>
             </v-col>
-            <v-col cols="3">
+            <v-col cols="2">
               <v-row>
                 <btninstitute>
                   <v-img src="@/assets/icons/correo.png" aspect-ratio="1.7" contain>
@@ -70,3 +71,8 @@
     },
   };
   </script>
+    <style>
+      #rounded-card{
+      border-radius:10px;
+  }
+    </style>

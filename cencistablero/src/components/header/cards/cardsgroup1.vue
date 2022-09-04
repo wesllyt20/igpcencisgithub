@@ -1,9 +1,10 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="344"
+    max-width="350"
     outlined
     elevation="24"
+    id="rounded-card"
     color="blue-grey lighten-4"
   >
     <v-list-item one-line>
@@ -13,7 +14,7 @@
     <v-list-item-subtitle>
       <v-container>
         <v-row>
-          <v-col cols="3">
+          <v-col cols="3" class="ml-1">
             <v-row>
               <btninstitute>
                 <v-img
@@ -32,7 +33,7 @@
             <v-row>
               <btninstitute>
                 <v-img
-                  src="@/assets/icons/dhn-36x36.png"
+                  src="@/assets/icons/dhn-icon.png"
                   aspect-ratio="1.7"
                   contain
                 >
@@ -56,7 +57,7 @@
               <b class="ml-1">INDECI</b>
             </v-row>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="2">
             <v-row>
               <btninstitute>
                 <v-img
@@ -86,3 +87,8 @@ export default {
   },
 };
 </script>
+<style>
+  #rounded-card{
+  border-radius:10px;
+}
+</style>
