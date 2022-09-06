@@ -1,0 +1,85 @@
+
+{
+    "btninstitutos": [
+      {
+        "estado": 1,
+        "nombre": "DHN",
+        "descripcion": "Dirección de Hidrografía y Navegación"
+      },
+      {
+        "estado": 1,
+        "nombre": "DHN2",
+        "descripcion": "Dirección de Hidrografía y Navegación"
+      },
+      {
+        "estado": 1,
+        "nombre": "INDECI",
+        "descripcion": "Instituto Nacional de Defensa Civil"
+      },
+      {
+        "estado": 1,
+        "nombre": "ACELDAT-PERU",
+        "descripcion": "ACELDAT"
+      },
+      {
+        "estado": 1,
+        "nombre": "IGP",
+        "descripcion": "Instituto Geofísico del Perú"
+      },
+      {
+        "estado": 1,
+        "nombre": "Gob.pe",
+        "descripcion": "Gobierno del Perú"
+      },
+      {
+        "estado": 1,
+        "nombre": "APP",
+        "descripcion": "APP MOVIL IGP"
+      },
+      {
+        "estado": 1,
+        "nombre": "Ultimo",
+        "descripcion": "Ultimo sismo IGP"
+      },
+      {
+        "estado": 1,
+        "nombre": "SASPE",
+        "descripcion": "SISTEMA DE ALERTA SÍSMICA PERUANO"
+      },
+      {
+        "estado": 1,
+        "nombre": "Face",
+        "descripcion": "Facebook"
+      },
+      {
+        "estado": 1,
+        "nombre": "Twitter",
+        "descripcion": "Twitter"
+      },
+      {
+        "estado": 1,
+        "nombre": "Email",
+        "descripcion": "Hotmail / gmail"
+      },
+      {
+        "estado": 1,
+        "nombre": "IDEP",
+        "descripcion": "Instituto Geográfico Nacional"
+      },
+      {
+        "estado": 1,
+        "nombre": "PIDE",
+        "descripcion": "Plataforma Nacional de Interoperabilidad"
+      },
+      {
+        "estado": 1,
+        "nombre": "RIMAC",
+        "descripcion": "RIMAC SEGUROS"
+      },
+      {
+        "estado": 1,
+        "nombre": "WH?",
+        "descripcion": "WH"
+      }
+    ]
+  }
