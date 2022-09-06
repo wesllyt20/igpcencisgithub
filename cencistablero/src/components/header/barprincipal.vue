@@ -2,7 +2,11 @@
   <div>
     <v-card class="contenedor pt-3" :color="color" fluid>
       <v-row>
-        <v-btn color="#2196F3" x-large class="ma-6 mx-10 white--text">
+        <v-app-bar-nav-icon
+          x-large
+          @click.stop="drawer = !drawer"
+        ></v-app-bar-nav-icon>
+        <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text">
           Publicar
           <v-icon right dark> mdi-cloud-upload </v-icon>
         </v-btn>
@@ -75,37 +79,21 @@
           </v-list-item-content>
         </v-col>
 
-        <v-btn
-          color="#9CCC65"
-          x-large
-          class="ma-6 mx-1 ml-0 white--text"
-        >
+        <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
           <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
           Evento manual
         </v-btn>
-        <v-btn
-          color="blue-grey"
-          x-large
-          class="ma-6 mx-4 white--text"
-        >
+        <v-btn color="blue-grey" x-large class="ma-6 mx-4 white--text">
           <v-icon right dark class="mx-0"> mdi-download </v-icon>
           Athena
         </v-btn>
-        <v-btn
-          color="#E57373"
-          x-large
-          class="ma-6 mx-1 white--text"
-        >
+        <v-btn color="#E57373" x-large class="ma-6 mx-1 white--text">
           <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
           Reportes
         </v-btn>
-        <v-app-bar-nav-icon x-large
-          @click.stop="drawer = !drawer"
-          class="ml-auto ma-3"
-        ></v-app-bar-nav-icon>
       </v-row>
 
-      <v-row class="mx-5" align="center">
+      <v-row class="mx-12" align="center">
         <v-col cols="2" class="ml-auto">
           <cardsgroup1></cardsgroup1>
         </v-col>
@@ -122,34 +110,22 @@
           <cardsgroup4></cardsgroup4>
         </v-col>
         <v-col sm="1" cols="1" class="ml-auto">
-          <v-list-item-content>
-            <v-list-item-title class="ml-4">
-              <b style="color: #ffff; font-size: large">TESTEO</b>
-            </v-list-item-title>
-            <v-list-item-action>
-              <v-btn fab large>
-                <v-img
-                  src="@/assets/icons/igp-test.png"
-                  aspect-ratio="1.7"
-                  contain
-                ></v-img> </v-btn
-            ></v-list-item-action>
-          </v-list-item-content>
+          <!-- aqui va el btn de prueba -->
         </v-col>
       </v-row>
     </v-card>
-      <!--BAR NAVEGATION-->
-      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
-        <v-list nav dense>
-          <v-list-item-group
-            v-model="group"
-            active-class="deep-purple--text text--accent-4"
-          >
-            <barnavegation></barnavegation>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
-      <!--End Bar NAVEGATION-->
+    <!--BAR NAVEGATION-->
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <barnavegation></barnavegation>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <!--End Bar NAVEGATION-->
   </div>
 </template>
 
@@ -200,7 +176,7 @@ export default {
           (this.switch1 = false),
           (this.switch3 = false),
           (this.switch4 = false),
-          (this.color = "#66BB6A"),
+          (this.color = "#FFB300"),
           (this.disable2 = true),
           (this.disable1 = false),
           (this.disable3 = false),
@@ -230,7 +206,7 @@ export default {
           (this.switch3 = false),
           (this.switch2 = false),
           (this.switch1 = false),
-          (this.color = "#FFB300"),
+          (this.color = "#66BB6A"),
           (this.disable4 = true),
           (this.disable3 = false),
           (this.disable2 = false),
