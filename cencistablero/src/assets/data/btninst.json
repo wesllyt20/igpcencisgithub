@@ -1,85 +1,115 @@
-
-{
-    "btninstitutos": [
-      {
-        "estado": 1,
-        "nombre": "DHN",
-        "descripcion": "Dirección de Hidrografía y Navegación"
-      },
-      {
-        "estado": 1,
-        "nombre": "DHN2",
-        "descripcion": "Dirección de Hidrografía y Navegación"
-      },
-      {
-        "estado": 1,
-        "nombre": "INDECI",
-        "descripcion": "Instituto Nacional de Defensa Civil"
-      },
-      {
-        "estado": 1,
-        "nombre": "ACELDAT-PERU",
-        "descripcion": "ACELDAT"
-      },
-      {
-        "estado": 1,
-        "nombre": "IGP",
-        "descripcion": "Instituto Geofísico del Perú"
-      },
-      {
-        "estado": 1,
-        "nombre": "Gob.pe",
-        "descripcion": "Gobierno del Perú"
-      },
-      {
-        "estado": 1,
-        "nombre": "APP",
-        "descripcion": "APP MOVIL IGP"
-      },
-      {
-        "estado": 1,
-        "nombre": "Ultimo",
-        "descripcion": "Ultimo sismo IGP"
-      },
-      {
-        "estado": 1,
-        "nombre": "SASPE",
-        "descripcion": "SISTEMA DE ALERTA SÍSMICA PERUANO"
-      },
-      {
-        "estado": 1,
-        "nombre": "Face",
-        "descripcion": "Facebook"
-      },
-      {
-        "estado": 1,
-        "nombre": "Twitter",
-        "descripcion": "Twitter"
-      },
-      {
-        "estado": 1,
-        "nombre": "Email",
-        "descripcion": "Hotmail / gmail"
-      },
-      {
-        "estado": 1,
-        "nombre": "IDEP",
-        "descripcion": "Instituto Geográfico Nacional"
-      },
-      {
-        "estado": 1,
-        "nombre": "PIDE",
-        "descripcion": "Plataforma Nacional de Interoperabilidad"
-      },
-      {
-        "estado": 1,
-        "nombre": "RIMAC",
-        "descripcion": "RIMAC SEGUROS"
-      },
-      {
-        "estado": 1,
-        "nombre": "WH?",
-        "descripcion": "WH"
-      }
-    ]
-  }
+{"botones":[
+    {
+      "id": 1,
+      "estado": 1,
+      "nombre": "DHN",
+      "descripcion": "Dirección de Hidrografía y Navegación",
+      "img": "dhn.png"
+    },
+    {
+      "id": 2,
+      "estado": 1,
+      "nombre": "DHN2",
+      "descripcion": "Dirección de Hidrografía y Navegación",
+      "img": "dhn.png"
+    },
+    {
+      "id": 3,
+      "estado": 1,
+      "nombre": "INDECI",
+      "descripcion": "Instituto Nacional de Defensa Civil",
+      "img": "indeci.png"
+    },
+    {
+      "id": 4,
+      "estado": 1,
+      "nombre": "ACELDAT-PERU",
+      "descripcion": "ACELDAT",
+      "img": "seismic3.png"
+    },
+    {
+      "id": 5,
+      "estado": 1,
+      "nombre": "IGP",
+      "descripcion": "Instituto Geofísico del Perú",
+      "img": "igpsismos.png"
+    },
+    {
+      "id": 6,
+      "estado": 1,
+      "nombre": "Gob.pe",
+      "descripcion": "Gobierno del Perú",
+      "img": "gobpe.png"
+    },
+    {
+      "id": 7,
+      "estado": 1,
+      "nombre": "APP",
+      "descripcion": "APP MOVIL IGP",
+      "img": "app.png"
+    },
+    {
+      "id": 8,
+      "estado": 1,
+      "nombre": "Ultimo",
+      "descripcion": "Ultimo sismo IGP",
+      "img": "igp.png"
+    },
+    {
+      "id": 9,
+      "estado": 1,
+      "nombre": "SASPE",
+      "descripcion": "SISTEMA DE ALERTA SÍSMICA PERUANO",
+      "img": "saspe.png"
+    },
+    {
+      "id": 10,
+      "estado": 1,
+      "nombre": "Face",
+      "descripcion": "Facebook",
+      "img": "facebook.png"
+    },
+    {
+      "id": 11,
+      "estado": 1,
+      "nombre": "Twitter",
+      "descripcion": "Twitter",
+      "img": "twitter.png"
+    },
+    {
+      "id": 12,
+      "estado": 1,
+      "nombre": "Email",
+      "descripcion": "Hotmail / gmail",
+      "img": "correo.png"
+    },
+    {
+      "id": 13,
+      "estado": 1,
+      "nombre": "IDEP",
+      "descripcion": "Instituto Geográfico Nacional",
+      "img": "geoidep.png"
+    },
+    {
+      "id": 14,
+      "estado": 1,
+      "nombre": "PIDE",
+      "descripcion": "Plataforma Nacional de Interoperabilidad",
+      "img": "pide.png"
+    },
+    {
+      "id": 15,
+      "estado": 1,
+      "nombre": "RIMAC",
+      "descripcion": "RIMAC SEGUROS",
+      "img": "rimac.png"
+    },
+    {
+      "id": 16,
+      "estado": 1,
+      "nombre": "WH?",
+      "descripcion": "WH",
+      "img": "igp.png"
+    }
+  ]
+}

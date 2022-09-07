@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="contenedor pt-3" :color="color" fluid>
+    <v-card class="contenedor pt-1" :color="color" fluid>
       <v-row>
         <v-app-bar-nav-icon
           x-large
@@ -78,7 +78,6 @@
             ></v-list-item-action>
           </v-list-item-content>
         </v-col>
-
         <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
           <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
           Evento manual
@@ -92,26 +91,8 @@
           Reportes
         </v-btn>
       </v-row>
-
-      <v-row class="mx-12" align="center">
-        <v-col cols="2" class="ml-auto">
-          <cardsgroup1></cardsgroup1>
-        </v-col>
-
-        <v-col cols="2">
-          <cardsgroup2></cardsgroup2>
-        </v-col>
-
-        <v-col cols="2">
-          <cardsgroup3></cardsgroup3>
-        </v-col>
-
-        <v-col cols="2">
-          <cardsgroup4></cardsgroup4>
-        </v-col>
-        <v-col sm="1" cols="1" class="ml-auto">
-          <!-- aqui va el btn de prueba -->
-        </v-col>
+      <v-row class="mx-1 ma-0" align="center">
+        <btninstitute></btninstitute>
       </v-row>
     </v-card>
     <!--BAR NAVEGATION-->
@@ -131,10 +112,7 @@
 
 <script>
 import AboutView from "@/views/AboutView.vue";
-import cardsgroup1 from "./cards/cardsgroup1.vue";
-import cardsgroup2 from "./cards/cardsgroup2.vue";
-import cardsgroup3 from "./cards/cardsgroup3.vue";
-import cardsgroup4 from "./cards/cardsgroup4.vue";
+import btninstitute from "./buttons/btninstitute.vue";
 import barnavegation from "./barnav/barnavegation.vue";
 
 export default {
@@ -217,10 +195,7 @@ export default {
   },
   components: {
     AboutView,
-    cardsgroup1,
-    cardsgroup2,
-    cardsgroup3,
-    cardsgroup4,
+    btninstitute,
     barnavegation,
   },
   watch: {

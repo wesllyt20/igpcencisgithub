@@ -3,7 +3,7 @@
     <v-list dense>
       <v-list-item class="px-2">
         <v-list-item-avatar>
-          <v-img src="@/assets/icons/igp.png"></v-img>
+          <v-img src="/img/igp.png"></v-img>
         </v-list-item-avatar>
       </v-list-item>
 
