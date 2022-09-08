@@ -1,38 +1,27 @@
 <template>
   <v-tooltip top>
     <template v-slot:activator="{ on, attrs }">
-
-        <v-btn
-          :loading="loading5"
-          :disabled="loading5"
-          color="light-green lighten-4"
-          fab
-          normal
-          icon
-          @click="loader = 'loading5'"
-          v-bind="attrs"
-          v-on="on"
-          v-for="item in data"
-        :key="item.id"
-        >
+      <v-btn
+        :loading="loading5"
+        :disabled="loading5"
+        color="light-green lighten-4"
+        @click="loader = 'loading5'"
+        v-bind="attrs"
+        largue
+        v-on="on"
+      >
         <slot name="iconos"></slot>
-        {{data['botones'][0]['nombre']}}
-        <!--  img v-bind:src="'./img/' + item[0].img" width="30px" />-->
-        </v-btn>
-</template>
+      </v-btn> 
+  </template>
 <span><slot name="tooltip"></slot></span>
     </v-tooltip>
-
-
 </template>
 <script>
-import btninst from "@/assets/data/btninst.json";
 export default {
   data() {
     return {
       loader: null,
       loading5: false,
-      data: btninst,
     };
   },
   watch: {
