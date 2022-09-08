@@ -10,7 +10,7 @@
       "id": 2,
       "estado": 1,
       "nombre": "DHN2",
-      "descripcion": "Dirección de Hidrografía y Navegación",
+      "descripcion": "Dirección de Hidrografía y Navegación 2",
       "img": "dhn.png"
     },
     {
@@ -46,7 +46,7 @@
       "estado": 1,
       "nombre": "APP",
       "descripcion": "APP MOVIL IGP",
-      "img": "app.png"
+      "img": "app.svg"
     },
     {
       "id": 8,

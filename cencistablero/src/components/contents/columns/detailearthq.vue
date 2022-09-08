@@ -60,12 +60,12 @@
       </v-col>
       <v-col cols="6">
         <v-text-field
-          step="0.01"
+         
           solo
           outlined
           dense
           hide-details
-          type="number"
+          
         >
         </v-text-field>
       </v-col>
@@ -76,12 +76,12 @@
       </v-col>
       <v-col cols="6">
         <v-text-field
-          step="0.01"
+         
           solo
           outlined
           dense
           hide-details
-          type="number"
+          
         >
         </v-text-field>
       </v-col>
@@ -91,7 +91,7 @@
         <b style="color: #00000; font-size: large">Profundidad:</b>
       </v-col>
       <v-col cols="6">
-        <v-text-field step="10" solo outlined dense hide-details type="number">
+        <v-text-field step="10" solo outlined dense hide-details type="number"  suffix="km">
         </v-text-field>
       </v-col>
     </v-row>
@@ -100,18 +100,19 @@
         <b style="color: #00000; font-size: large">Magnitud:</b>
       </v-col>
       <v-col cols="4">
-        <v-text-field
-          v-model="magnitud"
-          step="0.1"
-          solo
-          outlined
-          dense
-          hide-details
-          type="number"
-          max="10"
-          min="0"
-        >
-        </v-text-field>
+          <v-text-field
+            v-model="magnitud"
+            step="0.1"
+            solo
+            outlined
+            dense
+            hide-details
+            type="number"
+            oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
+            max="10"
+            min="0"
+                    >
+          </v-text-field>
       </v-col>
       <v-icon v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
         >mdi-circle</v-icon
@@ -233,6 +234,17 @@ export default {
       magnitud: 0,
     };
   },
+  watch: {
+    magnitud (val, old) {
+      console.log(val, old)
+      if (+val > 10) {
+        this.magnitud = 10
+      }
+      if (+val < 0) {
+        this.magnitud = 0
+      }
+    }
+   }
 };
 </script>
 <style>

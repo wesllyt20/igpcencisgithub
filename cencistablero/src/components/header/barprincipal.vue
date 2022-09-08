@@ -1,98 +1,89 @@
 <template>
   <div>
     <v-card class="contenedor pt-1" :color="color" fluid>
-      <v-row>
-        <v-app-bar-nav-icon
-          x-large
-          @click.stop="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text">
-          Publicar
-          <v-icon right dark> mdi-cloud-upload </v-icon>
-        </v-btn>
-        <v-col sm="1">
-          <v-list-item-content>
-            <v-list-item-title>
-              <b style="color: #ffff; font-size: large">Preliminar</b>
-            </v-list-item-title>
-            <v-list-item-action>
-              <v-switch
-                v-model="switch1"
-                @change="setTheme()"
-                color="#76FF03"
-                :disabled="disable1"
-              >
-              </v-switch
-            ></v-list-item-action>
-          </v-list-item-content>
-        </v-col>
-        <v-col sm="1">
-          <v-list-item-content>
-            <v-list-item-title>
-              <b style="color: #ffff; font-size: large">Definitivo</b>
-            </v-list-item-title>
-            <v-list-item-action>
-              <v-switch
-                v-model="switch2"
-                @change="setTheme2()"
-                color="#D50000"
-                :disabled="disable2"
-                flat
-              >
-              </v-switch
-            ></v-list-item-action>
-          </v-list-item-content>
+      <v-row class="mb-n12">
+        <v-col cols="2" class="mx-n3 pr-10" id="public">
+          <v-app-bar-nav-icon
+            x-large
+            @click.stop="drawer = !drawer"
+            class="mb-10 mr-5"
+          ></v-app-bar-nav-icon>
+          <v-btn color="blue-grey" x-large class="ma-6 mx-0 white--text px-5">
+            Publicar <v-icon right dark> mdi-cloud-upload </v-icon>
+          </v-btn>
         </v-col>
 
-        <v-col sm="1">
-          <v-list-item-content>
-            <v-list-item-title>
-              <b style="color: #ffff; font-size: large">Simulación</b>
-            </v-list-item-title>
-            <v-list-item-action>
-              <v-switch
-                v-model="switch3"
-                @change="setTheme3()"
-                color="#D50000"
-                :disabled="disable3"
-                flat
-              >
-              </v-switch
-            ></v-list-item-action>
-          </v-list-item-content>
+        <v-col cols="1" class="mx-n5 mt-4 text-center mr-12">
+          <b style="color: #ffff; font-size: large">Preliminar</b>
+          <v-switch
+            class="ml-10"
+            v-model="switch1"
+            @change="setTheme()"
+            color="#000000"
+            :readonly="disable1"
+          >
+          </v-switch>
         </v-col>
-        <v-col sm="1">
-          <v-list-item-content>
-            <v-list-item-title>
-              <b style="color: #ffff; font-size: large">Simulacro</b>
-            </v-list-item-title>
-            <v-list-item-action>
-              <v-switch
-                v-model="switch4"
-                @change="setTheme4()"
-                color="#D50000"
-                :disabled="disable4"
-                flat
-              >
-              </v-switch
-            ></v-list-item-action>
-          </v-list-item-content>
+
+        <v-col cols="1" class="mx-n5 mt-4 text-center">
+          <b style="color: #ffff; font-size: large">Definitivo</b>
+          <v-switch
+            class="ml-10"
+            v-model="switch2"
+            @change="setTheme2()"
+            color="#000000"
+            :readonly="disable2"
+            flat
+          >
+          </v-switch>
         </v-col>
-        <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
-          <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
-          Evento manual
-        </v-btn>
-        <v-btn color="blue-grey" x-large class="ma-6 mx-4 white--text">
-          <v-icon right dark class="mx-0"> mdi-download </v-icon>
-          Athena
-        </v-btn>
-        <v-btn color="#E57373" x-large class="ma-6 mx-1 white--text">
-          <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
-          Reportes
-        </v-btn>
+        <v-col cols="1" class="mx-n5 mt-4 text-center">
+          <b style="color: #ffff; font-size: large">Simulación</b>
+
+          <v-switch
+            class="ml-10"
+            v-model="switch3"
+            @change="setTheme3()"
+            color="#000000"
+            :readonly="disable3"
+            flat
+          >
+          </v-switch>
+        </v-col>
+
+        <v-col cols="1" class="mx-n5 mt-4 text-center">
+          <b style="color: #ffff; font-size: large">Simulacro</b>
+
+          <v-switch
+            class="ml-10"
+            v-model="switch4"
+            @change="setTheme4()"
+            color="#000000"
+            :readonly="disable4"
+            flat
+          >
+          </v-switch>
+        </v-col>
+
+        <v-col cols="4">
+          <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
+            <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
+            Evento manual
+          </v-btn>
+          <v-btn color="blue-grey" x-large class="ma-6 mx-4 white--text">
+            <v-icon right dark class="mx-0"> mdi-download </v-icon>
+            Athena
+          </v-btn>
+          <v-btn color="#E57373" x-large class="ma-6 mx-1 white--text">
+            <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
+            Reportes
+          </v-btn>
+        </v-col>
       </v-row>
+      <br />
+
       <v-row class="mx-1 ma-0" align="center">
-        <btninstitute></btninstitute>
+        <instmodel></instmodel>
       </v-row>
     </v-card>
     <!--BAR NAVEGATION-->
@@ -112,7 +103,7 @@
 
 <script>
 import AboutView from "@/views/AboutView.vue";
-import btninstitute from "./buttons/btninstitute.vue";
+import instmodel from "./values/instmodel.vue";
 import barnavegation from "./barnav/barnavegation.vue";
 
 export default {
@@ -195,7 +186,7 @@ export default {
   },
   components: {
     AboutView,
-    btninstitute,
+    instmodel,
     barnavegation,
   },
   watch: {
@@ -206,4 +197,7 @@ export default {
 };
 </script>
 <style>
+#public {
+  margin-right: -60px !important;
+}
 </style>

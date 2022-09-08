@@ -2,48 +2,42 @@
   <v-app
     ><barprincipal></barprincipal>
     <v-container fluid>
-      <v-layout justify-start>
-        <v-flex lg4 class="text-center">
-          <br />
-          <br />
+      <v-layout>
+        <!--Detalle de evento-->
+        <v-flex lg3 class="text-center">
           <detailearthq></detailearthq>
           <v-divider></v-divider>
-          <br />
-
           <reporteid></reporteid>
         </v-flex>
 
-        <v-flex lg6>
-          <v-container>
-            <detailubication></detailubication>
-
-            <v-row>
-              <v-col cols="6">
-                <twitterpub class="mr-2 ml-auto"></twitterpub>
-              </v-col>
-              <v-col cols="6">
-                <facebookpub></facebookpub>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-flex>
-        <v-flex lg5>
+        <!--Referencias-->
+        <v-flex lg4>
+          <detailubication></detailubication>
           <v-row>
-            <v-container>
+            <v-col cols="6">
+              <twitterpub class="mr-2 ml-auto"></twitterpub>
+            </v-col>
+            <v-col cols="6">
+              <facebookpub></facebookpub>
+            </v-col>
+          </v-row>
+        </v-flex>
+
+        <!--Mapa y profundidad-->
+        <v-flex lg4>
+          <v-row>
               <v-col cols="12">
                 <geojsonmap></geojsonmap>
                 <profundidadmap></profundidadmap>
               </v-col>
-            </v-container>
           </v-row>
         </v-flex>
-        <v-flex lg2>
+
+        <!--Reporte Athena-->
+        <v-flex lg1 fluid>
           <detailcharacter></detailcharacter>
         </v-flex>
       </v-layout>
-      <br />
-      <br />
-      <br />
     </v-container>
   </v-app>
 </template>

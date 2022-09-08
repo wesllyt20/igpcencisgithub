@@ -10,8 +10,9 @@
                         Ubicación
                     </h5>
                     <br>
-                    <b> Latitud: </b> -12 <br>
-                    <b> Longitud </b> -5
+                    Casa de Nico XD
+                  <!--  <b> Latitud: </b> -12 <br>
+                    <b> Longitud: </b> -5-->
                 </l-popup>
 
             </l-marker>
@@ -38,14 +39,14 @@ export default {
             loading: false,
             show: true,
             enableTooltip: true,
-            zoom: 6,
-            center: [-13.56, -76.31],
+            zoom: 17,
+            center: [-12.167424, -76.941945],
             geojson: null,
             fillColor: "#e4ce7f",
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             attribution:
                 '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> Equipo de Desarrollo IGP,',
-            marker: latLng(-13.56, -76.31),
+            marker: latLng(-12.167424, -76.941945),
                   icon: icon({
         iconUrl: "https://media0.giphy.com/media/D0zsDFSYYprim87DeR/giphy.gif?cid=790b76119147eeee3075fbb5a1579bbff45a1c18b0d5d432&rid=giphy.gif&ct=s",
         iconSize: [32, 37],
