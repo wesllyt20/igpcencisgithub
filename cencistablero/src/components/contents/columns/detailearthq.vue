@@ -13,116 +13,148 @@
         </v-btn>
       </v-col>
     </v-row>
+    <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Nº de reporte:</b>
-      </v-col>
-      <v-col md="6">
-        <v-text-field solo outlined dense hide-details></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Fecha:</b>
-      </v-col>
-      <v-col cols="6">
-        <v-text-field
-          type="date"
-          min="2022-01-01"
-          max="2022-12-31"
-          solo
-          outlined
-          dense
-          hide-details
-        >
-        </v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Hora local:</b>
-      </v-col>
-      <v-col cols="6">
-        <v-text-field
-          type="time"
-          value="00:00"
-          solo
-          outlined
-          dense
-          hide-details
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Latitud:</b>
-      </v-col>
-      <v-col cols="6">
-        <v-text-field
-         
-          solo
-          outlined
-          dense
-          hide-details
-          
-        >
-        </v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Longitud:</b>
-      </v-col>
-      <v-col cols="6">
-        <v-text-field
-         
-          solo
-          outlined
-          dense
-          hide-details
-          
-        >
-        </v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Profundidad:</b>
-      </v-col>
-      <v-col cols="6">
-        <v-text-field step="10" solo outlined dense hide-details type="number"  suffix="km">
-        </v-text-field>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="4">
-        <b style="color: #00000; font-size: large">Magnitud:</b>
-      </v-col>
-      <v-col cols="4">
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Nº de reporte:</b>
+        </v-col>
+        <v-col md="6">
+          <v-text-field
+            v-model="reporte"
+            :rules="reporteRules"
+            required
+            solo
+            type="number"
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Fecha:</b>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            v-model="fecha"
+            required
+            :rules="fechaRules"
+            type="date"
+            min="2015-01-01"
+            max="2022-12-31"
+            solo
+            outlined
+            dense
+            >{{ date }}
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Hora local:</b>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            v-model="tiempo"
+            :rules="tiempoRules"
+            required
+            type="time"
+            value="00:00"
+            solo
+            outlined
+            dense
+          ></v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Latitud:</b>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            v-model="latitud"
+            required
+            :rules="latitudRules"
+            solo
+            outlined
+            dense
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Longitud:</b>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            v-model="longitud"
+            :rules="longitudRules"
+            required
+            solo
+            outlined
+            dense
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Profundidad:</b>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            v-model="profundidad"
+            :rules="profundidadRules"
+            required
+            step="10"
+            solo
+            outlined
+            dense
+            type="number"
+            suffix="km"
+          >
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <b style="color: #00000; font-size: large">Magnitud:</b>
+        </v-col>
+        <v-col cols="4">
           <v-text-field
             v-model="magnitud"
+            :rules="magnitudRules"
+            required
             step="0.1"
             solo
             outlined
             dense
-            hide-details
             type="number"
             oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
             max="10"
             min="0"
-                    >
+          >
           </v-text-field>
-      </v-col>
-      <v-icon v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
-        >mdi-circle</v-icon
-      >
-      <v-icon v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning"
-        >mdi-circle</v-icon
-      >
-      <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
-    </v-row>
-
+        </v-col>
+        <v-icon v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
+          >mdi-circle</v-icon
+        >
+        <v-icon v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning"
+          >mdi-circle</v-icon
+        >
+        <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
+        <v-btn
+          :disabled="!valid"
+          color="success"
+          class="mr-4"
+          @click="validate"
+        >
+          submit
+        </v-btn>
+      </v-row>
+    </v-form>
     <v-row class="pa-3">
       <v-col cols="5">
         <v-chip color="orange" label x-large><b>Próximo: 472</b></v-chip>
@@ -215,8 +247,8 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog = false">
-                I accept
+              <v-btn color="success" text @click="dialog = false">
+                Aceptar
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -225,26 +257,46 @@
     </v-row>
   </v-container>
 </template>
+
 <script>
 export default {
   data() {
     return {
+    valid: true,
+    reporteRules: [(v) => !!v || "Falta llenar Reporte."],
+    fechaRules: [(v) => !!v || "Falta colocar Fecha."],
+    tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
+    latitudRules: [(v) => !!v || "Falta"],
+    longitudRules: [(v) => !!v || "Name is required"],
+    profundidadRules: [(v) => !!v || "Name is required"],
+    magnitudRules: [(v) => !!v || "Name is required"],
+    
       dialog: false,
       color: "#76FF03",
       magnitud: 0,
+      reporte: "",
+      latitud: "",
+      longitud: "",
+      profundidad: "",
     };
   },
   watch: {
-    magnitud (val, old) {
-      console.log(val, old)
+    magnitud(val, old) {
+      console.log(val, old);
       if (+val > 10) {
-        this.magnitud = 10
+        this.magnitud = 10;
       }
       if (+val < 0) {
-        this.magnitud = 0
+        this.magnitud = 0;
       }
-    }
-   }
+    },
+  },
+
+  methods: {
+    validate() {
+      this.$refs.form.validate();
+    },
+  },
 };
 </script>
 <style>

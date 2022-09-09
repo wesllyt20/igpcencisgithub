@@ -1,21 +1,20 @@
 <template>
   <v-app>
-    
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import barprincipal from './components/header/barprincipal.vue';
+import barprincipal from "./components/header/barprincipal.vue";
 
 export default {
-  components:{
-    barprincipal
+  components: {
+    barprincipal,
   },
- 
-  name: 'App',
+
+  name: "App",
 
   data: () => ({
     //
