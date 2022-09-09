@@ -1,6 +1,6 @@
 <template>
-  <v-app
-    ><barprincipal></barprincipal>
+  <v-app>
+    <barprincipal></barprincipal>
     <v-container fluid>
       <v-layout>
         <!--Detalle de evento-->
