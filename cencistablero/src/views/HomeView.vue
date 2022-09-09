@@ -26,14 +26,14 @@
         <!--Mapa y profundidad-->
         <v-flex lg4>
           <v-row>
-              <v-col cols="12">
-                <geojsonmap></geojsonmap>
-                <profundidadmap></profundidadmap>
-              </v-col>
+            <v-col cols="12">
+              <geojsonmap></geojsonmap>
+              <profundidadmap></profundidadmap>
+            </v-col>
           </v-row>
         </v-flex>
 
-        <!--Reporte Athena-->
+        <!--Reporte AthenaXD-->
         <v-flex lg1 fluid>
           <detailcharacter></detailcharacter>
         </v-flex>
