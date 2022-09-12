@@ -14,7 +14,6 @@
       </v-col>
     </v-row>
     <v-form ref="form" v-model="valid" lazy-validation>
-
       <v-row>
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Nº de reporte:</b>
@@ -39,14 +38,14 @@
           <v-text-field
             v-model="fecha"
             required
-            :rules="fechaRules"
             type="date"
             min="2015-01-01"
             max="2022-12-31"
             solo
             outlined
             dense
-            >{{ date }}
+            :rules="fechaRules"
+          >
           </v-text-field>
         </v-col>
       </v-row>
@@ -57,8 +56,8 @@
         <v-col cols="6">
           <v-text-field
             v-model="tiempo"
-            :rules="tiempoRules"
             required
+            :rules="tiempoRules"
             type="time"
             value="00:00"
             solo
@@ -145,12 +144,8 @@
           >mdi-circle</v-icon
         >
         <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
-        <v-btn
-          :disabled="!valid"
-          color="success"
-          class="mr-4"
-          @click="validate"
-        >
+
+        <v-btn :disabled="!valid" color="success" @click="validate">
           submit
         </v-btn>
       </v-row>
@@ -262,18 +257,20 @@
 export default {
   data() {
     return {
-    valid: true,
-    reporteRules: [(v) => !!v || "Falta llenar Reporte."],
-    fechaRules: [(v) => !!v || "Falta colocar Fecha."],
-    tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
-    latitudRules: [(v) => !!v || "Falta"],
-    longitudRules: [(v) => !!v || "Name is required"],
-    profundidadRules: [(v) => !!v || "Name is required"],
-    magnitudRules: [(v) => !!v || "Name is required"],
-    
+      valid: true,
+      reporteRules: [(v) => !!v || "Falta colocar Reporte."],
+      fechaRules: [(v) => !!v || "Falta colocar Fecha."],
+      tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
+      latitudRules: [(v) => !!v || "Falta indicar Latitud."],
+      longitudRules: [(v) => !!v || "Falta indicar Longitud."],
+      profundidadRules: [(v) => !!v || "Falta indicar Profundidad."],
+      magnitudRules: [(v) => !!v || "Falta indica Magnitud."],
+
       dialog: false,
       color: "#76FF03",
       magnitud: 0,
+      tiempo:"",
+      fecha:"",
       reporte: "",
       latitud: "",
       longitud: "",
@@ -294,7 +291,7 @@ export default {
 
   methods: {
     validate() {
-      this.$refs.form.validate();
+      this.$refs.form.validate(), console.log("testeo");
     },
   },
 };

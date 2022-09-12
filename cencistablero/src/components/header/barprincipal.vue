@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-card class="contenedor pt-1" :color="color" fluid>
+      
       <v-row class="mb-n12">
         <v-col cols="2" class="mx-n3 pr-10" id="public">
           <v-app-bar-nav-icon
@@ -8,9 +9,16 @@
             @click.stop="drawer = !drawer"
             class="mb-10 mr-5"
           ></v-app-bar-nav-icon>
-          <v-btn color="blue-grey" x-large class="ma-6 mx-0 white--text px-5">
+          
+          <v-btn
+            color="blue-grey"
+            x-large
+            class="ma-6 mx-0 white--text px-5"
+          >
             Publicar <v-icon right dark> mdi-cloud-upload </v-icon>
           </v-btn>
+
+          
         </v-col>
 
         <v-col cols="1" class="mx-n5 mt-4 text-center mr-12">
@@ -105,8 +113,16 @@
 import AboutView from "@/views/AboutView.vue";
 import instmodel from "./values/instmodel.vue";
 import barnavegation from "./barnav/barnavegation.vue";
+import detailearthq from "../contents/columns/detailearthq.vue";
 
 export default {
+  components: {
+    AboutView,
+    instmodel,
+    barnavegation,
+    'detail-earth' : detailearthq
+  },
+
   data: () => {
     return {
       switch1: true,
@@ -184,16 +200,14 @@ export default {
       }
     },
   },
-  components: {
-    AboutView,
-    instmodel,
-    barnavegation,
-  },
+
   watch: {
     group() {
       this.drawer = false;
     },
   },
+
+
 };
 </script>
 <style>
