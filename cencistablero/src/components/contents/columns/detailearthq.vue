@@ -78,6 +78,7 @@
             solo
             outlined
             dense
+            :value=addLatitud()
           >
           </v-text-field>
         </v-col>
@@ -94,6 +95,7 @@
             solo
             outlined
             dense
+            :value=addLongitud()
           >
           </v-text-field>
         </v-col>
@@ -113,6 +115,7 @@
             dense
             type="number"
             suffix="km"
+            
           >
           </v-text-field>
         </v-col>
@@ -269,11 +272,11 @@ export default {
       dialog: false,
       color: "#76FF03",
       magnitud: 0,
-      tiempo:"",
-      fecha:"",
+      tiempo: "",
+      fecha: "",
       reporte: "",
-      latitud: "",
       longitud: "",
+      latitud: "",
       profundidad: "",
     };
   },
@@ -293,7 +296,14 @@ export default {
     validate() {
       this.$refs.form.validate(), console.log("testeo");
     },
+    addLatitud(){
+      this.$store.state.latitud = this.latitud
+    },
+    addLongitud(){
+      this.$store.state.longitud = this.longitud
+    },
   },
+
 };
 </script>
 <style>

@@ -11,8 +11,9 @@
         </v-flex>
 
         <!--Referencias-->
-        <v-flex lg4>
+        <v-flex lg4 class="px-2">
           <detailubication></detailubication>
+          <br />
           <v-row>
             <v-col cols="6">
               <twitterpub class="mr-2 ml-auto"></twitterpub>
