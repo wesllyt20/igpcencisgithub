@@ -1,9 +1,10 @@
 {
-    "referencias": [
+    "evento1": [
         {
             "id": 1,
             "estado": 1,
             "referencia": "952 km, al SO de ilo, ilo - Moquegua",
+            "intensidad":"nivel 1",
             "telefono": "053-481151 481110 491555",
             "latitud": "",
             "longitu": ""
@@ -12,6 +13,7 @@
             "id": 2,
             "estado": 1,
             "referencia":"919 km al SO de Tacna, Tacna - Tacna" ,
+            "intensidad":"nivel 2",
             "telefono": "052-414141 318455 318269 245987 412031" ,
             "latitud":"" ,
             "longitu":""
@@ -20,6 +22,7 @@
             "id": 3,
             "estado": 1,
             "referencia":"921 km al SO de Alto De La Alianza, Tacna - Tacna",
+            "intensidad":"nivel 3",
             "telefono":"953638729" ,
             "latitud":"" ,
             "longitu":""
@@ -28,6 +31,7 @@
             "id": 4,
             "estado": 1,
             "referencia":"930 km al SO de Calana, Tacna - Tacna",
+            "intensidad":"nivel 4",
             "telefono": "052-471017",
             "latitud":"" ,
             "longitu":""
@@ -36,6 +40,7 @@
             "id": 5,
             "estado": 1,
             "referencia":"932 km al S de Punta De Bombon, Islay - Arequipa",
+            "intensidad":"nivel 5",
             "telefono": "054-553025",
             "latitud":"" ,
             "longitu":""
@@ -44,6 +49,7 @@
             "id": 6,
             "estado": 1,
             "referencia":"J932 km al SO de Locumba, Jorge Basadre - Tacna",
+            "intensidad":"nivel 6",
             "telefono": "052-505613",
             "latitud":"" ,
             "longitu":""
@@ -52,6 +58,7 @@
             "id": 7,
             "estado": 1,
             "referencia":"939 km al S de Mollendo, Islay - Arequipa",
+            "intensidad":"nivel 7",
             "telefono":"054-533333" ,
             "latitud":"" ,
             "longitu":""
@@ -60,6 +67,155 @@
             "id": 8,
             "estado": 1,
             "referencia":"960 km al S de Quilca, Camana - Arequipa",
+            "intensidad":"nivel 8",
+            "telefono":"054-619409" ,
+            "latitud":"" ,
+            "longitu":""
+        }
+    ],
+    "evento2": [
+        {
+            "id": 1,
+            "estado": 1,
+            "referencia": "952 km, al SO de ilo, ilo - Moquegua",
+            "intensidad":"nivel 1",
+            "telefono": "947669135",
+            "latitud": "",
+            "longitu": ""
+        },
+        {
+            "id": 2,
+            "estado": 1,
+            "referencia":"919 km al SO de Tacna, Tacna - Tacna" ,
+            "intensidad":"nivel 2",
+            "telefono": "052-414141 318455 318269 245987 412031" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 3,
+            "estado": 1,
+            "referencia":"921 km al SO de Alto De La Alianza, Tacna - Tacna",
+            "intensidad":"nivel 3",
+            "telefono":"953638729" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 4,
+            "estado": 1,
+            "referencia":"930 km al SO de Calana, Tacna - Tacna",
+            "intensidad":"nivel 4",
+            "telefono": "052-471017",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 5,
+            "estado": 1,
+            "referencia":"932 km al S de Punta De Bombon, Islay - Arequipa",
+            "intensidad":"nivel 5",
+            "telefono": "054-553025",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 6,
+            "estado": 1,
+            "referencia":"J932 km al SO de Locumba, Jorge Basadre - Tacna",
+            "intensidad":"nivel 6",
+            "telefono": "052-505613",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 7,
+            "estado": 1,
+            "referencia":"939 km al S de Mollendo, Islay - Arequipa",
+            "intensidad":"nivel 7",
+            "telefono":"054-533333" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 8,
+            "estado": 1,
+            "referencia":"960 km al S de Quilca, Camana - Arequipa",
+            "intensidad":"nivel 8",
+            "telefono":"054-619409" ,
+            "latitud":"" ,
+            "longitu":""
+        }
+    ],
+    "evento3": [
+        {
+            "id": 1,
+            "estado": 1,
+            "referencia": "952 km, al SO de ilo, ilo - Moquegua",
+            "intensidad":"nivel 1",
+            "telefono": "949563741",
+            "latitud": "",
+            "longitu": ""
+        },
+        {
+            "id": 2,
+            "estado": 1,
+            "referencia":"919 km al SO de Tacna, Tacna - Tacna" ,
+            "intensidad":"nivel 2",
+            "telefono": "052-414141 318455 318269 245987 412031" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 3,
+            "estado": 1,
+            "referencia":"921 km al SO de Alto De La Alianza, Tacna - Tacna",
+            "intensidad":"nivel 3",
+            "telefono":"953638729" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 4,
+            "estado": 1,
+            "referencia":"930 km al SO de Calana, Tacna - Tacna",
+            "intensidad":"nivel 4",
+            "telefono": "052-471017",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 5,
+            "estado": 1,
+            "referencia":"932 km al S de Punta De Bombon, Islay - Arequipa",
+            "intensidad":"nivel 5",
+            "telefono": "054-553025",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 6,
+            "estado": 1,
+            "referencia":"J932 km al SO de Locumba, Jorge Basadre - Tacna",
+            "intensidad":"nivel 6",
+            "telefono": "052-505613",
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 7,
+            "estado": 1,
+            "referencia":"939 km al S de Mollendo, Islay - Arequipa",
+            "intensidad":"nivel 7",
+            "telefono":"054-533333" ,
+            "latitud":"" ,
+            "longitu":""
+        },
+        {
+            "id": 8,
+            "estado": 1,
+            "referencia":"960 km al S de Quilca, Camana - Arequipa",
+            "intensidad":"nivel 8",
             "telefono":"054-619409" ,
             "latitud":"" ,
             "longitu":""

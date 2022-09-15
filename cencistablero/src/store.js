@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         latitud: null,
-        longitud: null
+        longitud: null,
+        intensidad:"tsteo",
     },
     mutations: {
 
@@ -16,5 +17,5 @@ export default new Vuex.Store({
     },
     getters: {
 
-    }
-})
+    }   
+});
