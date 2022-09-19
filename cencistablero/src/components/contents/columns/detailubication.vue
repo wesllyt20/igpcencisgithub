@@ -1,11 +1,60 @@
 <template>
+  <div class="conteiner mt-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Intensidad</th>
+          <th scope="col">Referencia</th>
+          <th scope="col">Telefonos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tbody>
+        <tr v-for="(evento, index) in eventos" :key="evento.evento1">
+          <th >{{ index + 1 }}</th>
+          <td>{{ evento.evento2.intensidad }}</td>
+          <td>{{ evento.evento2.referencia }}</td>
+          <td>{{ evento.evento2.telefonos }}</td>
+        </tr>
+      </tbody>
+      </tbody>
+    </table>
+   
+  </div>
+</template>
+<script>
+import serverEventos from "@/servicios/serverEvent.js";
+export default {
+  data() {
+    return {
+      eventos: [],
+    };
+  },
+  created() {
+    serverEventos
+      .obtenerEventos()
+      .then((response) => {
+        this.eventos = response.data;
+        console.log("eventos:", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+};
+</script>
+
+
+
+<!--<template> ---------------  INTENTO 2
   <v-card>
     <v-data-table
       v-model="selected"
       :headers="headers"
       :items="desserts"
       :single-select="singleSelect"
-      item-key="name"
+      item-key="referencia"
       show-select
       class="elevation-1"
     >
@@ -16,24 +65,34 @@
           class="pa-3"
         ></v-switch>
       </template>
-      
+      <template slot="eventos" slot-scope="eventos">
+        <tr v-for="(index,evento) in eventos" :key="evento">
+        <td class="text-xs-right">{{ eventos.evento}}</td>
+        <td class="text-xs-right">{{ eventos.evento}}</td>
+        <td class="text-xs-right">{{ eventos.evento}}</td>
+      </tr>
+      </template>
+
     </v-data-table>
-    <div >
+    <div  v-for="(index,evento) in eventos" :key="evento">
     <v-btn @click="validar">
-      {{adata["evento2"][0]["telefono"]}} <v-icon right dark> mdi-cloud-upload </v-icon>
+      hola{{eventos.evento2}}<v-icon right dark> mdi-cloud-upload </v-icon>
     </v-btn>
   </div>
   </v-card>
 </template>
 
 <script>
-import datos from "@/assets/data/tablerefer.json";
+  import serverEventos from "@/servicios/serverEvent.js"
+ 
+
 
 export default {
+
   data() {
     return {
-      adata:datos,
-      singleSelect: true,
+      eventos: [],
+            singleSelect: true,
       selected: [],
       headers: [
         {
@@ -45,46 +104,35 @@ export default {
         { text: "Referencía", value: "referencia" },
         { text: "Telefonos", value: "telefono" },
       ],
-      desserts: [
-        {
-          intensidad: this.$store.state.intensidad,
-          referencia: "",
-          telefono: "",
-        },
-        {
-          intensidad: "",
-          referencia: "",
-          telefono: "",
-        },
-        {
-          intensidad: "",
-          referencia: "",
-          telefono: "",
-        },
-      ],
+
     };
   },
-  computed: {
-    items() {
-      return datos.map((item) => {
-        return item;
-      });
-    },
-  },
+
   methods: {
     validar() {
-      console.log( item[1].evento1);
+      console.log('XDxDxDxDDDdxdxdd')
     },
   },
+  created () {
+    serverEventos.obtenerEventos()
+      .then(response => {
+        this.eventos = response.data;
+        console.log('eventos:', response.data)
+      })
+      .catch(error =>{
+        console.log(error)
+      })
+    }
+ ,
 };
 </script>
       <style>
 .theme--light.v-data-table tbody tr.v-data-table__selected {
   background: #a5d6a7 !important;
 }
-</style>
+</style>-->
 
-<!--<template>
+<!--<template> ------------------ INTENTO 1 
   <v-container>
     <v-simple-table fixed-header height="660px">
       <template v-slot:default>
