@@ -4,7 +4,7 @@
     <v-container fluid>
       <v-layout>
         <!--Detalle de evento-->
-        <v-flex lg3 class="text-center">
+        <v-flex lg3 class="text-center ml-1">
           <detailearthq></detailearthq>
           <v-divider></v-divider>
           <reporteid></reporteid>

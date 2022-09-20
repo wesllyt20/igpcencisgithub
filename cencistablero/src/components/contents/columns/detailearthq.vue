@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid class="ml-5">
     <v-row ALIGN="center">
       <v-col cols="12" class="pa-1">
         <v-btn class="ma-1" color="grey" plain>
@@ -27,6 +27,7 @@
             type="number"
             outlined
             dense
+            :value=addReporte()
           ></v-text-field>
         </v-col>
       </v-row>
@@ -140,22 +141,20 @@
           >
           </v-text-field>
         </v-col>
-        <v-icon v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
+        <v-icon class="mb-5" v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green"
           >mdi-circle</v-icon
         >
-        <v-icon v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning"
+        <v-icon class="mb-5" v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning"
           >mdi-circle</v-icon
         >
-        <v-icon v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
+        <v-icon class="mb-5" v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
 
-        <v-btn :disabled="!valid" color="success" @click="validate">
-          submit
-        </v-btn>
+
       </v-row>
     </v-form>
     <v-row class="pa-3">
       <v-col cols="5">
-        <v-chip color="orange" label x-large><b>Próximo: 472</b></v-chip>
+        <v-chip color="orange" label x-large><b>Próximo: {{ $store.state.reporte }}</b></v-chip>
       </v-col>
       <v-col cols="4">
         <v-dialog v-model="dialog" width="500">
@@ -274,10 +273,10 @@ export default {
       magnitud: 0,
       tiempo: "",
       fecha: "",
-      reporte: "",
-      longitud: "",
-      latitud: "",
-      profundidad: "",
+      reporte: 475,
+      latitud: -12.167424,
+      longitud: -76.941945,
+            profundidad: "",
     };
   },
   watch: {
@@ -301,6 +300,9 @@ export default {
     },
     addLongitud(){
       this.$store.state.longitud = this.longitud
+    },
+    addReporte(){
+      this.$store.state.reporte = this.reporte
     },
   },
 

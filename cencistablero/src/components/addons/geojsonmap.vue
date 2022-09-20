@@ -19,7 +19,7 @@
       >
         <l-popup>
           <h4 class="text-primary text-center m-0 font-weight-bold">
-            Casa de Nico
+            Reporte: {{ $store.state.reporte }}
           </h4>
           <br/>
           <b> Latitud: </b> {{ $store.state.latitud }} <br />
