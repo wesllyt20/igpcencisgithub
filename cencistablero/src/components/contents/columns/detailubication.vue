@@ -17,39 +17,19 @@
         ></v-switch>
       </template>
 
-      <template v-slot:items="{ on, props }">
-        <tr>
-          <td>
-            <v-simple-checkbox
-              color="green"
-              v-bind="props"
-              v-on="on"
-            ></v-simple-checkbox>
-          </td>
-
-          <td>{{ props.item.id }}</td>
-          <td>{{ props.item.referencia }}</td>
-          <td>{{ props.item.telefono }}</td>
-          <td>
-            <v-select
-              style="margin-bottom: -25px"
-              label="--"
-              :items="selectinten"
-              dense
-              outlined
-            ></v-select>
-          </td>
-        </tr>
+      <template v-slot:[`item.intensidad`]="{ item }">
+        <v-select
+          style="margin-bottom: -25px"
+          label="--"
+          :items="selectinten"
+          dense
+          outlined
+          :value=item.intensidad
+          >{{ item.intensidad }}</v-select
+        >
       </template>
     </v-data-table>
-    <v-select
-              style="margin-bottom: -25px"
-              label="--"
-              :items="selectinten"
-              dense
-              outlined
-            ></v-select>
-  </v-card>
+    </v-card>
 </template>
 
 <script>
@@ -69,6 +49,7 @@ export default {
         },
         { text: "Referencía", value: "referencia" },
         { text: "Telefonos", value: "telefono" },
+        { text: "Intensidad", value: "intensidad" },
       ],
       select: ["--"],
       selectinten: [
@@ -116,9 +97,7 @@ export default {
   background: #a5d6a7 !important;
 }
 .theme--light.v-icon {
-  color: blue !important;
+  color: rgba(43, 112, 46, 0.418) !important;
 }
-.v-input--selection-controls__ripple.green--text {
-  color: blue !important;
-}
+
 </style>

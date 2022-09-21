@@ -1,5 +1,5 @@
 <template>
-  <div>
+
     <l-map
       id="mapa"
       :zoom="zoom"
@@ -21,30 +21,32 @@
           <h4 class="text-primary text-center m-0 font-weight-bold">
             Reporte: {{ $store.state.reporte }}
           </h4>
-          <br/>
+          <br />
           <b> Latitud: </b> {{ $store.state.latitud }} <br />
           <b> Longitud </b> {{ $store.state.longitud }}
         </l-popup>
       </l-marker>
 
-      <!--Marker 2 
-      <l-marker :lat-lng="[-12.167, -76.941]" :icon="icon2">
-        <l-popup>
-          <h5 class="text-primary m-0 font-weight-bold">
-                Casa de Nico
-            </h5>
-            <br>
-            <b> Latitud: </b> {{ lat }} <br>
-            <b> Longitud </b> {{ long }}
-        </l-popup>
-      </l-marker> - punto verde -->
+      <!--Marker 2 -->
+      <div v-for="item in items" :key="item.id">
+        <l-marker :lat-lng="[item.latitudpoint, item.longitudpoint]" :icon="icon2">
+          <l-popup>
+            <h5 class="text-primary m-0 font-weight-bold">{{item.referencia}}</h5>
+            <br />
+            <b> Latitud: </b> {{ item.latitudpoint }} <br />
+            <b> Longitud </b> {{ item.longitudpoint }}
+          </l-popup>
+        </l-marker>
+      </div>
     </l-map>
-  </div>
 </template>
 
 <script>
 import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker, LGeoJson, LPopup } from "vue2-leaflet";
+import axios from "axios";
+
+
 
 export default {
   name: "Example",
@@ -62,9 +64,16 @@ export default {
       enableTooltip: true,
       zoom: 17,
       center: [],
+      items: [
+        { value:"referencia"},
+        { value:"latitudpoint"},
+        { value:"longitudpoint"},
+
+      ],
+
       geojson: null,
       fillColor: "#e4ce7f",
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
       attribution:
         '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> Equipo de Desarrollo IGP,',
       marker: latLng(),
@@ -115,6 +124,7 @@ export default {
         );
       };
     },
+
   },
   async created() {
     this.loading = true;
@@ -125,6 +135,32 @@ export default {
     this.geojson = data;
     this.loading = false;
   },
+   mounted() {
+    this.loadItems();
+  },
+  methods: {
+    loadItems() {
+      var self = this;
+      this.items = [];
+      axios
+        .get("https://my-json-server.typicode.com/wesllyt20/eventosapi/db")
+        .then(function (response) {
+          self.items = response.data.evento.map((item) => {
+            return {
+              id: item.id,
+              referencia: item.referencia,
+              latitudpoint: item.latitud,
+              longitudpoint: item.longitud,
+              ...item.fields,
+            };
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+
 };
 </script>
 <style>
