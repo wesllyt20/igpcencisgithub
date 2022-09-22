@@ -25,7 +25,7 @@
           dense
           outlined
           :value=item.intensidad
-          >{{ item.intensidad }}</v-select
+          ></v-select
         >
       </template>
     </v-data-table>

@@ -1,5 +1,5 @@
 <template>
-
+  <div>
     <l-map
       id="mapa"
       :zoom="zoom"
@@ -29,24 +29,25 @@
 
       <!--Marker 2 -->
       <div v-for="item in items" :key="item.id">
-        <l-marker :lat-lng="[item.latitudpoint, item.longitudpoint]" :icon="icon2">
+        <l-marker :lat-lng="[item.lati, item.longi]" :icon="icon2">
           <l-popup>
-            <h5 class="text-primary m-0 font-weight-bold">{{item.referencia}}</h5>
+            <h5 class="text-primary m-0 font-weight-bold text-center">
+              Referencia {{ item.id }}: <br />{{ item.referencia }}
+            </h5>
             <br />
-            <b> Latitud: </b> {{ item.latitudpoint }} <br />
-            <b> Longitud </b> {{ item.longitudpoint }}
+            <b> Latitud: </b> {{ item.lati }} <br />
+            <b> Longitud </b> {{ item.longi }}
           </l-popup>
         </l-marker>
       </div>
     </l-map>
+  </div>
 </template>
 
 <script>
 import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker, LGeoJson, LPopup } from "vue2-leaflet";
 import axios from "axios";
-
-
 
 export default {
   name: "Example",
@@ -64,12 +65,7 @@ export default {
       enableTooltip: true,
       zoom: 17,
       center: [],
-      items: [
-        { value:"referencia"},
-        { value:"latitudpoint"},
-        { value:"longitudpoint"},
-
-      ],
+      items: [],
 
       geojson: null,
       fillColor: "#e4ce7f",
@@ -124,7 +120,6 @@ export default {
         );
       };
     },
-
   },
   async created() {
     this.loading = true;
@@ -135,7 +130,7 @@ export default {
     this.geojson = data;
     this.loading = false;
   },
-   mounted() {
+  mounted() {
     this.loadItems();
   },
   methods: {
@@ -149,8 +144,8 @@ export default {
             return {
               id: item.id,
               referencia: item.referencia,
-              latitudpoint: item.latitud,
-              longitudpoint: item.longitud,
+              lati: item.lati,
+              longi: item.longi,
               ...item.fields,
             };
           });
@@ -160,7 +155,6 @@ export default {
         });
     },
   },
-
 };
 </script>
 <style>
