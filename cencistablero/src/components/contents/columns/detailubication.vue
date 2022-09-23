@@ -47,9 +47,10 @@ export default {
           sortable: false,
           value: "id",
         },
+        { text: "Intensidad", value: "intensidad" },
         { text: "Referencía", value: "referencia" },
         { text: "Telefonos", value: "telefono" },
-        { text: "Intensidad", value: "intensidad" },
+        
       ],
       select: ["--"],
       selectinten: [
