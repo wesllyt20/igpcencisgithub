@@ -4,7 +4,7 @@
       <v-btn
         :loading="loading5"
         :disabled="loading5"
-        color="light-green lighten-4"
+        color="#8BC34A"
         @click="loader = 'loading5'"
         v-bind="attrs"
         largue

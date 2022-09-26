@@ -8,22 +8,8 @@
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>
       </v-card-title>
-      <v-textarea
-        class="pa-3"
-        id="texto"
-        rows="11"
-        v-on:focus="$event.target.select()"
-        ref="myinput"
-        value="REPORTE SÍSMICO
-IGP/CENSIS/RS 2022-0529
-Fecha y Hora Local: 20/08/2022 06:50:15
-Magnitud: 3.8
-Profundidad: 48km
-Latitud: -13.56
-Longitud: -76.31
-Intensidad: III Tambo De Mora
-Referencia: 18 km al SO de Tambo De Mora, Chincha - Ica"
-      ></v-textarea>
+      <v-textarea class="pa-3" id="texto" rows="11" v-on:focus="$event.target.select()" background-color="#FFFFFF"
+        ref="myinput" v-bind:value=textopub></v-textarea>
     </v-card>
   </v-card>
 </template>
@@ -32,14 +18,28 @@ export default {
   data() {
     return {
       text: "This will get copied!",
+      valortext: null,
     };
   },
   methods: {
     copy() {
       this.$refs.myinput.focus();
       document.execCommand("copy");
-    },
+    }
   },
+  computed: {
+    textopub() {
+      return "REPORTE SÍSMICO: \n" +
+        "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte + "\n" +
+        "Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora + "\n" +
+        "Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora + "\n" +
+        "Magnitud: " + this.$store.state.magnitud + "\n" +
+        "Profundidad: " + this.$store.state.profundidad + "Km\n" +
+        "Latitud: " + this.$store.state.latitud + "\n" +
+        "Longitud: " + this.$store.state.longitud + "\n" +
+        "Referencia: " + this.$store.state.referencia
+    }
+  }
 };
 </script>
 <style>
@@ -47,5 +47,6 @@ export default {
   font-family: arial, verdana, ms sans serif;
   font-size: 12pt;
   line-height: 1;
+  color: black;
 }
 </style>

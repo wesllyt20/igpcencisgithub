@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        reporte: 524,
-        latitud: -12,
-        longitud: -76,
-        intensidad: "tsteo",
-
+        reporte: null,
+        fecha: null,
+        hora: null,
+        latitud: null,
+        longitud: null,
+        profundidad: null,
+        magnitud: null,
+        referencia: null,
+        intensidad: null,
     },
     mutations: {
 

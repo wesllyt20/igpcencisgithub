@@ -1,35 +1,18 @@
 <template>
   <v-card>
-    <v-data-table
-      v-model="selected"
-      :headers="headers"
-      :items="items"
-      :single-select="singleSelect"
-      item-key="id"
-      show-select
-      class="elevation-1"
-    >
+    <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
+      show-select class="elevation-1" @click:row="rowClick">
       <template v-slot:top>
-        <v-switch
-          v-model="singleSelect"
-          label="Selección Unica"
-          class="pa-3"
-        ></v-switch>
+        <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3" :value=selecccionado></v-switch>
       </template>
 
       <template v-slot:[`item.intensidad`]="{ item }">
-        <v-select
-          style="margin-bottom: -25px"
-          label="--"
-          :items="selectinten"
-          dense
-          outlined
-          :value=item.intensidad
-          ></v-select
-        >
+        <v-select style="margin-bottom: -25px" label="--" :items="selectinten" dense outlined :value=item.intensidad>
+        </v-select>
       </template>
     </v-data-table>
-    </v-card>
+    <h5>Selected: {{selected}}</h5>
+  </v-card>
 </template>
 
 <script>
@@ -50,7 +33,7 @@ export default {
         { text: "Intensidad", value: "intensidad" },
         { text: "Referencía", value: "referencia" },
         { text: "Telefonos", value: "telefono" },
-        
+
       ],
       select: ["--"],
       selectinten: [
@@ -64,6 +47,7 @@ export default {
         "nivel 7",
         "nivel 8",
       ],
+      seleccionarReferencia: -1,
     };
   },
   mounted() {
@@ -90,15 +74,20 @@ export default {
           console.log(error);
         });
     },
+
+    rowClick: function (item, row) {
+      row.select(true);
+      this.seleccionarReferencia = item.intensidad
+    }
   },
 };
 </script>
-      <style>
+<style>
 .theme--light.v-data-table tbody tr.v-data-table__selected {
   background: #a5d6a7 !important;
 }
+
 .theme--light.v-icon {
   color: rgba(43, 112, 46, 0.418) !important;
 }
-
 </style>

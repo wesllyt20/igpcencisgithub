@@ -29,7 +29,7 @@
         </v-col>
         <v-col cols="6">
           <v-text-field v-model="fecha" required type="date" min="2015-01-01" max="2022-12-31" solo outlined dense
-            :rules="fechaRules">
+            :rules="fechaRules" :value=addFecha()>
           </v-text-field>
         </v-col>
       </v-row>
@@ -38,7 +38,7 @@
           <b style="color: #00000; font-size: large">Hora local:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="tiempo" required :rules="tiempoRules" type="time" value="00:00" solo outlined dense>
+          <v-text-field :value=addTiempo() v-model="tiempo" required :rules="tiempoRules" type="time"  solo outlined dense>
           </v-text-field>
         </v-col>
       </v-row>
@@ -65,7 +65,7 @@
           <b style="color: #00000; font-size: large">Profundidad:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="profundidad" :rules="profundidadRules" required step="10" solo outlined dense
+          <v-text-field  :value=addReProfundidad() v-model="profundidad" :rules="profundidadRules" required step="10" solo outlined dense
             type="number" suffix="km">
           </v-text-field>
         </v-col>
@@ -75,7 +75,7 @@
           <b style="color: #00000; font-size: large">Magnitud:</b>
         </v-col>
         <v-col cols="4">
-          <v-text-field v-model="magnitud" :rules="magnitudRules" required step="0.1" solo outlined dense type="number"
+          <v-text-field :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1" solo outlined dense type="number"
             oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="10" min="0">
           </v-text-field>
         </v-col>
@@ -213,15 +213,33 @@ export default {
     validate() {
       this.$refs.form.validate(), console.log("testeo");
     },
+    addReporte() {
+      this.$store.state.reporte = this.reporte
+    },
+    addFecha() {
+      this.$store.state.fecha = this.fecha
+    },
+    addTiempo() {
+      this.$store.state.hora = this.tiempo
+    },
     addLatitud() {
       this.$store.state.latitud = this.latitud
     },
     addLongitud() {
       this.$store.state.longitud = this.longitud
     },
-    addReporte() {
-      this.$store.state.reporte = this.reporte
+
+    addReferencia() {
+      this.$store.state.referencia = this.referencia
     },
+
+    addReProfundidad() {
+      this.$store.state.profundidad = this.profundidad
+    },
+    addMagnitud() {
+      this.$store.state.magnitud = this.magnitud
+    },
+
   },
 
 };

@@ -24,7 +24,7 @@ import {
   LinearScale,
 } from "chart.js";
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale);
+ChartJS.register(Title, Toosssssltip, Legend, PointElement, LinearScale);
 
 export default {
   name: "BubbleChart",

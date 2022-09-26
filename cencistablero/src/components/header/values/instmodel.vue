@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="2" class="pr-0 ml-auto">
         <!--Grupo 1-->
-        <v-btn-toggle >
+        <v-btn-toggle :color=colorbar>
         <v-btn largue color="primary" dark> <v-icon> mdi-share</v-icon></v-btn>
       <btninstitute>
         <template slot="iconos">
@@ -34,7 +34,7 @@
     </v-col>
     <v-col cols="2" class="pr-0">
         <!--Grupo 2-->
-        <v-btn-toggle >
+        <v-btn-toggle :color=colorbar>
         <v-btn largue color="primary" dark> <v-icon> mdi-share</v-icon></v-btn>
       <btninstitute>
         <template slot="iconos">
@@ -64,7 +64,7 @@
     </v-col>
     <v-col cols="2" class="pr-0">
         <!--Grupo 3-->
-        <v-btn-toggle >
+        <v-btn-toggle :color=colorbar>
         <v-btn largue color="primary" dark> <v-icon> mdi-share</v-icon></v-btn>
       <btninstitute>
         <template slot="iconos">
@@ -94,7 +94,7 @@
     </v-col>
     <v-col cols="2" class="pr-0">
         <!--Grupo 4-->
-        <v-btn-toggle >
+        <v-btn-toggle :color=colorbar>
         <v-btn largue color="primary" dark> <v-icon> mdi-share</v-icon></v-btn>
       <btninstitute>
         <template slot="iconos">
@@ -134,6 +134,7 @@ export default {
     return {
       data: btninst,
       btninstitute,
+      colorbar:"#C5E1A5"
     };
   },
   components: { btninstitute },
