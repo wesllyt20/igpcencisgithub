@@ -8,7 +8,7 @@
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>
       </v-card-title>
-      <v-textarea class="pa-3" id="texto" rows="11" v-on:focus="$event.target.select()" background-color="#FFFFFF"
+      <v-textarea class="pa-2" id="texto" rows="11" v-on:focus="$event.target.select()" background-color="#FFFFFF"
         ref="myinput" v-bind:value=textopub></v-textarea>
     </v-card>
   </v-card>
@@ -47,6 +47,8 @@ export default {
   font-family: arial, verdana, ms sans serif;
   font-size: 12pt;
   line-height: 1;
+  padding: 5px;
+  line-height: 20px;
   color: black;
 }
 </style>

@@ -23,12 +23,14 @@
             </v-col>
           </v-row>
         </v-flex>
-
         <!--Mapa y profundidad-->
         <v-flex lg4>
           <v-row>
             <v-col cols="12">
+              <br>
               <geojsonmap></geojsonmap>
+              <br>
+              <br>
               <profundidadmap></profundidadmap>
             </v-col>
           </v-row>
@@ -71,4 +73,5 @@ export default {
 };
 </script>
 <style>
+
 </style>

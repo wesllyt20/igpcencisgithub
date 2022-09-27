@@ -2,11 +2,14 @@
   <v-tooltip top>
     <template v-slot:activator="{ on, attrs }">
       <v-btn
+      id="buttonlogos"
         :loading="loading5"
         :disabled="loading5"
-        color="#8BC34A"
+        color="#F0F4C3"
         @click="loader = 'loading5'"
         v-bind="attrs"
+        v-bind:class="{'white': !clicked, 'green': clicked}"
+        v-on:click ="clicked = !clicked"
         largue
         v-on="on"
       >
@@ -22,6 +25,7 @@ export default {
     return {
       loader: null,
       loading5: false,
+      clicked: false
     };
   },
   watch: {
@@ -75,5 +79,8 @@ export default {
 }
 #buttonlogos:hover {
   color: #002646 !important;
+}
+#buttonlogos::before{
+  background-color: rgb(255, 238, 0);
 }
 </style>

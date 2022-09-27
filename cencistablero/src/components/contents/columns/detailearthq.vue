@@ -28,7 +28,7 @@
           <b style="color: #00000; font-size: large">Fecha:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="fecha" required type="date" min="2015-01-01" max="2022-12-31" solo outlined dense
+          <v-text-field v-model="fecha" required type="date" min="2022-01-01" max="2022-12-31" solo outlined dense
             :rules="fechaRules" :value=addFecha()>
           </v-text-field>
         </v-col>
@@ -47,7 +47,7 @@
           <b style="color: #00000; font-size: large">Latitud:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="latitud" required :rules="latitudRules" solo outlined dense :value=addLatitud()>
+          <v-text-field v-model="latitud" required :rules="latitudRules" solo outlined dense  :value=addLatitud()>
           </v-text-field>
         </v-col>
       </v-row>

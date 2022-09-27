@@ -24,7 +24,7 @@ import {
   LinearScale,
 } from "chart.js";
 
-ChartJS.register(Title, Toosssssltip, Legend, PointElement, LinearScale);
+ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
 export default {
   name: "BubbleChart",
@@ -66,7 +66,7 @@ export default {
       chartData: {
         datasets: [
           {
-            label: "Data One",
+            label: "Altos",
             backgroundColor: "#f87979",
             data: [
               {
@@ -92,7 +92,7 @@ export default {
             ],
           },
           {
-            label: "Data Two",
+            label: "Bajos",
             backgroundColor: "#7C8CF8",
             data: [
               {

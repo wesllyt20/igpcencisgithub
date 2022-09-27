@@ -3,7 +3,7 @@
     <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
       show-select class="elevation-1" @click:row="rowClick">
       <template v-slot:top>
-        <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3" :value=selecccionado></v-switch>
+        <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
       </template>
 
       <template v-slot:[`item.intensidad`]="{ item }">
@@ -11,7 +11,6 @@
         </v-select>
       </template>
     </v-data-table>
-    <h5>Selected: {{selected}}</h5>
   </v-card>
 </template>
 
@@ -23,6 +22,7 @@ export default {
       items: [],
       singleSelect: true,
       selected: [],
+      referencia:"",
       headers: [
         {
           text: "ID",
@@ -58,7 +58,7 @@ export default {
       var self = this;
       this.items = [];
       axios
-        .get("https://my-json-server.typicode.com/wesllyt20/eventosapi/db")
+        .get("https://my-json-server.typicode.com/wesllyt20/eventosapi/db/")
         .then(function (response) {
           self.items = response.data.evento.map((item) => {
             return {
@@ -77,8 +77,9 @@ export default {
 
     rowClick: function (item, row) {
       row.select(true);
-      this.seleccionarReferencia = item.intensidad
-    }
+      this.$store.state.referencia = item.referencia
+    },
+   
   },
 };
 </script>
