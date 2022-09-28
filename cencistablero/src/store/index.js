@@ -14,6 +14,7 @@ export default new Vuex.Store({
         magnitud: null,
         referencia: null,
         intensidad: null,
+        selevento:null,
     },
     mutations: {
 

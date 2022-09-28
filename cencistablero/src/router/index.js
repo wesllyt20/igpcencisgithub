@@ -34,11 +34,12 @@ const routes = [
     name: 'UserLogin',
     component: UserLogin
   },
-  {
+  /* {
     path: '/about',
     name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    component: () => import( <-comentario-- webpackChunkName: "about" ---> '../views/AboutView.vue')
+  } 
+  */
 ]
 
 const router = new VueRouter({
