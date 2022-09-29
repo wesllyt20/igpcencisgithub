@@ -69,7 +69,7 @@
       <v-layout>
         <!--Detalle de evento-->
         <v-flex lg3 class="text-center ml-1">
-          <detailearthq></detailearthq>
+          <detailearthq :selectevent="selectevent"></detailearthq>
           <v-divider></v-divider>
           <reporteid></reporteid>
         </v-flex>
@@ -88,7 +88,7 @@
           </v-row>
         </v-flex>
         <!--Mapa y profundidad-->
-        <v-flex lg4>
+        <v-flex lg3>
           <v-row>
             <v-col cols="12">
               <br>
@@ -101,7 +101,7 @@
         </v-flex>
 
         <!--Reporte AthenaXD-->
-        <v-flex lg1 fluid>
+        <v-flex lg2 fluid>
           <detailcharacter></detailcharacter>
         </v-flex>
       </v-layout>
@@ -149,7 +149,7 @@ export default {
       disable4: false,
       drawer: false,
       group: null,
-      selectevent: 570,
+      selectevent: 575,
 
     };
   },
@@ -235,7 +235,7 @@ export default {
     },
   },
   mounted() {
-     this.$store.state.selevento = this.selectevent 
+    this.$store.state.selevento = this.selectevent
 
   }
 };

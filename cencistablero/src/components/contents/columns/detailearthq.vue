@@ -20,8 +20,11 @@
         </v-col>
         <v-col md="6">
           <v-text-field v-model="reporte" :rules="reporteRules" required solo type="number" outlined dense
-            :value=addReporte() :disabled=show oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="100"
-            min="0"></v-text-field>
+            :value=addReporte() :disabled=show oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
+            max="1000" min="0"></v-text-field>
+          <h4>Dato directo:{{ selectevent }} </h4>
+          <!-- <h4>dato de Vuex - evento: {{$store.state.selevento }} </h4>
+         <h4>dato de vuex - reporte: {{$store.state.reporte }} </h4>-->
         </v-col>
       </v-row>
       <v-row>
@@ -30,7 +33,7 @@
         </v-col>
         <v-col cols="6">
           <v-text-field v-model="fecha" required type="date" min="2022-01-01" max="2022-12-31" solo outlined dense
-            :rules="fechaRules" :value=addFecha()>
+            :rules="fechaRules" :value= addFecha()>
           </v-text-field>
         </v-col>
       </v-row>
@@ -174,17 +177,16 @@
       </v-col>
     </v-row>
 
-    <v-btn :disabled="!valid" color="success" @click="validate">
+    <!-- BTN DE PRUEBA
+      <v-btn :disabled="!valid" color="success" @click="validate">
       submit
-    </v-btn>
+    </v-btn>-->
   </v-container>
 </template>
 
 <script>
 export default {
-  props: {
-    selectevent: null,
-  },
+
   data() {
     return {
       valid: true,
@@ -206,8 +208,11 @@ export default {
       longitud: -76.941945,
       profundidad: "",
       show: true,
-      
+
     };
+  },
+  props: {
+    selectevent: null,
   },
   watch: {
     magnitud(val, old) {
@@ -222,7 +227,7 @@ export default {
     reporte(val, old) {
       console.log(val, old);
       if (+val > 1000) {
-        this.reporte = 999;
+        this.reporte = 1000;
       }
       if (+val < 0) {
         this.reporte = 0;
@@ -230,15 +235,16 @@ export default {
     },
   },
   mounted() {
-    this.$store.state.selevento = this.reporte
+     this.reporte = this.selectevent
   },
   methods: {
     validate() {
-      //this.$refs.form.validate(), console.log("test")  
+      //  this.$refs.form.validate(), console.log("test")  
       console.log(this.$store.state.selevento)
     },
     addReporte() {
-      this.$store.state.reporte = this.reporte 
+
+      this.$store.state.reporte = this.reporte
       // this.reporte = this.$store.state.selevento 
       // console.log(this.$store.state.selevento)  
     },
