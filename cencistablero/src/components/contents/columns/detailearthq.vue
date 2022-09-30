@@ -3,7 +3,7 @@
     <v-row ALIGN="center">
       <v-col cols="12" class="pa-1">
         <v-btn class="ma-1" color="grey" plain icon @click="show = !show" v-bind:class="{'green': !show, 'red': show}">
-          <v-icon color="black">{{ !show ? 'mdi-lock-open-variant' : 'mdi-lock' }}</v-icon>
+          <v-icon id="lock">{{ !show ? 'mdi-lock-open-variant' : 'mdi-lock' }}</v-icon>
         </v-btn>
         <v-btn color="blue" small dark v-on:click="reporte += 1">
           <v-icon>mdi-arrow-up-bold</v-icon>
@@ -33,7 +33,7 @@
         </v-col>
         <v-col cols="6">
           <v-text-field v-model="fecha" required type="date" min="2022-01-01" max="2022-12-31" solo outlined dense
-            :rules="fechaRules" :value= addFecha()>
+            :rules="fechaRules" :value=addFecha()>
           </v-text-field>
         </v-col>
       </v-row>
@@ -85,9 +85,9 @@
             min="0">
           </v-text-field>
         </v-col>
-        <v-icon class="mb-5" v-if="(magnitud >= 0) & (magnitud <= 4.9)" large color="green">mdi-circle</v-icon>
-        <v-icon class="mb-5" v-if="(magnitud >= 5) & (magnitud <= 6.9)" large color="warning">mdi-circle</v-icon>
-        <v-icon class="mb-5" v-if="magnitud >= 7" large color="red">mdi-circle</v-icon>
+        <v-icon id="circleg" class="mb-5" v-if="(magnitud >= 0) & (magnitud <= 4.9)" large>mdi-circle</v-icon>
+        <v-icon id="circley" class="mb-5" v-if="(magnitud >= 5) & (magnitud <= 6.9)" large>mdi-circle</v-icon>
+        <v-icon id="circler" class="mb-5" v-if="magnitud >= 7" large>mdi-circle</v-icon>
 
 
       </v-row>
@@ -97,7 +97,7 @@
         <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
       </v-col>
       <v-col cols="4">
-        <v-dialog v-model="dialog" width="500">
+        <v-dialog v-model="dialog" width="550">
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="blue" fab large dark title v-bind="attrs" v-on="on">
               <v-icon>mdi-qrcode</v-icon>
@@ -106,66 +106,20 @@
 
           <v-card id="codigoqr">
             <v-card-title class="text-h5 grey lighten-2">
-              TEXTO EN CÓDIGO QR
+              <b>TEXTO EN CÓDIGO QR</b>
             </v-card-title>
 
-            <v-card-text>
+            <v-container>
               <v-row>
                 <v-col cols="6">
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>REPORTE SÍSMICO</v-list-item-title>
-                      <v-list-item-subtitle>
-                        IGP/CENSIS/RS 2022-0529</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Fecha y Hora Local: 20/08/2022
-                        06:50:15</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Magnitud: 3.8</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Profundidad: 48km</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Latitud: -13.56</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Longitud: -76.31</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Intensidad: III Tambo De Mora</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Referencia: 18 km al SO de Tambo De Mora, Chincha -
-                        Ica</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
+                  <qr-code v-bind:text="qrtext"></qr-code>
                 </v-col>
                 <v-col cols="6">
-                  <v-list-item>
-                    <v-list-item-content>
-                      <v-list-item-title>REPORTE SÍSMICO</v-list-item-title>
-                      <v-list-item-subtitle>
-                        IGP/CENSIS/RS 2022-0529</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Fecha y Hora Local: 20/08/2022
-                        06:50:15</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Magnitud: 3.8</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Profundidad: 48km</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Latitud: -13.56</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Longitud: -76.31</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Intensidad: III Tambo De Mora</v-list-item-subtitle>
-                      <v-list-item-subtitle>
-                        Referencia: 18 km al SO de Tambo De Mora, Chincha -
-                        Ica</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
+                  <v-textarea id="texto" :value="qrtext" readonly rows="12" />
                 </v-col>
               </v-row>
-            </v-card-text>
-
+            </v-container>
             <v-divider></v-divider>
-
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="success" text @click="dialog = false">
@@ -185,8 +139,11 @@
 </template>
 
 <script>
+import VueQRCodeComponent from 'vue-qrcode-component'
 export default {
-
+  components: {
+    'qr-code': VueQRCodeComponent
+  },
   data() {
     return {
       valid: true,
@@ -235,7 +192,7 @@ export default {
     },
   },
   mounted() {
-     this.reporte = this.selectevent
+    this.reporte = this.selectevent
   },
   methods: {
     validate() {
@@ -273,6 +230,22 @@ export default {
     },
 
   },
+  computed: {
+    qrtext() {
+      return "REPORTE SÍSMICO: \n" +
+        "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte +
+        "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
+        "\n Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora +
+        "\n Magnitud: " + this.$store.state.magnitud +
+        "\n Profundidad: " + this.$store.state.profundidad +
+        "Km\n Latitud: " + this.$store.state.latitud +
+        "\n Longitud: " + this.$store.state.longitud +
+        "\n Referencia: " + this.$store.state.referencia +
+        "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-" + this.$store.state.reporte
+
+
+    }
+  }
 
 
 }
@@ -281,5 +254,36 @@ export default {
 <style>
 #codigoqr {
   z-index: 1;
+}
+
+#texto {
+  font-family: arial, verdana, ms sans serif;
+  font-size: 12pt;
+  line-height: 1;
+  line-height: 20px;
+  color: black;
+}
+
+
+
+#circleg {
+  color: green !important;
+
+}
+
+#circley {
+  color: #FFD600 !important;
+
+}
+
+#circler {
+  color: red !important;
+
+}
+
+
+#lock {
+  color: black !important;
+
 }
 </style>

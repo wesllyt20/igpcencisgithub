@@ -14,10 +14,10 @@ export default new Vuex.Store({
         magnitud: null,
         referencia: null,
         intensidad: null,
-        selevento:null,
+        selevento: null,
+        hutc: null,
     },
     mutations: {
-
 
     },
     actions: {
