@@ -20,11 +20,8 @@
         </v-col>
         <v-col md="6">
           <v-text-field v-model="reporte" :rules="reporteRules" required solo type="number" outlined dense
-            :value=addReporte() :disabled=show oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
+            :value=addReporte() :text=txtReporte :disabled=show oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
             max="1000" min="0"></v-text-field>
-          <h4>Dato directo:{{ selectevent }} </h4>
-          <!-- <h4>dato de Vuex - evento: {{$store.state.selevento }} </h4>
-         <h4>dato de vuex - reporte: {{$store.state.reporte }} </h4>-->
         </v-col>
       </v-row>
       <v-row>
@@ -131,10 +128,10 @@
       </v-col>
     </v-row>
 
-    <!-- BTN DE PRUEBA
+    BTN DE PRUEBA
       <v-btn :disabled="!valid" color="success" @click="validate">
       submit
-    </v-btn>-->
+    </v-btn>
   </v-container>
 </template>
 
@@ -191,19 +188,14 @@ export default {
       }
     },
   },
-  mounted() {
-    this.reporte = this.selectevent
-  },
+  
   methods: {
     validate() {
       //  this.$refs.form.validate(), console.log("test")  
-      console.log(this.$store.state.selevento)
+      
     },
     addReporte() {
-
       this.$store.state.reporte = this.reporte
-      // this.reporte = this.$store.state.selevento 
-      // console.log(this.$store.state.selevento)  
     },
     addFecha() {
       this.$store.state.fecha = this.fecha
@@ -242,12 +234,12 @@ export default {
         "\n Longitud: " + this.$store.state.longitud +
         "\n Referencia: " + this.$store.state.referencia +
         "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-" + this.$store.state.reporte
+    },
+    txtReporte() {
+      return this.reporte = this.$store.state.selevento
+    },
 
-
-    }
   }
-
-
 }
   ;
 </script>

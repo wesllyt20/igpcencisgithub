@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-card class="contenedor pt-1" :color="color" fluid>
-      <v-row class="mb-n12">
+      <v-row class="mb-n1">
         <v-col cols="2" class="mx-n3 pr-10" id="public">
           <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="mb-10 mr-5"></v-app-bar-nav-icon>
 
@@ -10,30 +10,39 @@
           </v-btn>
         </v-col>
 
-        <v-col cols="1" class="mx-n5 mt-4 text-center mr-12">
-          <b style="color: #ffff; font-size: large">Preliminar</b>
-          <v-switch class="ml-10" v-model="switch1" @change="setTheme()" color="#000000" :readonly="disable1">
+
+
+
+        <v-col cols="1" class="box mx-n5 mt-4">
+          <p style="color: #ffff; font-size: large"><strong>Preliminar</strong></p>
+          <v-switch class="" v-model="switch1" @change="setTheme()" color="#000000" :readonly="disable1">
           </v-switch>
         </v-col>
 
-        <v-col cols="1" class="mx-n5 mt-4 text-center">
+        <v-col cols="1" class="box mx-n5 mt-4">
           <b style="color: #ffff; font-size: large">Definitivo</b>
           <v-switch class="ml-10" v-model="switch2" @change="setTheme2()" color="#000000" :readonly="disable2" flat>
           </v-switch>
         </v-col>
-        <v-col cols="1" class="mx-n5 mt-4 text-center">
-          <b style="color: #ffff; font-size: large">Simulación</b>
 
+        <v-col cols="1" class="box mx-n5 mt-4">
+          <b style="color: #ffff; font-size: large">Simulación</b>
           <v-switch class="ml-10" v-model="switch3" @change="setTheme3()" color="#000000" :readonly="disable3" flat>
           </v-switch>
         </v-col>
 
-        <v-col cols="1" class="mx-n5 mt-4 text-center">
+        <v-col cols="1" class="box mx-n5 mt-4">
           <b style="color: #ffff; font-size: large">Simulacro</b>
-
           <v-switch class="ml-10" v-model="switch4" @change="setTheme4()" color="#000000" :readonly="disable4" flat>
           </v-switch>
         </v-col>
+
+        <!--<v-col cols="1" class="mx-n5 mt-4 text-center align-center justify-center">-->
+
+
+
+
+
 
         <v-col cols="4">
           <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
@@ -149,7 +158,7 @@ export default {
       disable4: false,
       drawer: false,
       group: null,
-      selectevent: 575,
+      selectevent: 570,
 
     };
   },
