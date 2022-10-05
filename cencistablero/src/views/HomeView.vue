@@ -5,7 +5,7 @@
         <v-col cols="2" class="mx-n3 pr-10" id="public">
           <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="mb-10 mr-5"></v-app-bar-nav-icon>
 
-          <v-btn color="blue-grey" x-large class="ma-6 mx-0 white--text px-5">
+          <v-btn color="blue-grey" x-large class="ma-6 mx-0 white--text px-5" :disabled="valorenable" @click.prevent="validate">
             Publicar <v-icon right dark> mdi-cloud-upload </v-icon>
           </v-btn>
         </v-col>
@@ -78,7 +78,8 @@
       <v-layout>
         <!--Detalle de evento-->
         <v-flex lg3 class="text-center ml-1">
-          <detailearthq :selectevent="selectevent"></detailearthq>
+          <detailearthq ref="form" @valid="valid=$event" @exportvalid="exportvalid=$event"></detailearthq>
+          <!--aqui es -->
           <v-divider></v-divider>
           <reporteid></reporteid>
         </v-flex>
@@ -142,6 +143,7 @@ export default {
     instmodel,
     barnavegation,
     detailearthq,
+
   },
 
 
@@ -159,6 +161,9 @@ export default {
       drawer: false,
       group: null,
       selectevent: 570,
+      val: false,
+
+
 
     };
   },
@@ -236,6 +241,14 @@ export default {
         );
       }
     },
+    valorenable() {
+      if (this.valid == true) {
+        return this.val=true
+      }
+      else {
+        return this.val=false
+      }
+    }
   },
 
   watch: {
@@ -244,12 +257,20 @@ export default {
     },
   },
   mounted() {
-    this.$store.state.selevento = this.selectevent
+    this.$store.state.selevento = this.selectevent, console.log( this.valid)
 
-  }
+
+  }, methods: {
+    validate() {
+      this.$refs.form.validate(), console.log ("valid homee:  ",this.exportvalid)
+    },
+    exportvalid(){
+      this.$refs.form.exportvalid()
+    }
+  },
 };
 </script>
-<style>
+<style scoped>
 #public {
   margin-right: -60px !important;
 }

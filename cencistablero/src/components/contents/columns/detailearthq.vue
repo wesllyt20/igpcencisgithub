@@ -20,8 +20,8 @@
         </v-col>
         <v-col md="6">
           <v-text-field v-model="reporte" :rules="reporteRules" required solo type="number" outlined dense
-            :value=addReporte() :text=txtReporte :disabled=show oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
-            max="1000" min="0"></v-text-field>
+            :value=addReporte() :text=txtReporte :disabled=show
+            oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="1000" min="0"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
@@ -128,10 +128,7 @@
       </v-col>
     </v-row>
 
-    BTN DE PRUEBA
-      <v-btn :disabled="!valid" color="success" @click="validate">
-      submit
-    </v-btn>
+
   </v-container>
 </template>
 
@@ -165,9 +162,7 @@ export default {
 
     };
   },
-  props: {
-    selectevent: null,
-  },
+
   watch: {
     magnitud(val, old) {
       console.log(val, old);
@@ -188,11 +183,10 @@ export default {
       }
     },
   },
-  
+
   methods: {
     validate() {
-      //  this.$refs.form.validate(), console.log("test")  
-      
+      this.$refs.form.validate()
     },
     addReporte() {
       this.$store.state.reporte = this.reporte
@@ -238,12 +232,25 @@ export default {
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
+    exportvalid() {
+      if (this.valid == true) {
+        return true
+      } else {
+        return false
+      }
+
+    }
+
+  },
+  mounted() {
+
+    //     console.log("->", this.valid)
 
   }
 }
   ;
 </script>
-<style>
+<style scoped>
 #codigoqr {
   z-index: 1;
 }
