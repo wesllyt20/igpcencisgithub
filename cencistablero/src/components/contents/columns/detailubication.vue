@@ -76,7 +76,7 @@ export default {
     },
 
     rowClick: function (item, row) {
-      row.select(true);
+      row.select(true );
       this.$store.state.referencia = item.referencia
     },
    

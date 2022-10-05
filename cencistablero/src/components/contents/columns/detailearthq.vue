@@ -82,9 +82,8 @@
             min="0">
           </v-text-field>
         </v-col>
-        <v-icon id="circleg" class="mb-5" v-if="(magnitud >= 0) & (magnitud <= 4.9)" large>mdi-circle</v-icon>
-        <v-icon id="circley" class="mb-5" v-if="(magnitud >= 5) & (magnitud <= 6.9)" large>mdi-circle</v-icon>
-        <v-icon id="circler" class="mb-5" v-if="magnitud >= 7" large>mdi-circle</v-icon>
+        <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
+
 
 
       </v-row>
@@ -140,7 +139,7 @@ export default {
   },
   data() {
     return {
-      valid: true,
+
       reporteRules: [(v) => !!v || "Falta colocar Reporte."],
       fechaRules: [(v) => !!v || "Falta colocar Fecha."],
       tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
@@ -159,13 +158,13 @@ export default {
       longitud: -76.941945,
       profundidad: "",
       show: true,
-
+      valid: true,
     };
   },
 
   watch: {
     magnitud(val, old) {
-      console.log(val, old);
+
       if (+val > 10) {
         this.magnitud = 10;
       }
@@ -174,7 +173,7 @@ export default {
       }
     },
     reporte(val, old) {
-      console.log(val, old);
+
       if (+val > 1000) {
         this.reporte = 1000;
       }
@@ -182,6 +181,17 @@ export default {
         this.reporte = 0;
       }
     },
+    valid(val, old) {
+
+      {
+        if (val == true) {
+          this.$store.state.changeval = this.valid
+        }
+        if (val == false) {
+          this.$store.state.changeval = this.valid
+        }
+      }
+    }
   },
 
   methods: {
@@ -215,8 +225,21 @@ export default {
       this.$store.state.magnitud = this.magnitud
     },
 
+
   },
   computed: {
+    colcircle() {
+      if (this.magnitud >= 0 && this.magnitud <= 4.9) {
+        return "#008000"
+      }
+      if (this.magnitud >= 5 && this.magnitud <= 6.9) {
+        return "#FFD600"
+      }
+      if (this.magnitud >= 7) {
+        return "#ff0000"
+      }
+    },
+
     qrtext() {
       return "REPORTE SÍSMICO: \n" +
         "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte +
@@ -232,20 +255,14 @@ export default {
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
-    exportvalid() {
-      if (this.valid == true) {
-        return true
-      } else {
-        return false
-      }
 
-    }
+  },
+  update() {
 
   },
   mounted() {
 
-    //     console.log("->", this.valid)
-
+    this.$store.state.changeval = this.valid, console.log(this.valid)
   }
 }
   ;
@@ -261,23 +278,6 @@ export default {
   line-height: 1;
   line-height: 20px;
   color: black;
-}
-
-
-
-#circleg {
-  color: green !important;
-
-}
-
-#circley {
-  color: #FFD600 !important;
-
-}
-
-#circler {
-  color: red !important;
-
 }
 
 
