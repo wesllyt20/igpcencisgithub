@@ -83,7 +83,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .theme--light.v-data-table tbody tr.v-data-table__selected {
   background: #a5d6a7 !important;
 }

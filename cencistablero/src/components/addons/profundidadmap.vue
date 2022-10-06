@@ -6,6 +6,7 @@
 <script>
 import { Bubble, LineController } from "vue-chartjs/legacy";
 
+
 import {
   Chart as ChartJS,
   Title,
@@ -131,15 +132,7 @@ export default {
               stepSize: 100
             }
           },
-          A: {
-            type: 'linear',
-            position: 'left',
-            ticks: {
-                    max: 1,
-                    min: 0
-                }
 
-          },
         }
       },
     };

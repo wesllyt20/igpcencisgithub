@@ -131,6 +131,7 @@ import reporteid from "@/components/contents/publisher/reporteid.vue";
 import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import instmodel from "@/components/header/values/instmodel.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -163,9 +164,6 @@ export default {
       group: null,
       selectevent: 570,
       valorenable: false,
-
-
-
 
 
     };
@@ -245,7 +243,9 @@ export default {
       }
     },
 
-
+    ...mapState({
+      valdata: state => state.changeval
+    })
 
   },
 
@@ -253,23 +253,29 @@ export default {
     group() {
       this.drawer = false
     },
-    
+
+    valdata(val, old) {
+      if (val === false) {
+        this.valorenable = true;
+      }
+      if (val === true) {
+        this.valorenable = false;
+      }
+    },
 
   },
   mounted() {
-    this.$store.state.selevento = this.selectevent, console.log("salida:", this.$store.state.changeval)
-    //this.$store.state.changeval
+    this.$store.state.selevento = this.selectevent
   },
   methods: {
     validate() {
-      this.$refs.form.validate(), console.log("salida:", this.$store.state.changeval)
-
+      this.$refs.form.validate()
     },
 
   },
 };
 </script>
-<style scoped>
+<style>
 #public {
   margin-right: -60px !important;
 }

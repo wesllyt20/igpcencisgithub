@@ -16,9 +16,12 @@ export default new Vuex.Store({
         intensidad: null,
         selevento: null,
         hutc: null,
-        changeval:null,
+        changeval: null,
     },
     mutations: {
+        getChangeval(state, payload) {
+            state.changeval = payload.changeval
+        }
 
     },
     actions: {

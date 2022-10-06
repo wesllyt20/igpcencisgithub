@@ -230,13 +230,13 @@ export default {
   computed: {
     colcircle() {
       if (this.magnitud >= 0 && this.magnitud <= 4.9) {
-        return "#008000"
+        return "success"
       }
       if (this.magnitud >= 5 && this.magnitud <= 6.9) {
-        return "#FFD600"
+        return "warning"
       }
       if (this.magnitud >= 7) {
-        return "#ff0000"
+        return "danger"
       }
     },
 
@@ -262,12 +262,11 @@ export default {
   },
   mounted() {
 
-    this.$store.state.changeval = this.valid, console.log(this.valid)
+    this.$store.state.changeval = this.valid
   }
 }
-  ;
 </script>
-<style scoped>
+<style>
 #codigoqr {
   z-index: 1;
 }
