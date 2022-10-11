@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { Bubble, LineController } from "vue-chartjs/legacy";
+import { Bubble } from "vue-chartjs/legacy";
 
 
 import {
@@ -22,7 +22,6 @@ export default {
   name: "BubbleChart",
   components: {
     Bubble,
-    LineController
   },
   props: {
     chartId: {

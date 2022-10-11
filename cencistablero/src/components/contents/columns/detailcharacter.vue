@@ -97,11 +97,11 @@
 export default {
   data: () => ({
     admins: [
-    
-    ['Magnitud', 'mdi-cog-outline'],
+
+      ['Magnitud', 'mdi-cog-outline'],
       ['Latitud', 'mdi-account-multiple-outline'],
       ['Longitud', 'mdi-cog-outline'],
-      ['Profundidad', 'mdi-cog-outline'],  
+      ['Profundidad', 'mdi-cog-outline'],
       ['Magnitud', 'mdi-cog-outline'],
     ],
     cruds: [

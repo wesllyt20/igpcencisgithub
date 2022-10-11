@@ -83,9 +83,6 @@
           </v-text-field>
         </v-col>
         <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
-
-
-
       </v-row>
     </v-form>
     <v-row class="pa-3">
@@ -93,37 +90,9 @@
         <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
       </v-col>
       <v-col cols="4">
-        <v-dialog v-model="dialog" width="550">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="blue" fab large dark title v-bind="attrs" v-on="on">
-              <v-icon>mdi-qrcode</v-icon>
-            </v-btn>
-          </template>
 
-          <v-card id="codigoqr">
-            <v-card-title class="text-h5 grey lighten-2">
-              <b>TEXTO EN CÓDIGO QR</b>
-            </v-card-title>
+        <qrcode></qrcode>
 
-            <v-container>
-              <v-row>
-                <v-col cols="6">
-                  <qr-code v-bind:text="qrtext"></qr-code>
-                </v-col>
-                <v-col cols="6">
-                  <v-textarea id="texto" :value="qrtext" readonly rows="12" />
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-divider></v-divider>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="success" text @click="dialog = false">
-                Aceptar
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
       </v-col>
     </v-row>
 
@@ -132,10 +101,11 @@
 </template>
 
 <script>
-import VueQRCodeComponent from 'vue-qrcode-component'
+
+import qrcode from '../publisher/qrcode.vue';
 export default {
   components: {
-    'qr-code': VueQRCodeComponent
+    qrcode,
   },
   data() {
     return {
@@ -174,8 +144,8 @@ export default {
     },
     reporte(val, old) {
 
-      if (+val > 1000) {
-        this.reporte = 1000;
+      if (+val > 5000) {
+        this.reporte = 5000;
       }
       if (+val < 0) {
         this.reporte = 0;
@@ -240,18 +210,7 @@ export default {
       }
     },
 
-    qrtext() {
-      return "REPORTE SÍSMICO: \n" +
-        "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte +
-        "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
-        "\n Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora +
-        "\n Magnitud: " + this.$store.state.magnitud +
-        "\n Profundidad: " + this.$store.state.profundidad +
-        "Km\n Latitud: " + this.$store.state.latitud +
-        "\n Longitud: " + this.$store.state.longitud +
-        "\n Referencia: " + this.$store.state.referencia +
-        "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-" + this.$store.state.reporte
-    },
+
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
