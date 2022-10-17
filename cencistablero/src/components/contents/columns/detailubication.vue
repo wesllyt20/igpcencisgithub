@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
-      show-select class="elevation-1" @click:row="rowClick">
+      show-select class="elevation-1" @click:row="rowClick" @input="enterSelect($event)">
+
       <template v-slot:top>
         <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
       </template>
@@ -11,6 +12,8 @@
         </v-select>
       </template>
     </v-data-table>
+
+    <h3> {{ selected.item}}</h3>
   </v-card>
 </template>
 
@@ -22,7 +25,7 @@ export default {
       items: [],
       singleSelect: true,
       selected: [],
-      referencia:"",
+      referencia: "",
       headers: [
         {
           text: "ID",
@@ -66,6 +69,8 @@ export default {
               referencia: item.referencia,
               telefono: item.telefono,
               intensidad: item.intensidad,
+              lati: item.lati,
+              longi: item.longi,
               ...item.fields,
             };
           });
@@ -74,12 +79,22 @@ export default {
           console.log(error);
         });
     },
+    enterSelect() {
+      
+      this.$store.state.referencia = this.selected.map(e => e.referencia);
+      const Obj = Object.assign(this.selected.map(e => e.lati));
+      this.$store.state.lati = this.Obj;
+
+      this.$store.dispatch('addlatiAction');
+      this.$store.state.long = this.selected.map(e => e.longi);
+      this.$store.dispatch('addlongAction');
+      console.log(Obj);
+    },
 
     rowClick: function (item, row) {
-      row.select(true );
-      this.$store.state.referencia = item.referencia
+      row.select(false)
+      console.log("Seleccion: ", item.referencia)
     },
-   
   },
 };
 </script>

@@ -28,26 +28,26 @@
       </l-marker>
 
       <!--Marker 2 -->
-      <div v-for="item in items" :key="item.id">
-        <l-marker :lat-lng="[item.lati, item.longi]" :icon="icon2">
+      
+        <l-marker :lat-lng="[$store.state.latitud, $store.state.longitud]" :icon="icon2">
           <l-popup>
             <h5 class="text-primary m-0 font-weight-bold text-center">
-              Referencia {{ item.id }}: <br />{{ item.referencia }}
+              Referencia null por ahora :,v
             </h5>
             <br />
-            <b> Latitud: </b> {{ item.lati }} <br />
-            <b> Longitud </b> {{ item.longi }}
+            <b> Latitud: </b> {{ $store.state.lati }} <br />
+            <b> Longitud </b> {{ $store.state.long }}
           </l-popup>
         </l-marker>
-      </div>
+      
     </l-map>
+    <h2>{{$store.state.lati}} // {{ $store.state.longitud}}</h2>
   </div>
 </template>
 
 <script>
 import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker, LGeoJson, LPopup } from "vue2-leaflet";
-import axios from "axios";
 
 export default {
   name: "Example",
@@ -65,8 +65,7 @@ export default {
       enableTooltip: true,
       zoom: 17,
       center: [],
-      items: [],
-
+//      items:[],
       geojson: null,
       fillColor: "#e4ce7f",
       url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
@@ -120,6 +119,9 @@ export default {
         );
       };
     },
+    coords(){
+      return  [$store.state.lati , $store.state.long]
+    }
   },
   async created() {
     this.loading = true;
@@ -130,31 +132,7 @@ export default {
     this.geojson = data;
     this.loading = false;
   },
-  mounted() {
-    this.loadItems();
-  },
-  methods: {
-    loadItems() {
-      var self = this;
-      this.items = [];
-      axios
-        .get("https://my-json-server.typicode.com/wesllyt20/eventosapi/db")
-        .then(function (response) {
-          self.items = response.data.evento.map((item) => {
-            return {
-              id: item.id,
-              referencia: item.referencia,
-              lati: item.lati,
-              longi: item.longi,
-              ...item.fields,
-            };
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-  },
+ 
 };
 </script>
 <style>

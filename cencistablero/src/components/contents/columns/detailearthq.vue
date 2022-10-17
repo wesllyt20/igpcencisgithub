@@ -14,17 +14,17 @@
       </v-col>
     </v-row>
     <v-form ref="form" v-model="valid" lazy-validation>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Nº de reporte:</b>
         </v-col>
         <v-col md="6">
           <v-text-field v-model="reporte" :rules="reporteRules" required solo type="number" outlined dense
             :value=addReporte() :text=txtReporte :disabled=show
-            oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="1000" min="0"></v-text-field>
+            oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="5000" min="0"></v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Fecha:</b>
         </v-col>
@@ -34,7 +34,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Hora local:</b>
         </v-col>
@@ -44,7 +44,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Latitud:</b>
         </v-col>
@@ -53,7 +53,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Longitud:</b>
         </v-col>
@@ -62,7 +62,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Profundidad:</b>
         </v-col>
@@ -72,7 +72,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Magnitud:</b>
         </v-col>
@@ -85,7 +85,7 @@
         <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
       </v-row>
     </v-form>
-    <v-row class="pa-3">
+    <v-row class="pa-3 mb-n10" >
       <v-col cols="5">
         <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
       </v-col>
@@ -124,8 +124,8 @@ export default {
       tiempo: "",
       fecha: "",
       reporte: null,
-      latitud: -12.167424,
-      longitud: -76.941945,
+      latitud: -12.16,
+      longitud: -76.94,
       profundidad: "",
       show: true,
       valid: true,
