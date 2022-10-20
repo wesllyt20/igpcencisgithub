@@ -29,7 +29,7 @@
 
       <!--Marker 2 -->
       
-        <l-marker :lat-lng="[$store.state.latitud, $store.state.longitud]" :icon="icon2">
+        <l-marker :lat-lng="[$store.state.lati,$store.state.long]" :icon="icon2">
           <l-popup>
             <h5 class="text-primary m-0 font-weight-bold text-center">
               Referencia null por ahora :,v
@@ -41,7 +41,7 @@
         </l-marker>
       
     </l-map>
-    <h2>{{$store.state.lati}} // {{ $store.state.longitud}}</h2>
+   <!-- <h2>{{$store.state.lati}} // {{ $store.state.long}}</h2> -->
   </div>
 </template>
 

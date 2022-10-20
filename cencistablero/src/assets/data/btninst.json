@@ -1,115 +1,82 @@
-{"botones":[
-    {
-      "id": 1,
-      "estado": 1,
-      "nombre": "DHN",
-      "descripcion": "Dirección de Hidrografía y Navegación",
-      "img": "dhn.png"
-    },
-    {
-      "id": 2,
-      "estado": 1,
-      "nombre": "DHN2",
-      "descripcion": "Dirección de Hidrografía y Navegación 2",
-      "img": "dhn.png"
-    },
-    {
-      "id": 3,
-      "estado": 1,
-      "nombre": "INDECI",
-      "descripcion": "Instituto Nacional de Defensa Civil",
-      "img": "indeci.png"
-    },
-    {
-      "id": 4,
-      "estado": 1,
-      "nombre": "ACELDAT-PERU",
-      "descripcion": "ACELDAT",
-      "img": "seismic3.png"
-    },
-    {
-      "id": 5,
-      "estado": 1,
-      "nombre": "IGP",
-      "descripcion": "Instituto Geofísico del Perú",
-      "img": "igpsismos.png"
-    },
-    {
-      "id": 6,
-      "estado": 1,
-      "nombre": "Gob.pe",
-      "descripcion": "Gobierno del Perú",
-      "img": "gobpe.png"
-    },
-    {
-      "id": 7,
-      "estado": 1,
-      "nombre": "APP",
-      "descripcion": "APP MOVIL IGP",
-      "img": "app.svg"
-    },
-    {
-      "id": 8,
-      "estado": 1,
-      "nombre": "Ultimo",
-      "descripcion": "Ultimo sismo IGP",
-      "img": "igp.png"
-    },
-    {
-      "id": 9,
-      "estado": 1,
-      "nombre": "SASPE",
-      "descripcion": "SISTEMA DE ALERTA SÍSMICA PERUANO",
-      "img": "saspe.png"
-    },
-    {
-      "id": 10,
-      "estado": 1,
-      "nombre": "Face",
-      "descripcion": "Facebook",
-      "img": "facebook.png"
-    },
-    {
-      "id": 11,
-      "estado": 1,
-      "nombre": "Twitter",
-      "descripcion": "Twitter",
-      "img": "twitter.png"
-    },
-    {
-      "id": 12,
-      "estado": 1,
-      "nombre": "Email",
-      "descripcion": "Hotmail / gmail",
-      "img": "correo.png"
-    },
-    {
-      "id": 13,
-      "estado": 1,
-      "nombre": "IDEP",
-      "descripcion": "Instituto Geográfico Nacional",
-      "img": "geoidep.png"
-    },
-    {
-      "id": 14,
-      "estado": 1,
-      "nombre": "PIDE",
-      "descripcion": "Plataforma Nacional de Interoperabilidad",
-      "img": "pide.png"
-    },
-    {
-      "id": 15,
-      "estado": 1,
-      "nombre": "RIMAC",
-      "descripcion": "RIMAC SEGUROS",
-      "img": "rimac.png"
-    },
-    {
-      "id": 16,
-      "estado": 1,
-      "nombre": "WH?",
-      "descripcion": "WH",
-      "img": "igp.png"
-    }
-  ]
-}
+[
+  {
+    "reporte": "1",
+    "datos": [
+      {
+        "calculo":"1",
+        "fecha":"19/10/2022",
+        "hora":"13:22:10",
+        "latitud":"-13.306",
+        "longitud":"-72.71",
+        "profundidad":"75",
+        "magnitud":"4.5",
+        "intensidad":"0",
+        "creado":"19/10/2022 , 12:53:51"
+      }
+    ]
+  },
+  {
+    "reporte": "2",
+    "datos": [
+      {
+        "calculo":"2",
+        "fecha":"19/10/2022",
+        "hora":"14:22:10",
+        "latitud":"-13.306",
+        "longitud":"-72.72",
+        "profundidad":"75",
+        "magnitud":"3.5",
+        "intensidad":"0",
+        "creado":"19/10/2022 , 12:53:51"
+      }
+    ]
+  },
+  {
+    "reporte": "3",
+    "datos": [
+      {
+        "calculo":"3",
+        "fecha":"19/10/2022",
+        "hora":"15:22:10",
+        "latitud":"-13.306",
+        "longitud":"-72.818",
+        "profundidad":"75",
+        "magnitud":"8.5",
+        "intensidad":"0",
+        "creado":"19/10/2022 , 12:53:51"
+      }
+    ]
+  },
+  {
+    "reporte": "4",
+    "datos": [
+      {
+        "calculo":"4",
+        "fecha":"19/10/2022",
+        "hora":"16:22:10",
+        "latitud":"-13.406",
+        "longitud":"-72.7108",
+        "profundidad":"75",
+        "magnitud":"7.5",
+        "intensidad":"0",
+        "creado":"19/10/2022 , 12:53:51"
+      }
+    ]
+  },
+  {
+    "reporte": "5",
+    "datos": [
+      {
+        "calculo":"5",
+        "fecha":"19/10/2022",
+        "hora":"17:22:10",
+        "latitud":"-13.806",
+        "longitud":"-72.7108",
+        "profundidad":"75",
+        "magnitud":"6.5",
+        "intensidad":"0",
+        "creado":"19/10/2022 , 12:53:51"
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
     <v-row>
       <div class="mx-4">
         <v-col cols="3">
-          <v-btn-toggle>
+          <v-btn-toggle tile multiple shaped>
             <v-btn color="blue">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
@@ -23,8 +23,8 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle>
-            <v-btn>
-              <v-icon>mdi-share</v-icon>
+            <v-btn color="blue">
+              <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="item in data2" :key="item.id">
               <v-tooltip top>
@@ -42,8 +42,8 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle>
-            <v-btn>
-              <v-icon>mdi-share</v-icon>
+            <v-btn color="blue">
+              <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="item in data3" :key="item.id">
               <v-tooltip top>
@@ -61,8 +61,8 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle>
-            <v-btn>
-              <v-icon>mdi-share</v-icon>
+            <v-btn color="blue">
+              <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="item in data4" :key="item.id">
               <v-tooltip top>

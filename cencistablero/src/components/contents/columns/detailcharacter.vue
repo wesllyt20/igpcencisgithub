@@ -1,115 +1,79 @@
 <template>
-  <v-card class="mx-auto" width="300">
-    <v-list>
-      <v-list-item>
-        <v-list-item-icon>
-          <v-icon>mdi-home</v-icon>
-        </v-list-item-icon>
-        <v-list-item-title>REPORTES</v-list-item-title>
-      </v-list-item>
+  <v-container>
+    <div v-for="item in athena" :key="item.id">
+
+      <v-btn>
+        {{item.reporte}}
+      </v-btn>
+
+    </div>
 
 
 
-      <v-list-group :value="false" prepend-icon="mdi-account-circle">
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>Reporte 01</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-          <v-list-item-title v-text="title"></v-list-item-title>
-
-          <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-group>
-
-      <v-list-group :value="false" prepend-icon="mdi-account-circle">
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>Reporte 02</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-          <v-list-item-title v-text="title"></v-list-item-title>
-
-          <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-group>
-      <v-list-group :value="false" prepend-icon="mdi-account-circle">
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>Reporte 03</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-          <v-list-item-title v-text="title"></v-list-item-title>
-
-          <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-group>
-
-      <v-list-group :value="false" prepend-icon="mdi-account-circle">
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>Reporte 04</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-          <v-list-item-title v-text="title"></v-list-item-title>
-
-          <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-group>
-
-      <v-list-group :value="false" prepend-icon="mdi-account-circle">
-        <template v-slot:activator>
-          <v-list-item-content>
-            <v-list-item-title>Reporte 05</v-list-item-title>
-          </v-list-item-content>
-        </template>
-
-        <v-list-item v-for="([title, icon], i) in admins" :key="i" link>
-          <v-list-item-title v-text="title"></v-list-item-title>
-
-          <v-list-item-icon>
-            <v-icon v-text="icon"></v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </v-list-group>
+    <v-card class="mx-auto" max-width="500">
+      <v-toolbar color="teal" dark>
+        <v-spacer></v-spacer>
+        <v-toolbar-title>ATHENA - REPORTES</v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
 
 
-    </v-list>
-  </v-card>
+      <v-list>
+        <v-list-group v-for="item in item" :key="item.title" v-model="item.active" :prepend-icon="item.action"
+          no-action>
+
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+
+          <v-list-item v-for="child in item.items" :key="child.title">
+            <v-list-item-content>
+              <v-list-item-title v-text="child.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+
+
+
+
+
+
+
+          <div class="pa-2">
+            <v-list-item-content>
+              <v-btn block center color="green">
+                <v-icon color="white" small>mdi-send </v-icon> Insertar
+              </v-btn>
+            </v-list-item-content>
+          </div>
+
+        </v-list-group>
+      </v-list>
+    </v-card>
+
+
+
+  </v-container>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
-  data: () => ({
-    admins: [
+  data:function(){ 
+    return  {
+      
+    }
+  },
+  created: function () {
+    this.$store.dispatch('getAthena')
+  },
+  computed: {
+    ...mapState({
+      athena: state => state.athena
+    })
+  }
 
-      ['Magnitud', 'mdi-cog-outline'],
-      ['Latitud', 'mdi-account-multiple-outline'],
-      ['Longitud', 'mdi-cog-outline'],
-      ['Profundidad', 'mdi-cog-outline'],
-      ['Magnitud', 'mdi-cog-outline'],
-    ],
-    cruds: [
-      ['Create', 'mdi-plus-outline'],
-      ['Read', 'mdi-file-outline'],
-      ['Update', 'mdi-update'],
-      ['Delete', 'mdi-delete'],
-    ],
-  }),
 }
-</script>
+</script> 

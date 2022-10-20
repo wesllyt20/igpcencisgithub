@@ -3,15 +3,13 @@
     <v-card class="contenedor pt-1" :color="color" fluid>
       <v-row class="mb-n1">
         <v-col cols="2" class="mx-n3 pr-10" id="public">
-          <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="mb-10 mr-5"></v-app-bar-nav-icon>
-
-          <v-btn color="blue-grey" x-large class="ma-6 mx-0 white--text px-5" :disabled="valorenable"
+          <v-btn color="blue-grey" x-large class="ma-6 mx-10 white--text px-5" :disabled="valorenable"
             @click.prevent="validate">
             Publicar <v-icon right dark> mdi-cloud-upload </v-icon>
           </v-btn>
         </v-col>
 
-        <v-col cols="1" class="box mx-n5 mt-4">
+        <v-col cols="1" class="box mx-n12 mt-4">
           <p style="color: #ffff; font-size: large"><strong>Preliminar</strong></p>
           <v-switch class="" v-model="switch1" @change="setTheme()" color="#000000" :readonly="disable1">
           </v-switch>
@@ -41,6 +39,7 @@
             Reportes
           </v-btn>
         </v-col>
+        <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="mb-10 ml-auto"></v-app-bar-nav-icon>
       </v-row>
       <br />
 
@@ -48,15 +47,7 @@
         <btninstitute> </btninstitute> <!-- BTN institutos-->
       </v-row>
     </v-card>
-    <!--BAR NAVEGATION-->
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
-      <v-list nav dense>
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <barnavegation></barnavegation>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-    <!--End Bar NAVEGATION-->
+
     <v-container fluid>
       <v-layout>
         <!--Detalle de evento-->
@@ -81,7 +72,7 @@
           </v-row>
         </v-flex>
         <!--Mapa y profundidad-->
-        <v-flex lg3>
+        <v-flex lg4>
           <v-row>
             <v-col cols="12">
               <br>
@@ -94,11 +85,20 @@
         </v-flex>
 
         <!--Reporte AthenaXD-->
-        <v-flex lg2 fluid>
+        <v-flex md2 fluid>
           <detailcharacter></detailcharacter>
         </v-flex>
       </v-layout>
     </v-container>
+        <!--BAR NAVEGATION-->
+        <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
+      <v-list nav dense>
+        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+          <barnavegation></barnavegation>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <!--End Bar NAVEGATION-->
   </v-app>
 </template>
 

@@ -18,9 +18,10 @@ export default new Vuex.Store({
         hutc: null,
         changeval: null,
         latis: [],
-        lati: null,
+        lati: 0,
         longs: [],
-        long: null,
+        long: 0,
+        athena: [],
     },
     mutations: {
         getChangeval(state, payload) {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
         },
         addLong(state) {
             state.longs = [state.long, ...state.longs]
+        },
+        setAthena(state, payload) {
+            state.athena = payload
         }
     },
     actions: {
@@ -39,6 +43,17 @@ export default new Vuex.Store({
         },
         addlongAction(context) {
             context.commit('addLong');
+        },
+        async getAthena({ commit }) {
+            try {
+                const res = await fetch('https://api.npoint.io/02e2e5b73f813dea421c')
+                const athena = await res.json()
+                console.log("vuex:", athena)
+                commit('setAthena',athena)
+            } catch (error) {
+                console.log(error)
+            }
+            
         }
 
     },

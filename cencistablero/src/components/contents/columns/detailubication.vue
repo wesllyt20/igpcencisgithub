@@ -1,20 +1,20 @@
 <template>
-  <v-card>
-    <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
-      show-select class="elevation-1" @click:row="rowClick" @input="enterSelect($event)">
+  <v-container>
+    <v-card>
+      <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
+        show-select class="elevation-1" @click:row="rowClick" @input="enterSelect($event)">
 
-      <template v-slot:top>
-        <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
-      </template>
+        <template v-slot:top>
+          <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
+        </template>
 
-      <template v-slot:[`item.intensidad`]="{ item }">
-        <v-select style="margin-bottom: -25px" label="--" :items="selectinten" dense outlined :value=item.intensidad>
-        </v-select>
-      </template>
-    </v-data-table>
-
-    <h3> {{ selected.item}}</h3>
-  </v-card>
+        <template v-slot:[`item.intensidad`]="{ item }">
+          <v-select style="margin-bottom: -25px" label="--" :items="selectinten" dense outlined :value=item.intensidad>
+          </v-select>
+        </template>
+      </v-data-table>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -49,8 +49,7 @@ export default {
         "nivel 6",
         "nivel 7",
         "nivel 8",
-      ],
-      seleccionarReferencia: -1,
+      ]
     };
   },
   mounted() {
@@ -80,22 +79,23 @@ export default {
         });
     },
     enterSelect() {
-      
       this.$store.state.referencia = this.selected.map(e => e.referencia);
-      const Obj = Object.assign(this.selected.map(e => e.lati));
-      this.$store.state.lati = this.Obj;
-
-      this.$store.dispatch('addlatiAction');
-      this.$store.state.long = this.selected.map(e => e.longi);
-      this.$store.dispatch('addlongAction');
-      console.log(Obj);
+      //this.$store.state.lati = this.selected.map(e => e.lati); -- convertir a objeto
+      //this.$store.dispatch('addlatiAction');
+      //this.$store.state.long = this.selected.map(e => e.longi);
+      //this.$store.dispatch('addlongAction');
+      console.log("valor: ")
     },
 
-    rowClick: function (item, row) {
-      row.select(false)
-      console.log("Seleccion: ", item.referencia)
+    rowClick: function (items, row) {
+      row.select(true)
+      this.$store.state.lati = items.lati
+      this.$store.dispatch('addlatiAction')
+      this.$store.state.long = items.longi
+      this.$store.dispatch('addlatiAction')
     },
-  },
+  }
+
 };
 </script>
 <style>
