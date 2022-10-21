@@ -1,33 +1,31 @@
 <template>
   <v-app>
-    <v-card class="contenedor pt-1" :color="color" fluid>
-      <v-row class="mb-n1">
-        <v-col cols="2" class="mx-n3 pr-10" id="public">
-          <v-btn color="blue-grey" x-large class="ma-6 mx-10 white--text px-5" :disabled="valorenable"
+
+    <v-card class="pt-1" :color="color" fluid>
+      <v-row>
+        <v-col cols="2" id="public">
+          <v-btn color="blue-grey" x-large class="ma-6 mx-10 white--text" :disabled="valorenable"
             @click.prevent="validate">
             Publicar <v-icon right dark> mdi-cloud-upload </v-icon>
           </v-btn>
         </v-col>
 
-        <v-col cols="1" class="box mx-n12 mt-4">
-          <p style="color: #ffff; font-size: large"><strong>Preliminar</strong></p>
-          <v-switch class="" v-model="switch1" @change="setTheme()" color="#000000" :readonly="disable1">
-          </v-switch>
+        <v-col cols="1" align="center">
+          <b id="texto">Preliminar</b>
+          <v-switch color="#000000" v-model="switch1" @change="setTheme()" :readonly="disable1"> </v-switch>
         </v-col>
 
-        <v-col cols="1" class="box mx-n5 mt-4">
-          <b style="color: #ffff; font-size: large">Definitivo</b>
-          <v-switch class="ml-10" v-model="switch2" @change="setTheme2()" color="#000000" :readonly="disable2" flat>
-          </v-switch>
+        <v-col cols="1" align="center">
+          <b id="texto">Definitivo</b>
+          <v-switch color="#000000" v-model="switch2" @change="setTheme2()" :readonly="disable2" flat> </v-switch>
         </v-col>
 
-        <v-col cols="1" class="box mx-n5 mt-4">
-          <b style="color: #ffff; font-size: large">Simulación</b>
-          <v-switch class="ml-10" v-model="switch3" @change="setTheme3()" color="#000000" :readonly="disable3" flat>
-          </v-switch>
+        <v-col cols="1" align="center">
+          <b id="texto">Simulación</b>
+          <v-switch color="#000000" v-model="switch3" @change="setTheme3()" :readonly="disable3" flat> </v-switch>
         </v-col>
 
-        <!--<v-col cols="1" class="mx-n5 mt-4 text-center align-center justify-center">-->
+
 
         <v-col cols="4">
           <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
@@ -47,6 +45,7 @@
         <btninstitute> </btninstitute> <!-- BTN institutos-->
       </v-row>
     </v-card>
+
 
     <v-container fluid>
       <v-layout>
@@ -90,8 +89,8 @@
         </v-flex>
       </v-layout>
     </v-container>
-        <!--BAR NAVEGATION-->
-        <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
+    <!--BAR NAVEGATION-->
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <barnavegation></barnavegation>
@@ -136,7 +135,7 @@ export default {
       switch1: true,
       switch2: false,
       switch3: false,
-      color: "#D81B60",
+      color: "#E65100",
       disable1: true,
       disable2: false,
       disable3: false,
@@ -156,7 +155,7 @@ export default {
         return (
           (this.switch2 = false),
           (this.switch3 = false),
-          (this.color = "#D81B60"),
+          (this.color = "#E65100"),
           (this.disable1 = true),
           (this.disable2 = false),
           (this.disable3 = false),
@@ -228,8 +227,17 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #public {
-  margin-right: -60px !important;
+  margin-right: -120px !important;
+}
+
+#texto {
+  color: #ffff;
+  font-size: large;
+}
+
+.v-input__control {
+  justify-content: center;
 }
 </style>

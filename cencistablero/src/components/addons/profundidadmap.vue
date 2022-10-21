@@ -60,54 +60,80 @@ export default {
         datasets: [
 
           {
-            label: "Altos",
-            backgroundColor: "#f87979",
+            label: "Superficial", // 0-60
+            backgroundColor: "#FF1744",
             data: [
               {
                 x: 200,
-                y: 0,
-                r: 7,
+                y: -50,
+                r: 4,
               },
               {
                 x: 300,
-                y: 50,
-                r: 7,
+                y: -40,
+                r: 4,
               },
               {
                 x: 450,
-                y: 190,
-                r: 7,
+                y: -20,
+                r: 4,
               },
               {
                 x: 375,
-                y: 20,
-                r: 7,
+                y: -10,
+                r: 4,
               },
             ],
           },
           {
-            label: "Bajos",
-            backgroundColor: "#7C8CF8",
+            label: "Intermedio", // 61 - 300
+            backgroundColor: "#76FF03",
+            data: [
+              {
+                x: 200,
+                y: -90,
+                r: 4,
+              },
+              {
+                x: 300,
+                y: -150,
+                r: 4,
+              },
+              {
+                x: 450,
+                y: -290,
+                r: 4,
+              },
+              {
+                x: 375,
+                y: -100,
+                r: 4,
+              },
+            ],
+          },
+          {
+            label: "Profundos", //301 - 800
+            backgroundColor: "#FFEB3B",
             data: [
               {
                 x: 900,
                 y: -600,
-                r: 7,
+                r: 4,
               },
               {
                 x: 800,
                 y: -650,
-                r: 7,
+                r: 4,
               },
               {
                 x: 750,
                 y: -690,
-                r: 7,
+                r: 4,
               },
               {
                 x: 875,
-                y: -620,
-                r: 7,
+                y: -720,
+                r: 4,
               },
             ],
           },

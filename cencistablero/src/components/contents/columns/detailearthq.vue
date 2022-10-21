@@ -90,9 +90,7 @@
         <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
       </v-col>
       <v-col cols="4">
-
-        <qrcode></qrcode>
-
+        <qrcode class="mt-n3"></qrcode>
       </v-col>
     </v-row>
 
