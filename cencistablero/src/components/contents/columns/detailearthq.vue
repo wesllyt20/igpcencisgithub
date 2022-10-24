@@ -26,7 +26,7 @@
       </v-row>
       <v-row class="mb-n10">
         <v-col cols="4">
-          <b style="color: #00000; font-size: large">Fecha:</b>
+          <b style="color: #00000; font-size: large">Fecha local:</b>
         </v-col>
         <v-col cols="6">
           <v-text-field v-model="fecha" required type="date" min="2022-01-01" max="2022-12-31" solo outlined dense
@@ -85,7 +85,7 @@
         <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
       </v-row>
     </v-form>
-    <v-row class="pa-3 mb-n10" >
+    <v-row class="pa-3 mb-n10">
       <v-col cols="5">
         <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
       </v-col>
@@ -212,9 +212,6 @@ export default {
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
-
-  },
-  update() {
 
   },
   mounted() {

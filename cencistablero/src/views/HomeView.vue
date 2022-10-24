@@ -42,7 +42,7 @@
       <br />
 
       <v-row class="mx-1 ma-0 mt-n12 mb-n1" align="center">
-        <btninstitute> </btninstitute> <!-- BTN institutos-->
+        <btninstitute ref="btninst"> </btninstitute> <!-- BTN institutos-->
       </v-row>
     </v-card>
 
@@ -115,6 +115,7 @@ import barnavegation from "@/components/header/barnav/barnavegation.vue";
 import { mapState } from 'vuex';
 
 export default {
+
   components: {
     geojsonmap,
     detailubication,
@@ -207,8 +208,10 @@ export default {
     },
 
     valdata(val, old) {
+      console.log(val, old)
       if (val === false) {
         this.valorenable = true;
+
       }
       if (val === true) {
         this.valorenable = false;
@@ -219,10 +222,14 @@ export default {
   mounted() {
     this.$store.state.selevento = this.selectevent
   },
+
   methods: {
     validate() {
+
       this.$refs.form.validate()
+      //   this.$refs.btninst.totalgroup()
     },
+
 
   },
 };

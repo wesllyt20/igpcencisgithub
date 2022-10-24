@@ -3,7 +3,7 @@
     <v-card class="mx-auto" max-width="500">
       <v-toolbar color="teal" dark>
         <v-spacer></v-spacer>
-        <v-toolbar-title>ATHENA - REPORTES</v-toolbar-title>
+        <v-toolbar-title>HYDRA - REPORTES</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-list>
