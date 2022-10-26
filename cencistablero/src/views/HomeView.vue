@@ -10,17 +10,18 @@
           </v-btn>
         </v-col>
 
-        <v-col cols="1" align="center">
+        <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Preliminar</b>
-          <v-switch color="#000000" v-model="switch1" @change="setTheme()" :readonly="disable1"> </v-switch>
+          <v-switch class="switch1" color="#000000" v-model="switch1" @change="setTheme()" :readonly="disable1">
+          </v-switch>
         </v-col>
 
-        <v-col cols="1" align="center">
+        <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Definitivo</b>
           <v-switch color="#000000" v-model="switch2" @change="setTheme2()" :readonly="disable2" flat> </v-switch>
         </v-col>
 
-        <v-col cols="1" align="center">
+        <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Simulación</b>
           <v-switch color="#000000" v-model="switch3" @change="setTheme3()" :readonly="disable3" flat> </v-switch>
         </v-col>
@@ -42,16 +43,15 @@
       <br />
 
       <v-row class="mx-1 ma-0 mt-n12 mb-n1" align="center">
-        <btninstitute ref="btninst"> </btninstitute> <!-- BTN institutos-->
+        <btninstitute> </btninstitute> <!-- BTN institutos-->
       </v-row>
     </v-card>
-
-
     <v-container fluid>
       <v-layout>
         <!--Detalle de evento-->
         <v-flex lg3 class="text-center ml-1">
-          <detailearthq ref="form" @valid="valid=$event"></detailearthq>
+          <detailearthq ref="form">
+          </detailearthq>
           <!--aqui es -->
           <v-divider></v-divider>
           <reporteid></reporteid>
@@ -144,8 +144,6 @@ export default {
       group: null,
       selectevent: 570,
       valorenable: false,
-
-
     };
   },
 
@@ -194,8 +192,6 @@ export default {
         );
       }
     },
-
-
     ...mapState({
       valdata: state => state.changeval
     })
@@ -207,14 +203,13 @@ export default {
       this.drawer = false
     },
 
-    valdata(val, old) {
-      console.log(val, old)
-      if (val === false) {
-        this.valorenable = true;
+    valdata(val) {
+      if (val == true) {
+        this.valorenable = false;
 
       }
-      if (val === true) {
-        this.valorenable = false;
+      if (val == false) {
+        this.valorenable = true;
       }
     },
 
@@ -222,19 +217,17 @@ export default {
   mounted() {
     this.$store.state.selevento = this.selectevent
   },
-
   methods: {
     validate() {
-
       this.$refs.form.validate()
-      //   this.$refs.btninst.totalgroup()
+
+      // document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+
     },
-
-
   },
 };
 </script>
-<style scoped>
+<style>
 #public {
   margin-right: -120px !important;
 }
@@ -244,7 +237,7 @@ export default {
   font-size: large;
 }
 
-.v-input__control {
-  justify-content: center;
+.v-input__slot {
+  justify-content: center !important;
 }
 </style>

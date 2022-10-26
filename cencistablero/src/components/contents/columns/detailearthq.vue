@@ -13,7 +13,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <v-form ref="form" v-model="valid" lazy-validation> <!--validacion pendeja aqui-->
       <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Nº de reporte:</b>
@@ -87,14 +87,14 @@
     </v-form>
     <v-row class="pa-3 mb-n10">
       <v-col cols="5">
-        <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1}}</b></v-chip>
+        <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1 }}</b></v-chip>
       </v-col>
       <v-col cols="4">
         <qrcode class="mt-n3"></qrcode>
       </v-col>
     </v-row>
 
-
+    <v-btn @click="view"></v-btn>
   </v-container>
 </template>
 
@@ -102,6 +102,7 @@
 
 import qrcode from '../publisher/qrcode.vue';
 export default {
+ 
   components: {
     qrcode,
   },
@@ -150,14 +151,16 @@ export default {
       }
     },
     valid(val, old) {
-
+      console.log("valor nuevo: ", val, "valor viejo: ", old)
       {
+        if (val == false) {
+          this.$store.state.changeval = this.valid
+
+        }
         if (val == true) {
           this.$store.state.changeval = this.valid
         }
-        if (val == false) {
-          this.$store.state.changeval = this.valid
-        }
+
       }
     }
   },
@@ -166,6 +169,10 @@ export default {
     validate() {
       this.$refs.form.validate()
     },
+    view() {
+      console.log("prop down: ",this.valid )
+    },
+
     addReporte() {
       this.$store.state.reporte = this.reporte
     },
@@ -216,7 +223,6 @@ export default {
   },
   mounted() {
 
-    this.$store.state.changeval = this.valid
   }
 }
 </script>

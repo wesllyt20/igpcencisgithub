@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row> 
+    <v-row>
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
@@ -10,11 +10,11 @@
             <div v-for="(item, r ) in data1" :key="item.id">
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn @click="activador1($event, r+1)" v-bind="attrs" v-on="on">
-                    <img v-bind:src="'./img/' +item.img" width="35px" />
+                  <v-btn class="sharegr1" @click="activador1($event, r + 1)" v-bind="attrs" v-on="on">
+                    <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{item.nombre}}</span>
+                <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
@@ -22,18 +22,18 @@
       </div>
       <div class="mx-4">
         <v-col cols="3">
-          <v-btn-toggle>
+          <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#01579B" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data2" :key="item.id">
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn @click="activador2($event, r+1)" v-bind="attrs" v-on="on">
-                    <img v-bind:src="'./img/' +item.img" width="35px" />
+                  <v-btn class="sharegr2" @click="activador2($event, r + 1)" v-bind="attrs" v-on="on">
+                    <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{item.nombre}}</span>
+                <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
@@ -41,18 +41,18 @@
       </div>
       <div class="mx-4">
         <v-col cols="3">
-          <v-btn-toggle>
+          <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#01579B" @click="grupo3()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data3" :key="item.id">
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn @click="activador3($event, r+1)" v-bind="attrs" v-on="on">
-                    <img v-bind:src="'./img/' +item.img" width="35px" />
+                  <v-btn class="sharegr3" @click="activador3($event, r + 1)" v-bind="attrs" v-on="on">
+                    <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{item.nombre}}</span>
+                <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
@@ -60,18 +60,18 @@
       </div>
       <div class="mx-4">
         <v-col cols="3">
-          <v-btn-toggle>
-            <v-btn class="btnshare" color="#01579B" @click="grupo4">
+          <v-btn-toggle tile multiple shaped>
+            <v-btn class="btnshare" color="#01579B" @click="grupo4()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data4" :key="item.id">
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn @click="activador4($event, r+1)" v-bind="attrs" v-on="on">
-                    <img v-bind:src="'./img/' +item.img" width="35px" />
+                  <v-btn class="sharegr4" @click="activador4($event, r + 1)" v-bind="attrs" v-on="on">
+                    <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{item.nombre}}</span>
+                <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
@@ -91,6 +91,9 @@ export default {
       data2: [],
       data3: [],
       data4: [],
+      test: "",
+      cangr: [],
+      text: 'center',
 
     };
   },
@@ -111,19 +114,19 @@ export default {
           return console.log("grupo 1: soy 1");
         case 2:
           return console.log("grupo 1: soy 2");
+
         case 3:
           return console.log("grupo 1: soy 3");
+
         case 4:
           return console.log("grupo 1: soy 4");
+
         default:
           return console.log("grupo 1: aeaaa");
       }
     },
     grupo1() {
-      this.activador1(event, 1)
-      this.activador1(event, 2)
-      this.activador1(event, 3)
-      this.activador1(event, 4)
+      document.querySelectorAll(".sharegr1").forEach((boton) => boton.click())
     },
 
     // Activadores Grupo 2 de botones
@@ -142,10 +145,7 @@ export default {
       }
     },
     grupo2() {
-      this.activador2(event, 1)
-      this.activador2(event, 2)
-      this.activador2(event, 3)
-      this.activador2(event, 4)
+      document.querySelectorAll(".sharegr2").forEach((boton) => boton.click())
     },
 
     // Activadores Grupo 3 de botones
@@ -165,10 +165,7 @@ export default {
     },
 
     grupo3() {
-      this.activador3(event, 1)
-      this.activador3(event, 2)
-      this.activador3(event, 3)
-      this.activador3(event, 4)
+      document.querySelectorAll(".sharegr3").forEach((boton) => boton.click())
     },
 
     // Activadores Grupo 4 de botones
@@ -187,26 +184,34 @@ export default {
       }
     },
     grupo4() {
-      this.activador4(event, 1)
-      this.activador4(event, 2)
-      this.activador4(event, 3)
-      this.activador4(event, 4)
+      document.querySelectorAll(".sharegr4").forEach((boton) => boton.click())
     },
-    // Todo los botones
-    totalgroup() {
-      this.grupo1()
-      this.grupo2()
-      this.grupo3()
-      this.grupo4()
-    }
-
   }
 }
 </script>
 <style scoped>
-.share {
-  color: "blue" !important;
-  background-color: "blue";
+.sharegr1.v-btn--active::before,
+.sharegr1.v-btn--active:hover::before,
+.sharegr1.v-btn--active,
+.sharegr2.v-btn--active::before,
+.sharegr2.v-btn--active:hover::before,
+.sharegr2.v-btn--active,
+.sharegr3.v-btn--active::before,
+.sharegr3.v-btn--active:hover::before,
+.sharegr3.v-btn--active,
+.sharegr4.v-btn--active::before,
+.sharegr4.v-btn--active:hover::before,
+.sharegr4.v-btn--active {
+  opacity: 1 !important;
+  background-color: green;
+}
 
+
+.v-btn-toggle>.v-btn.v-btn {
+  opacity: 1;
+}
+
+.theme--light.v-btn:focus::before {
+  opacity: 0;
 }
 </style>
