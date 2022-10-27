@@ -53,7 +53,7 @@ export default new Vuex.Store({
             } catch (error) {
                 console.log(error)
             }
-            
+            // en mi pc se borra el [0] , en igp se coloca [0]
         }
 
     },
