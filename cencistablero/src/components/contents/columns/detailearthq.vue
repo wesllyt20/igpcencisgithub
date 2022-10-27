@@ -13,7 +13,8 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-form ref="form" v-model="valid" lazy-validation> <!--validacion pendeja aqui-->
+    <v-form ref="form" v-model="valid" lazy-validation>
+      <!--validacion pendeja aqui-->
       <v-row class="mb-n10">
         <v-col cols="4">
           <b style="color: #00000; font-size: large">Nº de reporte:</b>
@@ -29,7 +30,7 @@
           <b style="color: #00000; font-size: large">Fecha local:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="fecha" required type="date" min="2022-01-01" max="2022-12-31" solo outlined dense
+          <v-text-field v-model="fecha" type="date" required min="2022-01-01" max="2022-12-31" solo outlined dense
             :rules="fechaRules" :value=addFecha()>
           </v-text-field>
         </v-col>
@@ -77,7 +78,7 @@
           <b style="color: #00000; font-size: large">Magnitud:</b>
         </v-col>
         <v-col cols="4">
-          <v-text-field :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1" solo outlined
+          <v-text-field class="mag" :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1" solo outlined
             dense type="number" oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="10"
             min="0">
           </v-text-field>
@@ -93,22 +94,26 @@
         <qrcode class="mt-n3"></qrcode>
       </v-col>
     </v-row>
+    <!--<v-text-field v-model="horatest" label="Moment.js"></v-text-field>    
+      <v-btn @click="testtiempo"> </v-btn> --> 
 
-    <v-btn @click="view"></v-btn>
   </v-container>
 </template>
-
 <script>
-
 import qrcode from '../publisher/qrcode.vue';
+import moment from 'moment';
+const formatod = 'DD/MM/YYYY';
+const formatoh = 'hh:mm';
+const formatoall = 'DD/MM/YYYY h:mm:ss';
+const tiempoejem = '';
 export default {
- 
+  mounted() {
+  },
   components: {
     qrcode,
   },
   data() {
     return {
-
       reporteRules: [(v) => !!v || "Falta colocar Reporte."],
       fechaRules: [(v) => !!v || "Falta colocar Fecha."],
       tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
@@ -116,7 +121,6 @@ export default {
       longitudRules: [(v) => !!v || "Falta indicar Longitud."],
       profundidadRules: [(v) => !!v || "Falta indicar Profundidad."],
       magnitudRules: [(v) => !!v || "Falta indica Magnitud."],
-
       dialog: false,
       color: "#76FF03",
       magnitud: 0,
@@ -128,9 +132,10 @@ export default {
       profundidad: "",
       show: true,
       valid: true,
+      horatest: "",
+
     };
   },
-
   watch: {
     magnitud(val, old) {
 
@@ -151,28 +156,20 @@ export default {
       }
     },
     valid(val, old) {
-      console.log("valor nuevo: ", val, "valor viejo: ", old)
       {
-        if (val == false) {
-          this.$store.state.changeval = this.valid
-
-        }
-        if (val == true) {
-          this.$store.state.changeval = this.valid
-        }
-
+        this.$store.state.changeval = this.valid
       }
-    }
+    },
   },
-
   methods: {
+    testtiempo() {
+      console.log("tiempo: ", this.fecha)
+
+
+    },
     validate() {
       this.$refs.form.validate()
     },
-    view() {
-      console.log("prop down: ",this.valid )
-    },
-
     addReporte() {
       this.$store.state.reporte = this.reporte
     },
@@ -192,15 +189,12 @@ export default {
     addReferencia() {
       this.$store.state.referencia = this.referencia
     },
-
     addReProfundidad() {
       this.$store.state.profundidad = this.profundidad
     },
     addMagnitud() {
       this.$store.state.magnitud = this.magnitud
     },
-
-
   },
   computed: {
     colcircle() {
@@ -214,16 +208,15 @@ export default {
         return "danger"
       }
     },
-
-
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
+    horaT() {
+      // return this.fechatest = 
+    },
 
   },
-  mounted() {
 
-  }
 }
 </script>
 <style>
@@ -239,9 +232,10 @@ export default {
   color: black;
 }
 
-
 #lock {
   color: black !important;
-
+}
+.mag{
+  
 }
 </style>

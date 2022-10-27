@@ -18,7 +18,7 @@
                             <qr-code v-bind:text="qrtext"></qr-code>
                         </v-col>
                         <v-col cols="6">
-                            <v-textarea id="texto" :value="qrtext" readonly rows="12" />
+                            <v-textarea id="textoqr" :value="qrtext" readonly rows="12" />
                         </v-col>
                     </v-row>
                 </v-container>
@@ -64,5 +64,12 @@ export default {
 </script>
 
 <style>
-
+#textoqr {
+  font-family: arial, verdana, ms sans serif;
+  font-size: 12pt;
+  line-height: 1;
+  padding: 5px;
+  line-height: 20px;
+  color: black;
+}
 </style>

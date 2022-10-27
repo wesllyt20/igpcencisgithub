@@ -12,18 +12,18 @@
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Preliminar</b>
-          <v-switch class="switch1" color="#000000" v-model="switch1" @change="setTheme()" :readonly="disable1">
+          <v-switch class="switch1" color="#000000" v-model="switch1" @change="setTheme" :readonly="disable1">
           </v-switch>
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Definitivo</b>
-          <v-switch color="#000000" v-model="switch2" @change="setTheme2()" :readonly="disable2" flat> </v-switch>
+          <v-switch color="#000000" v-model="switch2" @change="setTheme2" :readonly="disable2" flat> </v-switch>
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Simulación</b>
-          <v-switch color="#000000" v-model="switch3" @change="setTheme3()" :readonly="disable3" flat> </v-switch>
+          <v-switch color="#000000" v-model="switch3" @change="setTheme3" :readonly="disable3" flat> </v-switch>
         </v-col>
 
 
@@ -113,6 +113,11 @@ import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import btninstitute from "@/components/header/buttons/btninstitute.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
 import { mapState } from 'vuex';
+import moment from "moment";
+
+const formatod = 'DD/MM/YYYY';
+const formatoh = 'hh:mm';
+const formatoall = 'DD/MM/YYYY h:mm:ss';
 
 export default {
 
@@ -220,9 +225,21 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+      if (this.$store.state.profundidad != '' &&
+        this.$store.state.reporte != '' &&
+        this.$store.state.magnitud != '' &&
+        this.$store.state.latitud != '' &&
+        this.$store.state.longitud != '' &&
+        this.$store.state.hora != '' &&
+        this.$store.state.fecha != '') {
 
-      // document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+        document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+        //if (moment(this.$store.state.hora, 'hh:mm').add(1, 'hour').format(formatoh) > moment().format('hh:mm')) {
+        //console.log("Este no :v ")
+        //}
 
+
+      }
     },
   },
 };
