@@ -46,10 +46,10 @@ export default new Vuex.Store({
         },
         async getAthena({ commit }) {
             try {
-                const res = await fetch('https://api.npoint.io/02e2e5b73f813dea421c')
+                const res = await fetch('https://api.npoint.io/02e2e5b73f813dea421c/')
                 const athena = await res.json()
-                console.log("vuex:", athena[0])
-                commit('setAthena',athena[0])
+                console.log("vuex:", athena)
+                commit('setAthena',athena)
             } catch (error) {
                 console.log(error)
             }

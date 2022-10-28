@@ -75,14 +75,18 @@
               </v-tooltip>
             </div>
           </v-btn-toggle>
+          <!--<v-text-field v-model="pubestado"> </v-text-field> txt_ingresarEstado-->
         </v-col>
       </div>
+      <v-btn class="igptest" large icon>
+        <img v-bind:src="'./img/igp.png'" width="30px" />
+      </v-btn>
     </v-row>
   </v-container>
 </template>
 <script>
 import axios from 'axios';
-
+//mr-auto mt-4 <--- margin
 export default {
   data() {
     return {
@@ -94,10 +98,11 @@ export default {
       test: "",
       cangr: [],
       text: 'center',
-
+      pubestado: 0,
+      color: 4,
+      setcolor: '',
     };
   },
-
   created() {
     axios.get("https://api.npoint.io/0401632c71f28605c506/").then(r => this.data = r.data),
       axios.get("https://api.npoint.io/0401632c71f28605c506/0").then(r => this.data1 = r.data.grupo),
@@ -186,6 +191,24 @@ export default {
     grupo4() {
       document.querySelectorAll(".sharegr4").forEach((boton) => boton.click())
     },
+  },
+  watch: {
+    pubestado(val, old) {
+      switch (this.pubestado) {
+        case "1":
+          return console.log("Estado: enviando"),
+            this.setcolor = 'yellow';
+        case "2":
+          return console.log("Estado: enviado"),
+            this.setcolor = 'green';
+        case "3":
+          return console.log("Estado: no enviado"),
+            this.setcolor = 'red';
+        default:
+          return console.log("Estado: original"),
+            this.setcolor = 'white';
+      }
+    }
   }
 }
 </script>
@@ -203,9 +226,14 @@ export default {
 .sharegr4.v-btn--active:hover::before,
 .sharegr4.v-btn--active {
   opacity: 1 !important;
-  background-color: green;
+  background-color: v-bind(setcolor);
+  ;
 }
 
+.igptest:active {
+  opacity: 1 !important;
+  background: v-bind(setcolor);
+}
 
 .v-btn-toggle>.v-btn.v-btn {
   opacity: 1;
