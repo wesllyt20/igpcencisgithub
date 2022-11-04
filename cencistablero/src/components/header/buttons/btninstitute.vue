@@ -70,17 +70,19 @@
                   <v-btn class="sharegr4" @click="activador4($event, r + 1)" v-bind="attrs" v-on="on">
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
+
                 </template>
+
                 <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
+              <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'"
+                  width="35px" /></v-btn>
           </v-btn-toggle>
-          <!--<v-text-field v-model="pubestado"> </v-text-field> txt_ingresarEstado-->
+          <v-text-field v-model="pubestado"> </v-text-field>
         </v-col>
       </div>
-      <v-btn class="igptest" large icon>
-        <img v-bind:src="'./img/igp.png'" width="30px" />
-      </v-btn>
+
     </v-row>
   </v-container>
 </template>
@@ -101,6 +103,7 @@ export default {
       pubestado: 0,
       color: 4,
       setcolor: '',
+
     };
   },
   created() {
@@ -191,6 +194,9 @@ export default {
     grupo4() {
       document.querySelectorAll(".sharegr4").forEach((boton) => boton.click())
     },
+    acttest() {
+      // TEST EVENT
+    },
   },
   watch: {
     pubestado(val, old) {
@@ -208,11 +214,12 @@ export default {
           return console.log("Estado: original"),
             this.setcolor = 'white';
       }
-    }
+    },
+
   }
 }
 </script>
-<style scoped>
+<style>
 .sharegr1.v-btn--active::before,
 .sharegr1.v-btn--active:hover::before,
 .sharegr1.v-btn--active,
@@ -230,13 +237,8 @@ export default {
   ;
 }
 
-.igptest:active {
-  opacity: 1 !important;
-  background: v-bind(setcolor);
-}
-
 .v-btn-toggle>.v-btn.v-btn {
-  opacity: 1;
+  opacity: 0;
 }
 
 .theme--light.v-btn:focus::before {

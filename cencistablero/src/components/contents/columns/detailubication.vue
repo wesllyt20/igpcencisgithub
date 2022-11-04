@@ -2,14 +2,15 @@
   <v-container>
     <v-card>
       <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
-        show-select class="elevation-1" @click:row="rowClick" @input="enterSelect($event)">
+        show-select class="elevation-1" @input="enterSelect($event)">
 
         <template v-slot:top>
           <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
         </template>
 
-        <template v-slot:[`item.intensidad`]="{ item }">
-          <v-select style="margin-bottom: -25px" label="--" :items="selectinten" dense outlined :value=item.intensidad>
+        <template v-slot:[`item.intensidad`]>
+          <v-select style="margin-bottom: -25px" value="Sin intensidad" item-value="src" label="--"
+            v-on:change="seleccionado" :items="selectinten" dense outlined>
           </v-select>
         </template>
       </v-data-table>
@@ -26,6 +27,7 @@ export default {
       singleSelect: true,
       selected: [],
       referencia: "",
+      selint: "Sin intensidad",
       headers: [
         {
           text: "ID",
@@ -36,9 +38,7 @@ export default {
         { text: "Intensidad", value: "intensidad" },
         { text: "Referencía", value: "referencia" },
         { text: "Telefonos", value: "telefono" },
-
       ],
-      select: ["--"],
       selectinten: [
         "Sin intensidad",
         "II",
@@ -58,7 +58,7 @@ export default {
         "IX",
         "IX-X",
         "X",
-        
+
       ]
     };
   },
@@ -66,6 +66,11 @@ export default {
     this.loadItems();
   },
   methods: {
+
+    seleccionado(a) {
+      this.selint = a
+    },
+
     loadItems() {
       var self = this;
       this.items = [];
@@ -77,7 +82,6 @@ export default {
               id: item.id,
               referencia: item.referencia,
               telefono: item.telefono,
-              intensidad: item.intensidad,
               lati: item.lati,
               longi: item.longi,
               ...item.fields,
@@ -88,22 +92,36 @@ export default {
           console.log(error);
         });
     },
-    enterSelect() {
-      this.$store.state.referencia = this.selected.map(e => e.referencia);
-      //this.$store.state.lati = this.selected.map(e => e.lati); -- convertir a objeto
-      //this.$store.dispatch('addlatiAction');
-      //this.$store.state.long = this.selected.map(e => e.longi);
-      //this.$store.dispatch('addlongAction');
-      console.log("valor: ")
+
+
+    enterSelect(values) {
+      var ref = values.map(function (value) { return value.referencia }) // Manda Referencia 
+      console.log("valor: ", ref)
+      this.$store.state.referencia = ref
+
+      if (this.selint != "Sin intensidad") {
+        var latit = values.map(function (value) { return value.lati }) // Manda Latitud 
+        console.log("valor Latitud: ", latit.toString())
+        this.$store.state.lati = latit.toString()
+
+        var longit = values.map(function (value) { return value.longi }) // Manda Longitud 
+        console.log("valor longitud: ", longit.toString())
+        this.$store.state.long = longit.toString()
+
+        console.log("mierdacion", this.selint)
+
+
+      } else {
+        this.$store.state.lati = 0
+        this.$store.state.long = 0
+      }
+
+
     },
 
-    rowClick: function (items, row) {
-      row.select(true)
-      this.$store.state.lati = items.lati
-      this.$store.dispatch('addlatiAction')
-      this.$store.state.long = items.longi
-      this.$store.dispatch('addlatiAction')
-    },
+
+
+
   }
 
 };
