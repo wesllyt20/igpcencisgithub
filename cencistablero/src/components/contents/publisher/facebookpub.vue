@@ -25,11 +25,11 @@ export default {
       this.$refs.myinput.focus();
       document.execCommand("copy");
     },
-  },
+  },        
   computed: {
     textopub() {
       return "REPORTE SÍSMICO: \n" +
-        "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte +
+        "IGP/CENSIS/" + this.$store.state.namereport + " 2022-0" + this.$store.state.reporte +
         "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
         "\n Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora +
         "\n Magnitud: " + this.$store.state.magnitud +
@@ -37,7 +37,7 @@ export default {
         "Km\n Latitud: " + this.$store.state.latitud +
         "\n Longitud: " + this.$store.state.longitud +
         "\n Referencia: " + this.$store.state.referencia +
-        "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-" + this.$store.state.reporte
+        "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-0" + this.$store.state.reporte
     }
   }
 };

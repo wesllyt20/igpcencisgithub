@@ -3,11 +3,9 @@
     <v-card>
       <v-data-table v-model="selected" :headers="headers" :items="items" :single-select="singleSelect" item-key="id"
         show-select class="elevation-1" @input="enterSelect($event)">
-
         <template v-slot:top>
           <v-switch v-model="singleSelect" label="Selección Unica" class="pa-3"></v-switch>
         </template>
-
         <template v-slot:[`item.intensidad`]>
           <v-select style="margin-bottom: -25px" value="Sin intensidad" item-value="src" label="--"
             v-on:change="seleccionado" :items="selectinten" dense outlined>
@@ -17,7 +15,6 @@
     </v-card>
   </v-container>
 </template>
-
 <script>
 import axios from "axios";
 export default {
@@ -58,7 +55,6 @@ export default {
         "IX",
         "IX-X",
         "X",
-
       ]
     };
   },
@@ -66,11 +62,9 @@ export default {
     this.loadItems();
   },
   methods: {
-
     seleccionado(a) {
       this.selint = a
     },
-
     loadItems() {
       var self = this;
       this.items = [];
@@ -92,38 +86,31 @@ export default {
           console.log(error);
         });
     },
-
-
     enterSelect(values) {
       var ref = values.map(function (value) { return value.referencia }) // Manda Referencia 
       console.log("valor: ", ref)
       this.$store.state.referencia = ref
-
       if (this.selint != "Sin intensidad") {
         var latit = values.map(function (value) { return value.lati }) // Manda Latitud 
         console.log("valor Latitud: ", latit.toString())
         this.$store.state.lati = latit.toString()
+        this.$store.dispatch('addlatiAction')
 
         var longit = values.map(function (value) { return value.longi }) // Manda Longitud 
         console.log("valor longitud: ", longit.toString())
         this.$store.state.long = longit.toString()
-
-        console.log("mierdacion", this.selint)
-
-
-      } else {
+        this.$store.dispatch('addlongAction')
+      }
+    },
+  },
+  watch: {
+    selint(val, old) {
+      if (val = "Sin intensidad") {
         this.$store.state.lati = 0
         this.$store.state.long = 0
       }
-
-
-    },
-
-
-
-
+    }
   }
-
 };
 </script>
 <style>

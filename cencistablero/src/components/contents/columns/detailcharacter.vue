@@ -30,8 +30,9 @@
           </v-list-item>
           <v-list-item-content>
             <div class="pa-2">
-              <v-btn class="white--text" block center color="green">
-                <v-icon color="white" @click="getValues($event, index)" small>mdi-send </v-icon> Insertar  {{ index }}
+              <v-btn class="white--text" block center color="green"
+                @click="getValues($event, index + 1, item.datos[0])">
+                <v-icon color="white" small>mdi-send </v-icon> Insertar
               </v-btn>
             </div>
           </v-list-item-content>
@@ -56,9 +57,21 @@ export default {
       athena: state => state.athena
     })
   },
-  methods:{
-    getValues(){
-      
+  methods: {
+    getValues: function (event, index, item) {
+
+      for (var i = 1; i <= index; i++) {
+        if (index == i) {
+          console.log("Lati:", item.latitud, " Long:", item.longitud);
+          
+          this.$store.state.fecha = item.fecha;
+          this.$store.state.hora = item.hora;
+          this.$store.state.latitud = item.latitud;
+          this.$store.state.longitud = item.longitud;
+          this.$store.state.profundidad = item.profundidad;
+          this.$store.state.magnitud = item.magnitud;
+        }
+      }
     }
   }
 }

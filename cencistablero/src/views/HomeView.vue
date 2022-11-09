@@ -149,6 +149,7 @@ export default {
       group: null,
       selectevent: 570,
       valorenable: false,
+      namereport: "RS"
     };
   },
 
@@ -164,7 +165,9 @@ export default {
           (this.disable2 = false),
           (this.disable3 = false),
           (this.selectevent = 570),
-          (this.$store.state.selevento = this.selectevent)
+          (this.$store.state.selevento = this.selectevent),
+          (this.namereport = "RS"),
+          (this.$store.state.namereport = this.namereport)
         );
       }
     },
@@ -178,8 +181,9 @@ export default {
           (this.disable1 = false),
           (this.disable3 = false),
           (this.selectevent = 475),
-          (this.$store.state.selevento = this.selectevent)
-
+          (this.$store.state.selevento = this.selectevent),
+          (this.namereport = "DEFINITIVIO"),
+          (this.$store.state.namereport = this.namereport)
         );
       }
     },
@@ -193,13 +197,13 @@ export default {
           (this.disable2 = false),
           (this.disable1 = false),
           (this.selectevent = 90),
-          (this.$store.state.selevento = this.selectevent)
+          (this.$store.state.selevento = this.selectevent),
+          (this.namereport = "SIMULACRO"),
+          (this.$store.state.namereport = this.namereport)
         );
       }
     },
-    ...mapState({
-      valdata: state => state.changeval
-    })
+    ...mapState({ valdata: state => state.changeval })
 
   },
 
@@ -221,6 +225,7 @@ export default {
   },
   mounted() {
     this.$store.state.selevento = this.selectevent
+    this.$store.state.namereport = this.namereport
   },
   methods: {
     validate() {

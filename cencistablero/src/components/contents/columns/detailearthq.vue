@@ -78,9 +78,9 @@
           <b style="color: #00000; font-size: large">Magnitud:</b>
         </v-col>
         <v-col cols="4">
-          <v-text-field class="mag" :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1" solo outlined
-            dense type="number" oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="10"
-            min="0">
+          <v-text-field class="mag" :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1"
+            solo outlined dense type="number" oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
+            max="10" min="0">
           </v-text-field>
         </v-col>
         <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
@@ -95,13 +95,15 @@
       </v-col>
     </v-row>
     <!--<v-text-field v-model="horatest" label="Moment.js"></v-text-field>    
-      <v-btn @click="testtiempo"> </v-btn> --> 
+      <v-btn @click="testtiempo"> </v-btn> -->
 
   </v-container>
 </template>
 <script>
 import qrcode from '../publisher/qrcode.vue';
+import { mapState } from 'vuex';
 import moment from 'moment';
+
 const formatod = 'DD/MM/YYYY';
 const formatoh = 'hh:mm';
 const formatoall = 'DD/MM/YYYY h:mm:ss';
@@ -137,7 +139,7 @@ export default {
     };
   },
   watch: {
-    magnitud(val, old) {
+    magnitud(val) {
 
       if (+val > 10) {
         this.magnitud = 10;
@@ -146,7 +148,7 @@ export default {
         this.magnitud = 0;
       }
     },
-    reporte(val, old) {
+    reporte(val) {
 
       if (+val > 5000) {
         this.reporte = 5000;
@@ -155,17 +157,22 @@ export default {
         this.reporte = 0;
       }
     },
-    valid(val, old) {
+    valid(val) {
       {
         this.$store.state.changeval = this.valid
       }
     },
+    fechavuex(val) { this.fecha = val },
+    tiempovuex(val) { this.tiempo = val },
+    latitudvuex(val) { this.latitud = val },
+    longitudvuex(val) { this.longitud = val },
+    profundidadvuex(val) { this.profundidad = val },
+    magnitudvuex(val) { this.magnitud = val },
+
   },
   methods: {
     testtiempo() {
       console.log("tiempo: ", this.fecha)
-
-
     },
     validate() {
       this.$refs.form.validate()
@@ -180,10 +187,10 @@ export default {
       this.$store.state.hora = this.tiempo
     },
     addLatitud() {
-      this.$store.state.latitud = this.latitud
+      this.$store.state.latitud = this.latitud.toString()
     },
     addLongitud() {
-      this.$store.state.longitud = this.longitud
+      this.$store.state.longitud = this.longitud.toString()
     },
 
     addReferencia() {
@@ -215,6 +222,12 @@ export default {
       // return this.fechatest = 
     },
 
+    ...mapState({ fechavuex: state => state.fecha }),
+    ...mapState({ tiempovuex: state => state.hora }),
+    ...mapState({ latitudvuex: state => state.latitud }),
+    ...mapState({ longitudvuex: state => state.longitud }),
+    ...mapState({ profundidadvuex: state => state.profundidad }),
+    ...mapState({ magnitudvuex: state => state.magnitud }),
   },
 
 }
@@ -235,7 +248,6 @@ export default {
 #lock {
   color: black !important;
 }
-.mag{
-  
-}
+
+.mag {}
 </style>

@@ -25,14 +25,14 @@
       </v-card-title>
 
       <v-data-table v-model="selected" class="mx-5" :headers="headers" single-select :items="items" :search="search"
-        @click:row="rowClick" item-key="nreport" @input="enterSelect($event)">
+        @click:row="rowClick" item-key="nreport">
         <template v-slot:[`item.profundidad`]="{ item }">
           <v-chip :color="getColor(item.profundidad)" dark>
             {{ item.profundidad }}
           </v-chip>
         </template>
         <template v-slot:[`item.reporte`]="{ item }">
-          <v-icon color="red" large class="mr-2" @click="editItem(item)">
+          <v-icon color="red" large class="mr-2" @click="pdfedit(item)">
             mdi-file-pdf-box
           </v-icon>
         </template>
@@ -53,6 +53,8 @@
 <script>
 import barnavegation from '@/components/header/barnav/barnavegation.vue';
 import axios from 'axios';
+import { jsPDF } from "jspdf";
+
 export default {
   data() {
     return {
@@ -84,14 +86,39 @@ export default {
   },
   methods: {
 
-    enterSelect(values) {
-      var names = values.map(function (value) { return value.horaEvento })
-      console.log("Aqui :v",names)
+    pdfedit: function (reporte) { // click del boton PDF
+      if (confirm("Ha seleccionado el evento '" + reporte.nreport + "' ¿desea realizar un pdf?")) {
+        for (var i = 1; i <= reporte.nreport; i++) {
+          if (reporte.nreport == i) {
+            console.log("Profundidad: ", reporte.profundidad)
+
+            var doc = new jsPDF();
+            var { ComboBox } = jsPDF.AcroForm;
+            doc.text(20, 20, 'Hello world!');
+            doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
+            doc.addPage();
+            doc.text(20, 20, 'Do you like that?' + reporte.referencia);
+
+            doc.save('Tesaaat.pdf');
+
+            var comboBox = new ComboBox();
+            comboBox.fieldName = "ChoiceField1";
+            comboBox.topIndex = 1;
+            comboBox.Rect = [50, 100, 30, 10];
+            comboBox.setOptions(["a", "b", "c"]);
+            comboBox.value = "b";
+            comboBox.defaultValue = "b";
+            doc.addField(comboBox);
+
+          }
+        }
+      }
     },
-    editItem() {
 
-
-
+    createpdf() {
+      const columns = [
+        { title: "" }
+      ]
     }
     ,
     getColor(profundidad) {
@@ -125,9 +152,9 @@ export default {
           console.log(error);
         });
     },
-    rowClick: function (items, row) {
+    rowClick: function (items, row) { // al seleccionar un row
       row.select(true)
-      alert("Numero de reporte: " + items.nreport)
+      // console.log("Numero de reporte: " + items.nreport)
       this.rowsend = items
     },
   },

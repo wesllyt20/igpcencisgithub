@@ -1,47 +1,34 @@
 <template>
   <div>
-    <l-map
-      id="mapa"
-      :zoom="zoom"
-      :center="[$store.state.latitud, $store.state.longitud]"
-      style="height: 400px; width: 100%"
-    >
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-geo-json
-        v-if="show"
-        :geojson="geojson"
-        :options="options"
-        :options-style="styleFunction"
-      />
-      <l-marker
-        :lat-lng="[$store.state.latitud, $store.state.longitud]"
-        :icon="icon"
-      >
-        <l-popup>
-          <h4 class="text-primary text-center m-0 font-weight-bold">
-            Reporte: {{ $store.state.reporte }}
-          </h4>
-          <br />
-          <b> Latitud: </b> {{ $store.state.latitud }} <br />
-          <b> Longitud </b> {{ $store.state.longitud }}
-        </l-popup>
-      </l-marker>
+    <div>
 
-      <!--Marker 2 -->
-      
-        <l-marker :lat-lng="[$store.state.lati,$store.state.long]" :icon="icon2">
+      <l-map id="mapa" :zoom="zoom" :center="[$store.state.latitud, $store.state.longitud]"
+        style="height: 400px; width: 100%">
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-geo-json v-if="show" :geojson="geojson" :options="options" :options-style="styleFunction" />
+        <l-marker :lat-lng="[$store.state.latitud, $store.state.longitud]" :icon="icon">
           <l-popup>
-            <h5 class="text-primary m-0 font-weight-bold text-center">
-              Referencia null por ahora :,v
-            </h5>
+            <h4 class="text-primary text-center m-0 font-weight-bold">
+              Reporte: {{ $store.state.reporte }}
+            </h4>
             <br />
-            <b> Latitud: </b> {{ $store.state.lati }} <br />
-            <b> Longitud </b> {{ $store.state.long }}
+            <b> Latitud: </b> {{ $store.state.latitud }} <br />
+            <b> Longitud </b> {{ $store.state.longitud }}
           </l-popup>
         </l-marker>
-      
-    </l-map>
-   <!-- <h2>{{$store.state.lati}} // {{ $store.state.long}}</h2> -->
+
+        <!--Marker 2 -->
+
+        <l-marker :lat-lng="[$store.state.lati,  $store.state.long ]" :icon="icon2">
+          <l-popup>
+            <h5 class="text-primary m-0 font-weight-bold text-center">{{ $store.state.referencia }} </h5>
+            <br />
+            <b> Latitud: </b> {{ $store.state.lati }} <br />
+            <b> Longitud: </b> {{ $store.state.long }}
+          </l-popup>
+        </l-marker>
+      </l-map>
+    </div>
   </div>
 </template>
 
@@ -63,9 +50,8 @@ export default {
       loading: false,
       show: true,
       enableTooltip: true,
-      zoom: 17,
+      zoom: 6,
       center: [],
-//      items:[],
       geojson: null,
       fillColor: "#e4ce7f",
       url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
@@ -84,7 +70,11 @@ export default {
         iconSize: [10, 10],
         iconAnchor: [10, 10],
       }),
+      
     };
+  },
+  watch: {
+
   },
   computed: {
     options() {
@@ -106,23 +96,26 @@ export default {
     },
     onEachFeatureFunction() {
       if (!this.enableTooltip) {
-        return () => {};
+        return () => { };
       }
       return (feature, layer) => {
         layer.bindTooltip(
           "<div>code:" +
-            feature.properties.code +
-            "</div><div>nom: " +
-            feature.properties.nom +
-            "</div>",
+          feature.properties.code +
+          "</div><div>nom: " +
+          feature.properties.nom +
+          "</div>",
           { permanent: false, sticky: true }
         );
       };
-    },
-    coords(){
-      return  [$store.state.lati , $store.state.long]
     }
+
   },
+  methods: {
+
+  },
+
+
   async created() {
     this.loading = true;
     const response = await fetch(
@@ -132,7 +125,7 @@ export default {
     this.geojson = data;
     this.loading = false;
   },
- 
+
 };
 </script>
 <style>

@@ -30,14 +30,14 @@ export default {
   computed: {
     textopub() {
       return "REPORTE SÍSMICO: \n" +
-        "IGP/CENSIS/RS 2022-0" + this.$store.state.reporte + 
-        "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora + 
-        "\n Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora + 
-        "\n Magnitud: " + this.$store.state.magnitud + 
-        "\n Profundidad: " + this.$store.state.profundidad + 
-        "Km\n Latitud: " + this.$store.state.latitud + 
-        "\n Longitud: " + this.$store.state.longitud + 
-        "\n Referencia: " + this.$store.state.referencia 
+        "IGP/CENSIS/" + this.$store.state.namereport + " 2022-0" + this.$store.state.reporte +
+        "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
+        "\n Fecha y Hora UTC:" + this.$store.state.fecha + ", " + this.$store.state.hora +
+        "\n Magnitud: " + this.$store.state.magnitud +
+        "\n Profundidad: " + this.$store.state.profundidad +
+        "Km\n Latitud: " + this.$store.state.latitud +
+        "\n Longitud: " + this.$store.state.longitud +
+        "\n Referencia: " + this.$store.state.referencia
     }
   }
 };
@@ -51,5 +51,4 @@ export default {
   line-height: 20px;
   color: black;
 }
-
 </style>
