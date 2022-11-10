@@ -1,11 +1,14 @@
 <template>
-  <Bubble :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :dataset-id-key="datasetIdKey"
-    :plugins="plugins" :css-classes="cssClasses" :styles="styles" :width="width" :height="height" />
+  <div>
+    <Bubble :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :dataset-id-key="datasetIdKey"
+      :plugins="plugins" :css-classes="cssClasses" :styles="styles" :width="width" :height="height" />
+    <v-btn @click="setIntensidad"></v-btn>
+  </div>
 </template>
 
 <script>
 import { Bubble } from "vue-chartjs/legacy";
-
+import { mapState } from 'vuex';
 
 import {
   Chart as ChartJS,
@@ -55,10 +58,9 @@ export default {
   },
   data() {
     return {
+      res: 950,
       chartData: {
-
         datasets: [
-
           {
             label: "Superficial", // 0-60
             backgroundColor: "#FF1744",
@@ -162,5 +164,61 @@ export default {
       },
     };
   },
-};
+  created: function () {
+    this.$store.dispatch('getAthena')
+  },
+  computed: {
+    ...mapState({
+      athena: state => state.athena
+    })
+  },
+  methods: {
+    setIntensidad() {
+      //contador de items
+      var superficial = 0
+      var intermedio = 0
+      var profundo = 0
+      var verga = 0
+      //Creador de array
+      const sup = []
+      const inter = []
+      const prof = []
+      const vrg = []
+      for (var i = 0; i <= 7; i++) {
+
+        var getProfundidad = this.athena[i].datos[0].profundidad
+
+        if (getProfundidad <= 60) {
+          console.log("->", getProfundidad, " soy menor a 61")
+
+          sup.push(getProfundidad)
+          superficial++
+        }
+        if (getProfundidad >= 61 && getProfundidad <= 300) {
+          console.log("->", getProfundidad, " soy mayor a 60 y menor a 301")
+
+          inter.push(getProfundidad)
+          intermedio++
+        }
+        if (getProfundidad >= 301 && getProfundidad <= 800) {
+          console.log("->", getProfundidad, " soy mayor a 300 y menor a 800")
+
+          prof.push(getProfundidad)
+          profundo++
+        }
+        if (getProfundidad >= 801) {
+          console.log("->", getProfundidad, " soy mayor a 800 y menor a el infinito y mas alla")
+
+          vrg.push(getProfundidad)
+          verga++
+        }
+      }
+      console.log("superficiales: ", superficial, ", intermedios: ", intermedio, ", profundos: ", profundo, " y nada ", verga)
+      console.log("ARRAYS: [superficiales: ", sup, ", intermedios: ", inter, ", profundos: ", prof, " y nada ", vrg, "]")
+
+    }
+  }
+}
+
+
 </script>
