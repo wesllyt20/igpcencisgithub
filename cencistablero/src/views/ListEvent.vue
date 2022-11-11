@@ -35,6 +35,9 @@
           <v-icon color="red" large class="mr-2" @click="pdfedit(item)">
             mdi-file-pdf-box
           </v-icon>
+          <v-icon color="yellow" large class="mr-2" @click="pdfedit2(item)">
+            mdi-lead-pencil
+          </v-icon>
         </template>
 
       </v-data-table>
@@ -99,7 +102,7 @@ export default {
             doc.addPage();
             doc.text(20, 20, 'Do you like that?' + reporte.referencia);
 
-            doc.save('Tesaaat.pdf');
+            doc.output('datauristring');
 
             var comboBox = new ComboBox();
             comboBox.fieldName = "ChoiceField1";
@@ -113,6 +116,9 @@ export default {
           }
         }
       }
+    },
+    pdfedit2(){
+      console.log("aeaaaaaaaaaaaaaaa")
     },
 
     createpdf() {

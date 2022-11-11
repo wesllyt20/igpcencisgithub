@@ -4,7 +4,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="#01579B" @click="grupo1()">
+            <v-btn class="btnshare" color="azulface" @click="grupo1()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data1" :key="item.id">
@@ -23,7 +23,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="#01579B" @click="grupo2()">
+            <v-btn class="btnshare" color="azulface" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data2" :key="item.id">
@@ -37,12 +37,12 @@
               </v-tooltip>
             </div>
           </v-btn-toggle>
-        </v-col>
+        </v-col> 
       </div>
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="#01579B" @click="grupo3()">
+            <v-btn class="btnshare" color="azulface" @click="grupo3()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data3" :key="item.id">
@@ -61,7 +61,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="#01579B" @click="grupo4()">
+            <v-btn class="btnshare" color="azulface" @click="grupo4()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data4" :key="item.id">

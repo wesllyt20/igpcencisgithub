@@ -2,13 +2,12 @@
   <div>
     <Bubble :chart-options="chartOptions" :chart-data="chartData" :chart-id="chartId" :dataset-id-key="datasetIdKey"
       :plugins="plugins" :css-classes="cssClasses" :styles="styles" :width="width" :height="height" />
-    <v-btn @click="setIntensidad"></v-btn>
   </div>
 </template>
 
 <script>
 import { Bubble } from "vue-chartjs/legacy";
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 
 import {
@@ -23,6 +22,9 @@ import {
 ChartJS.register(Title, Tooltip, Legend, PointElement, LinearScale)
 
 export default {
+  computed: {
+    ...mapState(['athena'])
+  },
   name: "BubbleChart",
   components: {
     Bubble,
@@ -79,12 +81,20 @@ export default {
         ],
       },
       chartOptions: {
+        elements: {
+          line: {
+            tension: 0,
+            borderWidth: 3,
+            backgroundColor: "#ff0000",
+          }
+        },
+
         responsive: true,
         maintainAspectRatio: false,
         scales: {
           y: {
             max: 0,
-            min: -800,
+
             ticks: {
               stepSize: 100
             }
@@ -100,14 +110,6 @@ export default {
         }
       },
     };
-  },
-  created: function () {
-    this.$store.dispatch('getAthena')
-  },
-  computed: {
-    ...mapState({
-      athena: state => state.athena
-    })
   },
   methods: {
     setIntensidad() {
@@ -155,14 +157,14 @@ export default {
           verga++
         }
       }
-      console.log(this.athena)
-    }
+      console.log("->", this.$store.state.athena)
+    },
   },
-   mounted() {
-     console.log(this.athena)
-     // this.setIntensidad()
 
-  },
+  async mounted() {
+    await this.$store.dispatch('getAthena')
+    this.setIntensidad()
+  }
 }
 
 

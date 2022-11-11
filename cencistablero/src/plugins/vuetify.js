@@ -6,9 +6,9 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
   theme: {
-      options: {
-        customProperties: true,
-      },
+    options: {
+      customProperties: true,
+    },
     themes: {
       light: {
         primary: '#007BFF',
@@ -19,7 +19,8 @@ export default new Vuetify({
         success: '#4CAF50',
         warning: '#FFC107',
         danger: '#ff0000',
-        white:'#FFFFFF'
+        white: '#FFFFFF',
+        azulface: '#01579B',
       },
     },
   },
