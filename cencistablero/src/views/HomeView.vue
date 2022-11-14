@@ -113,11 +113,8 @@ import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import btninstitute from "@/components/header/buttons/btninstitute.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
 import { mapState } from 'vuex';
-import moment from "moment";
 
-const formatod = 'DD/MM/YYYY';
-const formatoh = 'hh:mm';
-const formatoall = 'DD/MM/YYYY h:mm:ss';
+
 
 export default {
 
@@ -226,6 +223,7 @@ export default {
   mounted() {
     this.$store.state.selevento = this.selectevent
     this.$store.state.namereport = this.namereport
+
   },
   methods: {
     validate() {

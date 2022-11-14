@@ -70,9 +70,7 @@
                   <v-btn class="sharegr4" @click="activador4($event, r + 1)" v-bind="attrs" v-on="on">
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
-
                 </template>
-
                 <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>

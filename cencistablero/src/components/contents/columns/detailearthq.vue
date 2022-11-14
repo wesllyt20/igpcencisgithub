@@ -94,8 +94,7 @@
         <qrcode class="mt-n3"></qrcode>
       </v-col>
     </v-row>
-    <!--<v-text-field v-model="horatest" label="Moment.js"></v-text-field>    
-      <v-btn @click="testtiempo"> </v-btn> -->
+
 
   </v-container>
 </template>
@@ -105,9 +104,11 @@ import { mapState } from 'vuex';
 import moment from 'moment';
 
 const formatod = 'DD/MM/YYYY';
-const formatoh = 'hh:mm';
-const formatoall = 'DD/MM/YYYY h:mm:ss';
-const tiempoejem = '';
+const formatoh = 'HH:mm:ss';
+const formatoall = 'DD/MM/YYYY HH:mm:ss';
+
+
+
 export default {
   mounted() {
   },
@@ -118,7 +119,7 @@ export default {
     return {
       reporteRules: [(v) => !!v || "Falta colocar Reporte."],
       fechaRules: [(v) => !!v || "Falta colocar Fecha."],
-      tiempoRules: [(v) => !!v || "Falta colocar Tiempo."],
+      tiempoRules: [(v) => !!v || "Falta colocar Tiempot."],
       latitudRules: [(v) => !!v || "Falta indicar Latitud."],
       longitudRules: [(v) => !!v || "Falta indicar Longitud."],
       profundidadRules: [(v) => !!v || "Falta indicar Profundidad."],
@@ -135,6 +136,7 @@ export default {
       show: true,
       valid: true,
       horatest: "",
+
 
     };
   },
@@ -162,8 +164,18 @@ export default {
         this.$store.state.changeval = this.valid
       }
     },
-    fechavuex(val) { this.fecha = val },
-    tiempovuex(val) { this.tiempo = val },
+    fechavuex(val) {
+      this.fecha = val
+      if (val != "") {
+        this.horaUtc
+      }
+    },
+    tiempovuex(val) {
+      this.tiempo = val
+      if (val != "") {
+        this.horaUtc
+      }
+    },
     latitudvuex(val) { this.latitud = val },
     longitudvuex(val) { this.longitud = val },
     profundidadvuex(val) { this.profundidad = val },
@@ -171,9 +183,6 @@ export default {
 
   },
   methods: {
-    testtiempo() {
-      console.log("tiempo: ", this.fecha)
-    },
     validate() {
       this.$refs.form.validate()
     },
@@ -182,6 +191,16 @@ export default {
     },
     addFecha() {
       this.$store.state.fecha = this.fecha
+
+
+
+      //  var tim = this.fecha
+      //  let setFecha = moment(new Date(tim)).add(1, 'days').format(formatod)
+      //  return this.$store.state.fecha = setFecha
+
+
+
+
     },
     addTiempo() {
       this.$store.state.hora = this.tiempo
@@ -218,16 +237,19 @@ export default {
     txtReporte() {
       return this.reporte = this.$store.state.selevento
     },
-    horaT() {
-      // return this.fechatest = 
+    horaUtc() {
+      var fecha = this.fecha
+      var horaact = this.tiempo
+      let tiempoutc = moment(new Date(fecha + ' ' + horaact)).add(5, 'hour').format(formatoall)
+      return this.$store.state.horautc = tiempoutc
     },
-
     ...mapState({ fechavuex: state => state.fecha }),
     ...mapState({ tiempovuex: state => state.hora }),
     ...mapState({ latitudvuex: state => state.latitud }),
     ...mapState({ longitudvuex: state => state.longitud }),
     ...mapState({ profundidadvuex: state => state.profundidad }),
     ...mapState({ magnitudvuex: state => state.magnitud }),
+    ...mapState({ horautcvuex: state => state.horautc }),
   },
 
 }
