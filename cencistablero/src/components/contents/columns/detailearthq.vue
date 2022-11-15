@@ -164,8 +164,12 @@ export default {
         this.$store.state.changeval = this.valid
       }
     },
-    fechavuex(val) {
-      this.fecha = val
+    fechavuex(val, old) {
+
+      var stiempo = val
+      let setFecha = moment(stiempo, 'DD/MM/YYYY').format('YYYY-MM-DD')
+      this.fecha = setFecha
+
       if (val != "") {
         this.horaUtc
       }
@@ -190,17 +194,7 @@ export default {
       this.$store.state.reporte = this.reporte
     },
     addFecha() {
-      this.$store.state.fecha = this.fecha
-
-
-
-      //  var tim = this.fecha
-      //  let setFecha = moment(new Date(tim)).add(1, 'days').format(formatod)
-      //  return this.$store.state.fecha = setFecha
-
-
-
-
+      //ANALIZAR SI ESTOS METHODS VAN O NO
     },
     addTiempo() {
       this.$store.state.hora = this.tiempo

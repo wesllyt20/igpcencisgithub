@@ -77,7 +77,6 @@
               <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'"
                   width="35px" /></v-btn>
           </v-btn-toggle>
-          <v-text-field v-model="pubestado"> </v-text-field>
         </v-col>
       </div>
 

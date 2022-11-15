@@ -39,10 +39,15 @@
         </v-list-group>
       </v-list>
     </v-card>
+
   </v-container>
 </template>
 <script>
 import { mapState } from 'vuex';
+import moment from 'moment';
+
+const formatod = 'DD/MM/YYYY';
+
 export default {
   data: function () {
     return {
@@ -58,13 +63,22 @@ export default {
     })
   },
   methods: {
+
+    settingfecha() {
+
+      console.log("penes -> ", this.$store.state.fecha)
+
+    },
     getValues: function (event, index, item) {
+
+
 
       for (var i = 1; i <= index; i++) {
         if (index == i) {
-          console.log("Lati:", item.latitud, " Long:", item.longitud);
-          
-          this.$store.state.fecha = item.fecha;
+          var tim = item.fecha
+          let setFecha = moment(tim, formatod).format(formatod)
+
+          this.$store.state.fecha = setFecha;
           this.$store.state.hora = item.hora;
           this.$store.state.latitud = item.latitud;
           this.$store.state.longitud = item.longitud;
