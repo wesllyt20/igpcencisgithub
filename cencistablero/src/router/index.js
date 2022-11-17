@@ -5,6 +5,7 @@ import ListEvent from '../views/ListEvent.vue'
 import CreateLocation from '../views/CreateLocation.vue'
 import SearchLocation from '../views/SearchLocation.vue'
 import UserLogin from '../views/UserLogin.vue'
+import pdfview from '../components/reports/pdfview.vue'
 
 Vue.use(VueRouter)
 
@@ -15,9 +16,14 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/listevent',
+    path: '/listevent/',
     name: 'ListEvent',
     component: ListEvent
+  },
+  {
+    path: '/pdfview/:reporte',
+    name: 'pdfview',
+    component: pdfview
   },
   {
     path: '/createlocation',

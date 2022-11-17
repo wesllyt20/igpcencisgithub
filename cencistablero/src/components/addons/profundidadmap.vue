@@ -93,8 +93,7 @@ export default {
         maintainAspectRatio: false,
         scales: {
           y: {
-            max: 0,
-
+            label: 'profundidad (km)',
             ticks: {
               stepSize: 100
             }
@@ -104,7 +103,8 @@ export default {
             min: 0,
             ticks: {
               stepSize: 100
-            }
+            },
+            label: 'Distancia (km)',
           },
 
         }

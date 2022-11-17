@@ -95,29 +95,28 @@ export default {
           if (reporte.nreport == i) {
             console.log("Profundidad: ", reporte.profundidad)
 
+            // --- desde aqui     
             var doc = new jsPDF();
-            var { ComboBox } = jsPDF.AcroForm;
-            doc.text(20, 20, 'Hello world!');
-            doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-            doc.addPage();
-            doc.text(20, 20, 'Do you like that?' + reporte.referencia);
 
-            doc.output('datauristring');
+            doc.addFont('Courier-Bold', 'courier', 'bold', 'WinAnsiEncoding');
+            doc.setFont('Courier');
+            doc.text(20, 140, 'Hello World');
+            doc.text(20, 150, reporte.referencia);
 
-            var comboBox = new ComboBox();
-            comboBox.fieldName = "ChoiceField1";
-            comboBox.topIndex = 1;
-            comboBox.Rect = [50, 100, 30, 10];
-            comboBox.setOptions(["a", "b", "c"]);
-            comboBox.value = "b";
-            comboBox.defaultValue = "b";
-            doc.addField(comboBox);
 
+            doc.setFont('courier-bold');
+            doc.text(20, 160, reporte.referencia);
+            doc.text(20, 170, 'Hello World');
+
+            doc.output('dataurlnewwindow');
           }
         }
+
+
+        //this.$router.push('/pdfview/' + reporte)
       }
     },
-    pdfedit2(){
+    pdfedit2() {
       console.log("aeaaaaaaaaaaaaaaa")
     },
 
