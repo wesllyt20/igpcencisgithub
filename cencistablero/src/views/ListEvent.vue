@@ -52,11 +52,17 @@
     </v-navigation-drawer>
     <!--End Bar NAVEGATION-->
   </div>
+
 </template>
+
 <script>
 import barnavegation from '@/components/header/barnav/barnavegation.vue';
 import axios from 'axios';
 import { jsPDF } from "jspdf";
+import moment from 'moment';
+
+const formatod = 'DD/MM/YYYY';
+const formatoh = 'HH:mm:ss'
 
 export default {
   data() {
@@ -84,29 +90,74 @@ export default {
         { text: "Referencia", value: "referencia" },
         { text: "Percibido", value: "percibido" },
         { text: "Reporte", value: "reporte", sortable: false },
+      ],
+      textoreport: [
+        "EL INSTITUTO GEOFÍSICO DEL PERÚ informa, que a horas 02:08:05 (hora local) del día" + "hola",
+        ", ocurrió un sismo de M4.6 con epicentro a 20 km al SE de Curibaya,",
+        "Candarave, Tacna.El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada",
+        "MM / MSK, cuyos valores de intensidades son: "
       ]
     };
   },
   methods: {
 
     pdfedit: function (reporte) { // click del boton PDF
+      moment.locale('es');
+      var tim = reporte.horaEvento
+      let setFecha = moment(new Date(tim)).format(formatod)
+      let setFechalarga = moment(new Date(tim)).format('LL')
+      let setHora = moment(new Date(tim)).format(formatoh)
+
       if (confirm("Ha seleccionado el evento '" + reporte.nreport + "' ¿desea realizar un pdf?")) {
         for (var i = 1; i <= reporte.nreport; i++) {
           if (reporte.nreport == i) {
-            console.log("Profundidad: ", reporte.profundidad)
+
 
             // --- desde aqui     
             var doc = new jsPDF();
 
-            doc.addFont('Courier-Bold', 'courier', 'bold', 'WinAnsiEncoding');
-            doc.setFont('Courier');
-            doc.text(20, 140, 'Hello World');
-            doc.text(20, 150, reporte.referencia);
+            /*
+
+            AQUI ENTRA LA IMAGEN Y EL LOGO 
+
+            */
+
+            // TITULO
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(30);
+            doc.text("REPORTE SÍSMICO", 100, 40, null, null, 'center') // titulo
+
+            // subtitulo - reporte numero 
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(12);
+            doc.text(["Reporte IGP/CENSIS/RS 2022-" + this.$store.state.selevento], 20, 80, null, null, 'center') // titulo
 
 
-            doc.setFont('courier-bold');
-            doc.text(20, 160, reporte.referencia);
-            doc.text(20, 170, 'Hello World');
+            //BODY
+            doc
+              .setFont("helvetica", "normal")
+              .setFontSize(12)
+              .text(["EL INSTITUTO GEOFÍSICO DEL PERÚ informa, que a horas " + setHora + " (hora local) del día " + setFechalarga +
+                ", ocurrió un sismo de M4.6 con epicentro a 20 km al " + reporte.referencia + ".El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada",
+                "MM / MSK, cuyos valores de intensidades son: "], 10, 90, { align: "left", maxWidth: "200" })
+
+
+            //acroform
+            var { TextField } = jsPDF.AcroForm;
+            var textField = new TextField();
+            textField.showWhenPrinted = true;
+            textField.Rect = [10, 150, 15, 20];
+            textField.fontSize = 12;
+            textField.multiline = true;
+            textField.value = "----------------"; //
+            textField.fieldName = "TestTextBox";
+
+            doc.addField(textField);
+
+
+
+
+
 
             doc.output('dataurlnewwindow');
           }
@@ -116,8 +167,19 @@ export default {
         //this.$router.push('/pdfview/' + reporte)
       }
     },
-    pdfedit2() {
-      console.log("aeaaaaaaaaaaaaaaa")
+    pdfedit2: function (reporte) { // click del boton PDF
+
+
+      var tim = reporte.horaEvento
+      let setFecha = moment(new Date(tim)).format(formatod)
+      let setHora = moment(new Date(tim)).format(formatoh)
+
+
+
+
+
+      console.log(tim)
+      console.log("d::", setFecha, "y h: ", setHora)
     },
 
     createpdf() {

@@ -64,11 +64,7 @@ export default {
   },
   methods: {
 
-    settingfecha() {
 
-      console.log("penes -> ", this.$store.state.fecha)
-
-    },
     getValues: function (event, index, item) {
 
 
