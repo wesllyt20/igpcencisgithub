@@ -90,12 +90,6 @@ export default {
         { text: "Referencia", value: "referencia" },
         { text: "Percibido", value: "percibido" },
         { text: "Reporte", value: "reporte", sortable: false },
-      ],
-      textoreport: [
-        "EL INSTITUTO GEOFÍSICO DEL PERÚ informa, que a horas 02:08:05 (hora local) del día" + "hola",
-        ", ocurrió un sismo de M4.6 con epicentro a 20 km al SE de Curibaya,",
-        "Candarave, Tacna.El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada",
-        "MM / MSK, cuyos valores de intensidades son: "
       ]
     };
   },
@@ -112,54 +106,105 @@ export default {
         for (var i = 1; i <= reporte.nreport; i++) {
           if (reporte.nreport == i) {
 
-
-            // --- desde aqui     
+            // --- desde aqui INICIO PAGINA 1/2
             var doc = new jsPDF();
 
-            /*
+            // AQUI ENTRA LA IMAGEN Y EL LOGO 
+            var img = new Image()
+            img.src = 'https://i.postimg.cc/fbccmJCN/Logo-Reporte.png'
+            doc.addImage(img, "PNG", 15, 10, 180, 30);
 
-            AQUI ENTRA LA IMAGEN Y EL LOGO 
-
-            */
-
-            // TITULO
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(30);
-            doc.text("REPORTE SÍSMICO", 100, 40, null, null, 'center') // titulo
-
-            // subtitulo - reporte numero 
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(12);
-            doc.text(["Reporte IGP/CENSIS/RS 2022-" + this.$store.state.selevento], 20, 80, null, null, 'center') // titulo
-
-
-            //BODY
             doc
+              .setFont("helvetica", "bold")
+              .setFontSize(20)
+              .text("REPORTE SÍSMICO", 100, 50, null, null, 'center') // titulo
+
+              // subtitulo - reporte numero 
+              .setFont("helvetica", "bold")
+              .setFontSize(10)
+              .text(["Reporte IGP/CENSIS/RS 2022-" + reporte.nreport], 10, 70) // titulo
+
+              //BODY  
               .setFont("helvetica", "normal")
-              .setFontSize(12)
+              .setFontSize(10)
               .text(["EL INSTITUTO GEOFÍSICO DEL PERÚ informa, que a horas " + setHora + " (hora local) del día " + setFechalarga +
-                ", ocurrió un sismo de M4.6 con epicentro a 20 km al " + reporte.referencia + ".El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada",
-                "MM / MSK, cuyos valores de intensidades son: "], 10, 90, { align: "left", maxWidth: "200" })
+                ", ocurrió un sismo de M4.6 con epicentro a 20 km al " + reporte.referencia + ". El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada" +
+                "MM / MSK, cuyos valores de intensidades son: "], 10, 78, { align: "justify", maxWidth: "190" })
+              .setFont("helvetica", "bold")
+              .setFontSize(12)
+              .text([reporte.intensidad + " en " + reporte.ubicacion], 10, 100)
 
-
-            //acroform
-            var { TextField } = jsPDF.AcroForm;
+            //acroform - R
+            var { TextField, ComboBox } = jsPDF.AcroForm;
             var textField = new TextField();
             textField.showWhenPrinted = true;
-            textField.Rect = [10, 150, 15, 20];
-            textField.fontSize = 12;
-            textField.multiline = true;
-            textField.value = "----------------"; //
+            //textField.Rect = [10, 105, 15, 90] = [ubicacion eje y , ubicacion eje x, ancho <-->, alto   ]
+            textField.fontSize = 8;
+            textField.multiline = false;
+            var ub = 95
+            for (var ii = 0; ii <= 5; ii++) {
+              ub = ub + 12
+              var textField = new TextField();
+              textField.Rect = [10, ub, 180, 7];
+              textField.value = "-------     en     --------------------------------------------------------------------"; //
+              textField.fieldName = "TestTextBox" + ii;
+              doc.addField(textField);
+            }
+
+            //FIRMA
+            doc
+              .setFont("helvetica")
+              .setFontSize(10)
+              .text(["Camacho, " + moment().format('LL')], 10, 185, null, null, 'left') // firma
+
+
+            var comboBox = new ComboBox();
+            comboBox.fieldName = "ChoiceField1";
+            comboBox.topIndex = 1;
+            comboBox.Rect = [167, 182, 32, 8];
+            comboBox.setOptions(["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"]);
+            comboBox.value = "- Seleccionar -";
+            doc.addField(comboBox);
+            doc.text("--------------------------------------", 160, 191)
+
+            var comboBox = new ComboBox();
+            comboBox.fieldName = "ChoiceField12";
+            comboBox.topIndex = 1;
+            comboBox.Rect = [162, 190, 40, 10];
+            comboBox.setOptions(["Operador del CENSIS", "Responsable del CENSIS"]);
+            comboBox.value = "- Seleccionar -";
+            doc.addField(comboBox);
+
+            // Final pagina 1
+            doc
+              .setDrawColor(0)
+              .setFillColor(203, 221, 227)
+              .rect(10, 270, 192, 6, "F")
+              .setFont("helvetica")
+              .setFontSize(10)
+              .text(["Fecha (Local) de la publicación: " + moment().format('DD/MM/YYYY')], 12, 274, null, null, 'left')
+              .text(["Hora (Local): " + moment().format('HH:mm:ss')], 199, 274, null, null, 'right')
+            // paginacion
+            var textField = new TextField();
+            textField.Rect = [105, 280, 7, 7];
+            textField.value = "---"; //
             textField.fieldName = "TestTextBox";
+            doc
+              .addField(textField)
+              .setFont("helvetica", "normal")
+              .setFontSize(11)
+              .text("Página 1 / 2", 179, 284)
 
-            doc.addField(textField);
+
+            // PAGINA 2/2 
+            doc.addPage("a4");
+            doc
+              .setFont("helvetica", "normal")
+              .setFontSize(11)
+              .text("Página 2 / 2", 179, 284)
 
 
-
-
-
-
-            doc.output('dataurlnewwindow');
+            doc.output('dataurlnewwindow') // PUBLICADOR
           }
         }
 
@@ -211,6 +256,8 @@ export default {
               referencia: item.referencia,
               percibido: item.percibido,
               reporte: item.reporte,
+              intensidad: item.intensidad,
+              ubicacion: item.ubicacion,
               ...item.fields,
             };
           });
