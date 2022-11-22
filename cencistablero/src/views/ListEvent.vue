@@ -112,41 +112,43 @@ export default {
             // AQUI ENTRA LA IMAGEN Y EL LOGO 
             var img = new Image()
             img.src = 'https://i.postimg.cc/fbccmJCN/Logo-Reporte.png'
-            doc.addImage(img, "PNG", 15, 10, 180, 30);
+            doc.addImage(img, "PNG", 45, 20, 118, 20);
 
             doc
               .setFont("helvetica", "bold")
-              .setFontSize(20)
-              .text("REPORTE SÍSMICO", 100, 50, null, null, 'center') // titulo
+              .setFontSize(18)
+              .text("REPORTE SÍSMICO", 100, 52, null, null, 'center') // titulo
 
               // subtitulo - reporte numero 
               .setFont("helvetica", "bold")
-              .setFontSize(10)
-              .text(["Reporte IGP/CENSIS/RS 2022-" + reporte.nreport], 10, 70) // titulo
+              .setFontSize(12)
+              .text(["Reporte IGP/CENSIS/RS 2022-" + reporte.nreport], 10, 67) // titulo
 
               //BODY  
               .setFont("helvetica", "normal")
-              .setFontSize(10)
+              .setFontSize(12)
               .text(["EL INSTITUTO GEOFÍSICO DEL PERÚ informa, que a horas " + setHora + " (hora local) del día " + setFechalarga +
                 ", ocurrió un sismo de M4.6 con epicentro a 20 km al " + reporte.referencia + ". El movimiento telúrico fue evaluado con las escalas de Mercalli Modificada" +
                 "MM / MSK, cuyos valores de intensidades son: "], 10, 78, { align: "justify", maxWidth: "190" })
               .setFont("helvetica", "bold")
-              .setFontSize(12)
-              .text([reporte.intensidad + " en " + reporte.ubicacion], 10, 100)
+              .setFontSize(13)
+              .text([reporte.intensidad + " en " + reporte.ubicacion], 10, 103)
 
             //acroform - R
-            var { TextField, ComboBox } = jsPDF.AcroForm;
-            var textField = new TextField();
-            textField.showWhenPrinted = true;
-            //textField.Rect = [10, 105, 15, 90] = [ubicacion eje y , ubicacion eje x, ancho <-->, alto   ]
-            textField.fontSize = 8;
-            textField.multiline = false;
-            var ub = 95
+            var { TextField, ComboBox, ListBox } = jsPDF.AcroForm; // INYECTAR ACROFORMS
+
+            var ub = 97
             for (var ii = 0; ii <= 5; ii++) {
-              ub = ub + 12
+              ub = ub + 10
               var textField = new TextField();
-              textField.Rect = [10, ub, 180, 7];
-              textField.value = "-------     en     --------------------------------------------------------------------"; //
+
+              textField.showWhenPrinted = false;
+              textField.multiline = false;
+              textField.fontStyle = "bold";
+              textField.fontSize = 13;
+              textField.maxFontSize = 13;
+              textField.Rect = [10, ub, 180, 6];
+              textField.value = "-------     en     --------------------------------------------------------------------";
               textField.fieldName = "TestTextBox" + ii;
               doc.addField(textField);
             }
@@ -154,46 +156,72 @@ export default {
             //FIRMA
             doc
               .setFont("helvetica")
-              .setFontSize(10)
-              .text(["Camacho, " + moment().format('LL')], 10, 185, null, null, 'left') // firma
+              .setFontSize(12)
+              .text(["Camacho, " + moment().format('LL')], 10, 180, null, null, 'left') // firma
 
 
             var comboBox = new ComboBox();
             comboBox.fieldName = "ChoiceField1";
             comboBox.topIndex = 1;
-            comboBox.Rect = [167, 182, 32, 8];
+            comboBox.fontSize = 10
+            comboBox.Rect = [162, 172, 32, 8];
             comboBox.setOptions(["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"]);
             comboBox.value = "- Seleccionar -";
             doc.addField(comboBox);
-            doc.text("--------------------------------------", 160, 191)
+            doc.text("--------------------------------", 153, 181)
 
             var comboBox = new ComboBox();
             comboBox.fieldName = "ChoiceField12";
             comboBox.topIndex = 1;
-            comboBox.Rect = [162, 190, 40, 10];
+            comboBox.fontSize = 10
+            comboBox.Rect = [158, 180, 40, 7];
             comboBox.setOptions(["Operador del CENSIS", "Responsable del CENSIS"]);
             comboBox.value = "- Seleccionar -";
             doc.addField(comboBox);
+
+
+
+            //CELDAS
+            doc
+              .rect(10, 198, 192, 9)
+              .rect(10, 207, 192, 9)
+              .rect(10, 216, 192, 9)
+              .rect(10, 225, 192, 9)
+              .rect(10, 234, 192, 9)
+              .rect(10, 243, 192, 9)
+              .rect(10, 252, 192, 9)
+              //-- lines
+
+              .setLineWidth(0.3)
+              .line(53, 225, 53, 207)
+              .line(82, 225, 82, 207)
+              .line(112, 225, 112, 207)
+              .line(142, 225, 142, 207)
+              .line(185, 225, 185, 207)
 
             // Final pagina 1
             doc
               .setDrawColor(0)
               .setFillColor(203, 221, 227)
-              .rect(10, 270, 192, 6, "F")
+              .rect(10, 271, 192, 6, "F")
               .setFont("helvetica")
               .setFontSize(10)
-              .text(["Fecha (Local) de la publicación: " + moment().format('DD/MM/YYYY')], 12, 274, null, null, 'left')
-              .text(["Hora (Local): " + moment().format('HH:mm:ss')], 199, 274, null, null, 'right')
+              .text(["Fecha (Local) de la publicación: " + moment().format('DD/MM/YYYY')], 12, 275, null, null, 'left')
+              .text(["Hora (Local): " + moment().format('HH:mm:ss')], 199, 275, null, null, 'right')
+
             // paginacion
             var textField = new TextField();
-            textField.Rect = [105, 280, 7, 7];
-            textField.value = "---"; //
+            textField.Rect = [105, 280, 9, 7];
+            textField.fontSize = 11;
+            textField.value = "----"; //
             textField.fieldName = "TestTextBox";
             doc
               .addField(textField)
               .setFont("helvetica", "normal")
               .setFontSize(11)
-              .text("Página 1 / 2", 179, 284)
+              .text("Página 1 / 2", 179, 285)
+
+
 
 
             // PAGINA 2/2 
@@ -201,7 +229,25 @@ export default {
             doc
               .setFont("helvetica", "normal")
               .setFontSize(11)
-              .text("Página 2 / 2", 179, 284)
+              .text("Página 2 / 2", 179, 285)
+
+
+            // testeo
+            var listbox = new ListBox();
+            listbox.edit = false;
+            listbox.fieldName = "ChoiceField2";
+            listbox.topIndex = 1;
+            listbox.Rect = [50, 200, 30, 10];
+            listbox.setOptions(["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"]);
+            comboBox.value = "- Seleccionar -";
+            doc.addField(listbox);
+
+
+
+            //CELDAS
+            doc.rect(10, 190, 192, 12)
+
+
 
 
             doc.output('dataurlnewwindow') // PUBLICADOR
