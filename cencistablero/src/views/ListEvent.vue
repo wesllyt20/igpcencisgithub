@@ -157,7 +157,7 @@ export default {
             doc
               .setFont("helvetica")
               .setFontSize(12)
-              .text(["Camacho, " + moment().format('LL')], 10, 180, null, null, 'left') // firma
+              .text(["Camacho, " + moment().format('LL')], 10, 173, null, null, 'left') // firma
 
 
             var comboBox = new ComboBox();
@@ -190,8 +190,7 @@ export default {
               .rect(10, 234, 192, 9)
               .rect(10, 243, 192, 9)
               .rect(10, 252, 192, 9)
-              //-- lines
-
+              //-- Seccion de arriba
               .setLineWidth(0.3)
               .line(53, 225, 53, 207)
               .line(82, 225, 82, 207)
@@ -199,7 +198,41 @@ export default {
               .line(142, 225, 142, 207)
               .line(185, 225, 185, 207)
 
-            // Final pagina 1
+
+            doc
+              .setFont("helvetica", "bold")
+              .setFontSize(14)
+              .text("PARÁMETROS FOCALES", 105, 204, null, null, 'center')
+              .setFontSize(12)
+              .text("Fecha UTC", 12, 213, null, null, 'left')
+              .text("Hora Origen UTC", 12, 222, null, null, 'left')
+              .text("Latitud", 84, 213, null, null, 'left')
+              .text("Longitud", 84, 222, null, null, 'left')
+              .text("Magnitud (ML)", 144, 213, null, null, 'left')
+              .text("Profundidad (KM)", 144, 222, null, null, 'left')
+
+
+              // -- Seccion de abajo
+              .line(43, 234, 43, 261)
+              .line(142, 234, 142, 261)
+              .line(175, 234, 175, 261)
+
+              // RELLENO
+              .setFontSize(14)
+              .text("COMUNICACIÓN", 105, 231, null, null, 'center')
+              .setFontSize(12)
+              .text("Entidad", 12, 240, null, null, 'left')
+              .text("DHN", 12, 249, null, null, 'left')
+              .text("INDECI", 12, 258, null, null, 'left')
+              .text("Receptor", 84, 240, null, null, 'left')
+              .text("Fecha Local", 144, 240, null, null, 'left')
+              .text("Hora Local", 177, 240, null, null, 'left')
+
+
+
+
+
+            // paginacion
             doc
               .setDrawColor(0)
               .setFillColor(203, 221, 227)
@@ -209,7 +242,6 @@ export default {
               .text(["Fecha (Local) de la publicación: " + moment().format('DD/MM/YYYY')], 12, 275, null, null, 'left')
               .text(["Hora (Local): " + moment().format('HH:mm:ss')], 199, 275, null, null, 'right')
 
-            // paginacion
             var textField = new TextField();
             textField.Rect = [105, 280, 9, 7];
             textField.fontSize = 11;
@@ -221,34 +253,59 @@ export default {
               .setFontSize(11)
               .text("Página 1 / 2", 179, 285)
 
-
-
-
             // PAGINA 2/2 
             doc.addPage("a4");
+            // Titulo y subs
+            doc
+              .setFont("helvetica", "bold")
+              .setFontSize(14)
+              .text("OBSERVACIONES", 15, 22, null, null, 'left')
+              .text("EVALUACIÓN DE INTENSIDADES (MM/MSK)", 15, 62, null, null, 'left')
+
+            //CELDAS
+            doc
+              .rect(10, 25, 192, 30)
+              .rect(15, 65, 187, 212)
+              //-- lines horizontal
+              .setLineWidth(0.3)
+              .line(15, 72, 202, 72)
+              .line(15, 230, 202, 230)
+              .line(15, 242, 202, 242)
+              .line(15, 254, 202, 254)
+              .line(15, 266, 202, 266)
+
+              // -- lineas vertical 
+              .line(145, 65, 145, 230)
+              .line(53, 242, 53, 277)
+              .line(84, 242, 84, 266)
+              .line(115, 242, 115, 266)
+              .line(145, 242, 145, 266)
+              .line(182, 242, 182, 266)
+
+
+            // Relleno
+            doc
+              .setFont("helvetica", "bold")
+              .setFontSize(13)
+              .text("DATOS DE LA EVALUACIÓN", 50, 70, null, null, 'left')
+              .text("INFORMANTE", 158, 70, null, null, 'left')
+              .setFontSize(14)
+              .text("REPORTE SÍSMICO REPROCESADO", 105, 238, null, null, 'center')
+              .setFontSize(12)
+              .text("Fecha UTC", 17, 250, null, null, 'left')
+              .text("Hora Origen UTC", 17, 262, null, null, 'left')
+              .text("Epicentro", 17, 273, null, null, 'left')
+
+              .text("Latitud", 86, 250, null, null, 'left')
+              .text("Longitud", 86, 262, null, null, 'left')
+              .text("Magnitud", 147, 250, null, null, 'left')
+              .text("Profundidad(km)", 147, 262, null, null, 'left')
+
+            //paginacion
             doc
               .setFont("helvetica", "normal")
               .setFontSize(11)
               .text("Página 2 / 2", 179, 285)
-
-
-            // testeo
-            var listbox = new ListBox();
-            listbox.edit = false;
-            listbox.fieldName = "ChoiceField2";
-            listbox.topIndex = 1;
-            listbox.Rect = [50, 200, 30, 10];
-            listbox.setOptions(["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"]);
-            comboBox.value = "- Seleccionar -";
-            doc.addField(listbox);
-
-
-
-            //CELDAS
-            doc.rect(10, 190, 192, 12)
-
-
-
 
             doc.output('dataurlnewwindow') // PUBLICADOR
           }
