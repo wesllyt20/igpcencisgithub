@@ -86,3 +86,9 @@ export default {
   }
 }
 </script> 
+<style>
+.mdi-calendar-clock:before {
+  color: #000000;
+
+}
+</style>

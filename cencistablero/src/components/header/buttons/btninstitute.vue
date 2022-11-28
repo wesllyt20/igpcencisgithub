@@ -4,7 +4,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="azulface" @click="grupo1()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo1()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data1" :key="item.id">
@@ -23,7 +23,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="azulface" @click="grupo2()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data2" :key="item.id">
@@ -37,12 +37,12 @@
               </v-tooltip>
             </div>
           </v-btn-toggle>
-        </v-col> 
+        </v-col>
       </div>
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="azulface" @click="grupo3()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo3()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data3" :key="item.id">
@@ -61,7 +61,7 @@
       <div class="mx-4">
         <v-col cols="3">
           <v-btn-toggle tile multiple shaped>
-            <v-btn class="btnshare" color="azulface" @click="grupo4()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo4()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data4" :key="item.id">
@@ -74,8 +74,7 @@
                 <span>{{ item.nombre }}</span>
               </v-tooltip>
             </div>
-              <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'"
-                  width="35px" /></v-btn>
+            <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'" width="35px" /></v-btn>
           </v-btn-toggle>
         </v-col>
       </div>
@@ -97,9 +96,10 @@ export default {
       test: "",
       cangr: [],
       text: 'center',
-      pubestado: 0,
+      pubestado: 2,
       color: 4,
       setcolor: '',
+      pubestado: 3,
 
     };
   },
@@ -212,17 +212,29 @@ export default {
             this.setcolor = 'white';
       }
     },
+    pubestado2(val, old) {
+      switch (this.pubestado) {
+        case "1":
+          return console.log("Estado: enviando"),
+            this.setcolor2 = 'yellow';
+        case "2":
+          return console.log("Estado: enviado"),
+            this.setcolor2 = 'green';
+        case "3":
+          return console.log("Estado: no enviado"),
+            this.setcolor2 = 'red';
+        default:
+          return console.log("Estado: original"),
+            this.setcolor2 = 'white';
+      }
+    },
 
   }
 }
 </script>
 <style>
-.sharegr1.v-btn--active::before,
-.sharegr1.v-btn--active:hover::before,
-.sharegr1.v-btn--active,
-.sharegr2.v-btn--active::before,
-.sharegr2.v-btn--active:hover::before,
-.sharegr2.v-btn--active,
+
+
 .sharegr3.v-btn--active::before,
 .sharegr3.v-btn--active:hover::before,
 .sharegr3.v-btn--active,
@@ -230,8 +242,21 @@ export default {
 .sharegr4.v-btn--active:hover::before,
 .sharegr4.v-btn--active {
   opacity: 1 !important;
-  background-color: v-bind(setcolor);
-  ;
+  background-color:yellow;
+}
+.sharegr1.v-btn--active::before,
+.sharegr1.v-btn--active:hover::before,
+.sharegr1.v-btn--active{
+
+  opacity: 1 !important;
+  background-color: green;
+
+}
+.sharegr2.v-btn--active::before,
+.sharegr2.v-btn--active:hover::before,
+.sharegr2.v-btn--active{
+  opacity: 1 !important;
+  background-color: red;
 }
 
 .v-btn-toggle>.v-btn.v-btn {

@@ -17,7 +17,7 @@
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
-          <b id="texto">Definitivo</b>
+          <b id="texto">Simulacro</b>
           <v-switch color="#000000" v-model="switch2" @change="setTheme2" :readonly="disable2" flat> </v-switch>
         </v-col>
 
