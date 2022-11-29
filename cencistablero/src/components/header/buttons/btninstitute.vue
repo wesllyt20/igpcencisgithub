@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-row>
-      <div class="mx-4">
-        <v-col cols="3">
+      <div >
+        <v-col >
           <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#3b5998" @click="grupo1()">
               <v-icon color="white">mdi-share</v-icon>
@@ -14,14 +14,14 @@
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{ item.nombre }}</span>
+                <span>{{ item.descripcion }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
         </v-col>
       </div>
       <div class="mx-4">
-        <v-col cols="3">
+        <v-col >
           <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#3b5998" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
@@ -33,14 +33,14 @@
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{ item.nombre }}</span>
+                <span>{{ item.descripcion }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
         </v-col>
       </div>
       <div class="mx-4">
-        <v-col cols="3">
+        <v-col >
           <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#3b5998" @click="grupo3()">
               <v-icon color="white">mdi-share</v-icon>
@@ -52,14 +52,14 @@
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{ item.nombre }}</span>
+                <span>{{ item.descripcion }}</span>
               </v-tooltip>
             </div>
           </v-btn-toggle>
         </v-col>
       </div>
       <div class="mx-4">
-        <v-col cols="3">
+        <v-col >
           <v-btn-toggle tile multiple shaped>
             <v-btn class="btnshare" color="#3b5998" @click="grupo4()">
               <v-icon color="white">mdi-share</v-icon>
@@ -71,7 +71,7 @@
                     <img v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
                 </template>
-                <span>{{ item.nombre }}</span>
+                <span>{{ item.descripcion }}</span>
               </v-tooltip>
             </div>
             <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'" width="35px" /></v-btn>
@@ -104,11 +104,11 @@ export default {
     };
   },
   created() {
-    axios.get("https://api.npoint.io/0401632c71f28605c506/").then(r => this.data = r.data),
-      axios.get("https://api.npoint.io/0401632c71f28605c506/0").then(r => this.data1 = r.data.grupo),
-      axios.get("https://api.npoint.io/0401632c71f28605c506/1").then(r => this.data2 = r.data.grupo),
-      axios.get("https://api.npoint.io/0401632c71f28605c506/2").then(r => this.data3 = r.data.grupo),
-      axios.get("https://api.npoint.io/0401632c71f28605c506/3").then(r => this.data4 = r.data.grupo)
+    axios.get("https://api.npoint.io/511b4e352667b80a864e").then(r => this.data = r.data),
+      axios.get("https://api.npoint.io/511b4e352667b80a864e/0").then(r => this.data1 = r.data.grupo),
+      axios.get("https://api.npoint.io/511b4e352667b80a864e/1").then(r => this.data2 = r.data.grupo),
+      axios.get("https://api.npoint.io/511b4e352667b80a864e/2").then(r => this.data3 = r.data.grupo),
+      axios.get("https://api.npoint.io/511b4e352667b80a864e/3").then(r => this.data4 = r.data.grupo)
 
   },
   methods: {
@@ -233,8 +233,6 @@ export default {
 }
 </script>
 <style>
-
-
 .sharegr3.v-btn--active::before,
 .sharegr3.v-btn--active:hover::before,
 .sharegr3.v-btn--active,
@@ -242,19 +240,21 @@ export default {
 .sharegr4.v-btn--active:hover::before,
 .sharegr4.v-btn--active {
   opacity: 1 !important;
-  background-color:yellow;
+  background-color: yellow;
 }
+
 .sharegr1.v-btn--active::before,
 .sharegr1.v-btn--active:hover::before,
-.sharegr1.v-btn--active{
+.sharegr1.v-btn--active {
 
   opacity: 1 !important;
   background-color: green;
 
 }
+
 .sharegr2.v-btn--active::before,
 .sharegr2.v-btn--active:hover::before,
-.sharegr2.v-btn--active{
+.sharegr2.v-btn--active {
   opacity: 1 !important;
   background-color: red;
 }

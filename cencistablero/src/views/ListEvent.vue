@@ -201,7 +201,7 @@ export default {
         doc
           .setFont("helvetica", "bold")
           .setFontSize(14)
-          .text("PARÁMETROS FOCALES", 105, 204, null, null, 'center')
+          .text("PARÁMETROS FOCALES", 100, 204, null, null, 'center')
           .setFontSize(12)
           .text("Fecha UTC", 12, 213, null, null, 'left')
           .text("Hora Origen UTC", 12, 222, null, null, 'left')
@@ -218,7 +218,7 @@ export default {
 
           // RELLENO
           .setFontSize(14)
-          .text("COMUNICACIÓN", 105, 231, null, null, 'center')
+          .text("COMUNICACIÓN", 100, 231, null, null, 'center')
           .setFontSize(12)
           .text("Entidad", 12, 240, null, null, 'left')
           .text("DHN", 12, 249, null, null, 'left')

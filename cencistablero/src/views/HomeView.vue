@@ -17,23 +17,23 @@
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
-          <b id="texto">Simulacro</b>
+          <b id="texto">Simulación</b>
           <v-switch color="#000000" v-model="switch2" @change="setTheme2" :readonly="disable2" flat> </v-switch>
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
-          <b id="texto">Simulación</b>
+          <b id="texto">Simulacro</b>
           <v-switch color="#000000" v-model="switch3" @change="setTheme3" :readonly="disable3" flat> </v-switch>
         </v-col>
 
 
 
         <v-col cols="4">
-          <v-btn color="#9CCC65" x-large class="ma-6 mx-1 ml-0 white--text">
+          <v-btn color="blue-grey" x-large class="ma-6 mx-1 ml-0 white--text">
             <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
             Evento manual
           </v-btn>
-          <v-btn color="#E57373" x-large class="ma-6 mx-1 white--text">
+          <v-btn color="blue-grey" x-large class="ma-6 mx-1 white--text">
             <v-icon right dark class="mx-0"> mdi-format-list-bulleted </v-icon>
             Reportes
           </v-btn>
@@ -45,6 +45,7 @@
       <v-row class="mx-1 ma-0 mt-n12 mb-n1" align="center">
         <btninstitute> </btninstitute> <!-- BTN institutos-->
       </v-row>
+
     </v-card>
     <v-container fluid>
       <v-layout>
@@ -53,8 +54,7 @@
           <detailearthq ref="form">
           </detailearthq>
           <!--aqui es -->
-          <v-divider></v-divider>
-          <reporteid></reporteid>
+
         </v-flex>
 
         <!--Referencias-->
@@ -108,7 +108,6 @@ import detailubication from "@/components/contents/columns/detailubication.vue";
 import profundidadmap from "@/components/addons/profundidadmap.vue";
 import twitterpub from "@/components/contents/publisher/twitterpub.vue";
 import facebookpub from "@/components/contents/publisher/facebookpub.vue";
-import reporteid from "@/components/contents/publisher/reporteid.vue";
 import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import btninstitute from "@/components/header/buttons/btninstitute.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
@@ -124,7 +123,6 @@ export default {
     profundidadmap,
     twitterpub,
     facebookpub,
-    reporteid,
     detailcharacter,
     btninstitute,
     barnavegation,
@@ -189,7 +187,7 @@ export default {
         return (
           (this.switch2 = false),
           (this.switch1 = false),
-          (this.color = "#42A5F5"),
+          (this.color = "#53ad6c"),
           (this.disable3 = true),
           (this.disable2 = false),
           (this.disable1 = false),

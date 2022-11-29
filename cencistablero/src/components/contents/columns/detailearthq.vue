@@ -1,8 +1,10 @@
 <template>
   <v-container fluid class="ml-5">
+
     <v-row ALIGN="center">
       <v-col cols="12" class="pa-1">
-        <v-btn class="ma-1" color="grey" plain icon @click="show = !show" v-bind:class="{'green': !show, 'red': show}">
+        <v-btn class="ma-1" color="grey" plain icon @click="show = !show"
+          v-bind:class="{ 'green': !show, 'red': show }">
           <v-icon id="lock">{{ !show ? 'mdi-lock-open-variant' : 'mdi-lock' }}</v-icon>
         </v-btn>
         <v-btn color="blue" small dark v-on:click="reporte += 1">
@@ -13,6 +15,7 @@
         </v-btn>
       </v-col>
     </v-row>
+
     <v-form ref="form" v-model="valid" lazy-validation>
       <!--validacion pendeja aqui-->
       <v-row class="mb-n10">
@@ -75,23 +78,25 @@
       </v-row>
       <v-row class="mb-n10">
         <v-col cols="4">
-          <b style="color: #00000; font-size: large">Magnitud:</b>
+          <b style="color: #00000; font-size: x-large">Magnitud:</b>
         </v-col>
         <v-col cols="4">
-          <v-text-field class="mag" :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required step="0.1"
-            solo outlined dense type="number" oninput="if(Number(this.value) > Number(this.max)) this.value = this.max"
-            max="10" min="0">
+          <v-text-field x-large class="mag" :value=addMagnitud() v-model="magnitud" :rules="magnitudRules" required
+            step="0.1" solo outlined dense type="number"
+            oninput="if(Number(this.value) > Number(this.max)) this.value = this.max" max="10" min="0">
           </v-text-field>
         </v-col>
-        <v-icon class="mb-5" :color="colcircle" large>mdi-circle</v-icon>
+        <v-icon class="mb-6" :color="colcircle" x-large>mdi-circle</v-icon>
       </v-row>
     </v-form>
     <v-row class="pa-3 mb-n10">
       <v-col cols="5">
-        <v-chip color="orange" label x-large><b>Próximo: {{ this.reporte + 1 }}</b></v-chip>
+        <v-chip id="chipctr">
+          <b>Próximo: {{ this.reporte + 1 }}</b>
+        </v-chip>
       </v-col>
       <v-col cols="4">
-        <qrcode class="mt-n3"></qrcode>
+        <qrcode class="mt-n1"></qrcode>
       </v-col>
     </v-row>
 
@@ -265,5 +270,11 @@ export default {
   color: black !important;
 }
 
-.mag {}
+#chipctr {
+  background-color: orange;
+  font-size: 24px;
+  height: 80px;
+  width: 100%;
+  text-align: center !important;
+}
 </style>
