@@ -1,21 +1,23 @@
 <template>
   <div>
-    <v-toolbar
-      dark
-      prominent
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    >
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer" large></v-app-bar-nav-icon>
+    <v-toolbar dark prominent src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+
 
       <v-toolbar-title>
-        <h1><b>Buscar Localidades</b></h1></v-toolbar-title
-      >
+        <h1><b>Buscar Localidades</b></h1>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/" icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
+      <v-row>
+        <v-col cols="1" align="center" class="ml-auto ">
+          <v-btn to="/" icon class="pa-8 ml-6">
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
+
+          <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="pa-8 ml-6"></v-app-bar-nav-icon>
+        </v-col>
+      </v-row>
     </v-toolbar>
     <br />
 
@@ -32,14 +34,7 @@
               <b style="color: #00000; font-size: x-large">Latitud:</b>
             </v-col>
             <v-col cols="7" class="ml-auto">
-              <v-text-field
-                step="0.01"
-                solo
-                outlined
-                dense
-                hide-details
-                type="number"
-              >
+              <v-text-field step="0.01" solo outlined dense hide-details type="number">
               </v-text-field>
             </v-col>
           </v-row>
@@ -48,22 +43,13 @@
               <b style="color: #00000; font-size: x-large">Longitud:</b>
             </v-col>
             <v-col cols="7" class="ml-auto">
-              <v-text-field
-                step="0.000001"
-                solo
-                outlined
-                dense
-                hide-details
-                type="number"
-              >
+              <v-text-field step="0.000001" solo outlined dense hide-details type="number">
               </v-text-field>
             </v-col>
           </v-row>
           <v-row class="text-center">
             <v-col cols="3">
-              <label
-                ><b style="color: #00000; font-size: x-large">Nombre:</b></label
-              >
+              <label><b style="color: #00000; font-size: x-large">Nombre:</b></label>
             </v-col>
             <v-col cols="7" class="ml-auto">
               <v-text-field solo outlined dense hide-details> </v-text-field>
@@ -77,38 +63,24 @@
               <h1>Localidades encontradas</h1>
             </v-col>
             <v-col cols="3" class="ml-auto">
-              <v-text-field
-                v-model="search"
-                append-icon="mdi-magnify"
-                label="Buscar"
-                single-line
-                hide-details
-              ></v-text-field>
+              <v-text-field v-model="search" append-icon="mdi-magnify" label="Buscar" single-line
+                hide-details></v-text-field>
             </v-col>
           </v-card-title>
           <v-data-table :headers="headers" :items="desserts" :search="search">
             <template v-slot:[`item.editar`]="{ item }">
-              <v-icon
-                color="#FFC107"
-                large
-                class="mr-2"
-                @click="editItem(item)"
-              >
+              <v-icon color="#FFC107" large class="mr-2" @click="editItem(item)">
                 mdi-lead-pencil
               </v-icon>
-            </template></v-data-table
-          >
+            </template></v-data-table>
         </v-col>
       </v-row>
     </v-layout>
     <!--BAR NAVEGATION-->
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary rigth>
       <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-        
+        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+
           <barnavegation></barnavegation>
 
         </v-list-item-group>

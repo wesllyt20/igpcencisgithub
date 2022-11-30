@@ -38,12 +38,13 @@
             Reportes
           </v-btn>
         </v-col>
-        <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="mb-10 ml-auto"></v-app-bar-nav-icon>
+
       </v-row>
       <br />
 
       <v-row class="mx-1 ma-0 mt-n12 mb-n1" align="center">
         <btninstitute> </btninstitute> <!-- BTN institutos-->
+        <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="pa-2 ml-12"></v-app-bar-nav-icon>
       </v-row>
 
     </v-card>
@@ -245,7 +246,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #public {
   margin-right: -120px !important;
 }
@@ -257,5 +258,9 @@ export default {
 
 .v-input__slot {
   justify-content: center !important;
+}
+
+.mdi-menu::before {
+  color: rgb(88, 88, 88);
 }
 </style>

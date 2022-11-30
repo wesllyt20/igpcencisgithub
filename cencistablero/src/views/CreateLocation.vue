@@ -1,21 +1,22 @@
 <template>
   <div>
-    <v-toolbar
-      dark
-      prominent
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" large></v-app-bar-nav-icon>
+    <v-toolbar dark prominent src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+
 
       <v-toolbar-title>
-        <h1><b>CREAR LOCALIDAD</b></h1></v-toolbar-title
-      >
+        <h1><b>CREAR LOCALIDAD</b></h1>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
+      <v-row>
+        <v-col cols="1" align="center" class="ml-auto ">
+          <v-btn to="/" icon class="pa-8 ml-3">
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
 
-      <v-btn to="/" icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
+          <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="pa-8 ml-3"></v-app-bar-nav-icon>
+        </v-col>
+      </v-row>
     </v-toolbar>
     <br />
     <br />
@@ -25,20 +26,10 @@
         <v-col cols="6">
           <v-row>
             <v-col cols="6">
-              <v-select
-                label="Región"
-                :items="itemsreg"
-                dense
-                outlined
-              ></v-select>
+              <v-select label="Región" :items="itemsreg" dense outlined></v-select>
             </v-col>
             <v-col cols="6">
-              <v-select
-                label="Provincia"
-                :items="itemspro"
-                dense
-                outlined
-              ></v-select>
+              <v-select label="Provincia" :items="itemspro" dense outlined></v-select>
             </v-col>
           </v-row>
           <geojsonmap></geojsonmap>
@@ -72,14 +63,7 @@
               <b style="color: #00000; font-size: x-large">Latitud:</b>
             </v-col>
             <v-col cols="4">
-              <v-text-field
-                step="0.01"
-                solo
-                outlined
-                dense
-                hide-details
-                type="number"
-              >
+              <v-text-field step="0.01" solo outlined dense hide-details type="number">
               </v-text-field>
             </v-col>
           </v-row>
@@ -88,14 +72,7 @@
               <b style="color: #00000; font-size: x-large">Longitud:</b>
             </v-col>
             <v-col cols="4">
-              <v-text-field
-                step="0.000001"
-                solo
-                outlined
-                dense
-                hide-details
-                type="number"
-              >
+              <v-text-field step="0.000001" solo outlined dense hide-details type="number">
               </v-text-field>
             </v-col>
           </v-row>
@@ -110,12 +87,9 @@
         </v-col>
       </v-row>
       <!--BAR NAVEGATION-->
-      <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+      <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
         <v-list nav dense>
-          <v-list-item-group
-            v-model="group"
-            active-class="deep-purple--text text--accent-4"
-          >
+          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <barnavegation></barnavegation>
           </v-list-item-group>
         </v-list>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar dark prominent src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" large></v-app-bar-nav-icon>
+
 
       <v-toolbar-title>
         <h1><b>LISTA DE EVENTOS SÍSMICOS PUBLICADOS </b></h1>
@@ -9,9 +9,15 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn to="/" icon>
-        <v-icon>mdi-export</v-icon>
-      </v-btn>
+      <v-row>
+        <v-col cols="1" align="center" class="ml-auto ">
+          <v-btn to="/" icon class="ml-1">
+            <v-icon>mdi-export</v-icon>
+          </v-btn>
+
+          <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        </v-col>
+      </v-row>
     </v-toolbar>
     <v-card>
       <v-card-title>
@@ -43,7 +49,7 @@
       </v-data-table>
     </v-card>
     <!--BAR NAVEGATION-->
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
           <barnavegation></barnavegation>
