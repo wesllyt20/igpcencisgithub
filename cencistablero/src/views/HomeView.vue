@@ -38,8 +38,9 @@
             Reportes
           </v-btn>
         </v-col>
-
+        <carduser class="mt-10" />
       </v-row>
+
       <br />
 
       <v-row class="mx-1 ma-0 mt-n12 mb-n1" align="center">
@@ -112,7 +113,9 @@ import facebookpub from "@/components/contents/publisher/facebookpub.vue";
 import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import btninstitute from "@/components/header/buttons/btninstitute.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
+import carduser from "@/components/header/barnav/carduser.vue";
 import { mapState } from 'vuex';
+
 
 
 
@@ -128,7 +131,7 @@ export default {
     btninstitute,
     barnavegation,
     detailearthq,
-
+    carduser,
   },
 
 
@@ -246,7 +249,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 #public {
   margin-right: -120px !important;
 }
@@ -261,6 +264,6 @@ export default {
 }
 
 .mdi-menu::before {
-  color: rgb(88, 88, 88);
+  color: rgb(88, 88, 88) !important;
 }
 </style>

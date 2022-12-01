@@ -3,16 +3,16 @@
     <v-list dense>
       <v-list-item class="px-2">
         <v-list-item-avatar>
-          <v-img src="@/assets/images/developer.png"></v-img>
+          <v-img v-bind:src="require('@/assets/images/' + myFilename)"></v-img>
         </v-list-item-avatar>
       </v-list-item>
 
       <v-list-item link>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            Raphael Murphy Ramos
+            {{ user }}
           </v-list-item-title>
-          <v-list-item-subtitle>otidg02@igp.gob.pe</v-list-item-subtitle>
+          <v-list-item-subtitle>{{ range }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -77,8 +77,23 @@ export default {
   data() {
     return {
       dialog: false,
+      user: localStorage.getItem('user'),
+      range: localStorage.getItem('range'),
+      myFilename: "igp.png"
+
     };
   },
+  mounted() {
+    if (localStorage.getItem('user') == "Jacob Baños") {
+      this.myFilename = "developer.png"
+    }
+    if (localStorage.getItem('user') == "Efrain Fernandez") {
+      this.myFilename = "trabajador1.png"
+    }
+    if (localStorage.getItem('user') == "Rolando Kcaña") {
+      this.myFilename = "trabajador2.png"
+    }
+  }
 };
 </script>
 <style>

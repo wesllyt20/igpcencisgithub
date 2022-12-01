@@ -54,7 +54,7 @@ export default {
       center: [],
       geojson: null,
       fillColor: "#e4ce7f",
-      url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="https://ultimosismo.igp.gob.pe/"> Instituto Geofísico del Perú</a> Equipo de Desarrollo IGP,',
       marker: latLng(),

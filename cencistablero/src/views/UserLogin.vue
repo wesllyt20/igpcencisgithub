@@ -41,21 +41,42 @@ export default {
    props: {
       source: String,
    },
+   mounted() {
+      if (localStorage.user) this.user = localStorage.user;
+      if (localStorage.range) this.range = localStorage.range;
+   },
    methods: {
       validate() {
+
+
+
+
+
+
+
+
+
+         
          this.$refs.form.validate()
          if (this.user == null || this.range == null) {
 
-            console.log("No puede ingresar")
+            alert("No puede ingresar, falta seleccionar nombre y/o cargo.")
          } else {
-            console.log("Puede ingresar")
+            alert("Puede ingresar")
+            localStorage.user = this.user;
+            localStorage.range = this.range
+            this.$router.push('/')
          }
 
       },
 
 
    },
+   created() {
+      localStorage.removeItem('user')
+      localStorage.removeItem('range')
 
+   },
    data: () => ({
       valid: true,
       items: ["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"],

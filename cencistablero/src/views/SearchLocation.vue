@@ -77,7 +77,7 @@
       </v-row>
     </v-layout>
     <!--BAR NAVEGATION-->
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary rigth>
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
       <v-list nav dense>
         <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
 
@@ -131,3 +131,8 @@ export default {
   },
 };
 </script>
+<style>
+.mdi-menu::before {
+  color: white !important
+}
+</style>

@@ -157,7 +157,6 @@ export default {
           verga++
         }
       }
-      console.log("->", this.$store.state.athena)
     },
   },
 
