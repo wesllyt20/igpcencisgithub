@@ -12,21 +12,21 @@
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Preliminar</b>
-          <v-switch class="switch1" color="#000000" v-model="switch1" @change="setTheme" :readonly="disable1">
+          <v-switch class="switch1" v-model="switch1" @change="setTheme" :readonly="disable1">
           </v-switch>
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Simulación</b>
-          <v-switch color="#000000" v-model="switch2" @change="setTheme2" :readonly="disable2" flat> </v-switch>
+          <v-switch v-model="switch2" @change="setTheme2" :readonly="disable2" flat> </v-switch>
         </v-col>
 
         <v-col cols="1" align="center" class="swtichtop">
           <b id="texto">Simulacro</b>
-          <v-switch color="#000000" v-model="switch3" @change="setTheme3" :readonly="disable3" flat> </v-switch>
+          <v-switch v-model="switch3" @change="setTheme3" :readonly="disable3" flat> </v-switch>
         </v-col>
 
-
+        <v-btn @click="testeo"> test</v-btn>
 
         <v-col cols="4">
           <v-btn color="blue-grey" x-large class="ma-6 mx-1 ml-0 white--text">
@@ -114,8 +114,12 @@ import detailcharacter from "@/components/contents/columns/detailcharacter.vue";
 import btninstitute from "@/components/header/buttons/btninstitute.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
 import carduser from "@/components/header/barnav/carduser.vue";
+import moment from "moment";
 import { mapState } from 'vuex';
 
+const formatod = 'DD-MM-YYYY';
+const formatoh = 'HH:mm:ss';
+const formatoall = 'DD/MM/YYYY HH:mm:ss';
 
 
 
@@ -221,6 +225,7 @@ export default {
       }
     },
 
+
   },
   mounted() {
     this.$store.state.selevento = this.selectevent
@@ -228,6 +233,35 @@ export default {
 
   },
   methods: {
+    testeo() {
+
+      var fechaSt = this.$store.state.valFecha + ' ' + this.$store.state.valHora
+
+      var fechaStore = moment(fechaSt, 'YYYY-MM-DD HH:mm:ss').format(formatoall)
+      var tiempoNow = moment().format(formatoall)
+
+      console.log("Heredero", fechaSt)
+      console.log("Tiempo STORE ", fechaStore)
+
+      const tiempoFuturo = moment(fechaStore).isAfter(moment(tiempoNow));
+
+
+      console.log("->", tiempoFuturo)
+
+      /*  if (tiempoFuturo) {
+  
+          console.log("FUNKAAA")
+        } else {
+          console.log("AQUI NO FUNKAA")
+        } */
+
+      //console.log(moment().format(formatoall))
+      //console.log(this.$store.state.fecha + "," + this.$store.state.hora)
+      //console.log("->", setFecha)
+    },
+
+
+
     validate() {
       this.$refs.form.validate()
       if (this.$store.state.profundidad != '' &&
@@ -237,6 +271,10 @@ export default {
         this.$store.state.longitud != '' &&
         this.$store.state.hora != '' &&
         this.$store.state.fecha != '') {
+
+
+
+
 
         document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
         //if (moment(this.$store.state.hora, 'hh:mm').add(1, 'hour').format(formatoh) > moment().format('hh:mm')) {

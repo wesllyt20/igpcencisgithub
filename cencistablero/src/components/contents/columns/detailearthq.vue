@@ -132,7 +132,7 @@ export default {
       dialog: false,
       color: "#76FF03",
       magnitud: 0,
-      tiempo: "",
+      tiempo: moment().format(formatoh),
       fecha: "",
       reporte: null,
       latitud: -12.16,
@@ -146,6 +146,19 @@ export default {
     };
   },
   watch: {
+    tiempo(val) {
+      this.$store.state.valHora = val
+      this.$store.state.valFecha = this.fecha
+      console.log(val)
+
+    },
+    fecha(val) {
+      this.$store.state.valHora = this.tiempo
+      this.$store.state.valFecha = val
+      console.log(val)
+
+    }
+    ,
     magnitud(val) {
 
       if (+val > 10) {
@@ -249,7 +262,7 @@ export default {
     ...mapState({ profundidadvuex: state => state.profundidad }),
     ...mapState({ magnitudvuex: state => state.magnitud }),
     ...mapState({ horautcvuex: state => state.horautc }),
-  },
+  }
 
 }
 </script>

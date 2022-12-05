@@ -1,10 +1,7 @@
 <template>
-    <v-card class="mx-auto" max-width="344" outlined elevation="24">
+    <v-card class="mx-auto" max-width="300" outlined elevation="24">
         <v-list-item three-line>
             <v-list-item-content>
-                <div class="text-overline mb-4">
-                    ¡BIENVENIDO!
-                </div>
                 <v-list-item-title class="text-h5 mb-1">
                     {{ user }}
                 </v-list-item-title>

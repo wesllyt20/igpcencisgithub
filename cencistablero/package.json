@@ -20,6 +20,7 @@
     "vue-chartjs": "^4.1.1",
     "vue-qrcode-component": "^2.1.1",
     "vue-router": "^3.5.1",
+    "vue-simple-alert": "^1.1.1",
     "vue2-leaflet": "^2.7.1",
     "vuelidate": "^0.7.7",
     "vuetify": "^2.6.0",

@@ -19,6 +19,9 @@ export default new Vuex.Store({
         magnitud: null,
         horautc: null, // hora utc 
         changeval: null, // envia valor Booleano desde detailearthq al btn_publicar
+        //-validadores de tiempo
+        valHora: null,
+        valFecha: null,
 
         // detailubication
         referencia: null,

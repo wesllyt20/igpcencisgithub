@@ -74,7 +74,9 @@
                 <span>{{ item.descripcion }}</span>
               </v-tooltip>
             </div>
+
             <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'" width="35px" /></v-btn>
+
           </v-btn-toggle>
         </v-col>
       </div>

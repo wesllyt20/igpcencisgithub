@@ -9,12 +9,10 @@ import '@babel/polyfill'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 import 'leaflet/dist/leaflet.css'
+import VueSimpleAlert from "vue-simple-alert";
 
-
-
+Vue.use(VueSimpleAlert);
 Vue.use(Vuex)
-
-
 
 Vue.config.productionTip = false
 Vue.use(Vuelidate);

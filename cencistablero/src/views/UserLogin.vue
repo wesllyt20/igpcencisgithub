@@ -34,6 +34,8 @@
 </template>
  
 <script>
+import VueSimpleAlert from "vue-simple-alert";
+
 export default {
    name: 'Login',
 
@@ -47,30 +49,31 @@ export default {
    },
    methods: {
       validate() {
-
-
-
-
-
-
-
-
-
-         
          this.$refs.form.validate()
          if (this.user == null || this.range == null) {
 
-            alert("No puede ingresar, falta seleccionar nombre y/o cargo.")
+            this.$fire({
+               title: "Acceso Denegado",
+               text: "No puede ingresar, falta seleccionar nombre y/o cargo.",
+               type: "error",
+               timer: 3000
+            }).then(r => {
+               console.log("DENEGADO")
+            });
          } else {
-            alert("Puede ingresar")
             localStorage.user = this.user;
             localStorage.range = this.range
-            this.$router.push('/')
+            this.$fire({
+               title: "¡Bienvenido, " + localStorage.user + "!",
+               text: "Puede ingresar",
+               type: "success",
+               timer: 3000
+            }).then(r => {
+
+               this.$router.push('/')
+            });
          }
-
       },
-
-
    },
    created() {
       localStorage.removeItem('user')
