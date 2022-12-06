@@ -149,14 +149,11 @@ export default {
     tiempo(val) {
       this.$store.state.valHora = val
       this.$store.state.valFecha = this.fecha
-      console.log(val)
 
     },
     fecha(val) {
       this.$store.state.valHora = this.tiempo
       this.$store.state.valFecha = val
-      console.log(val)
-
     }
     ,
     magnitud(val) {

@@ -12,10 +12,10 @@
                         <v-row>
                            <v-col>
                               <v-select :items="items" v-model="user" label="Nombre de usuario" outlined
-                                 prepend-icon="mdi-account" :rules="[v => !!v || 'Item is required']"
+                                 prepend-icon="mdi-account" :rules="[v => !!v || 'Seleccionar Nombre de Usuario']"
                                  required></v-select>
                               <v-select :items="items2" v-model="range" label="Cargo" outlined
-                                 prepend-icon="mdi-badge-account-outline" :rules="[v => !!v || 'Item es requerido']"
+                                 prepend-icon="mdi-badge-account-outline" :rules="[v => !!v || 'Seleccionar Cargo de Usuario']"
                                  required></v-select>
                            </v-col>
                         </v-row>
@@ -34,8 +34,6 @@
 </template>
  
 <script>
-import VueSimpleAlert from "vue-simple-alert";
-
 export default {
    name: 'Login',
 

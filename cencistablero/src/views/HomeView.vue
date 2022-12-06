@@ -26,8 +26,6 @@
           <v-switch v-model="switch3" @change="setTheme3" :readonly="disable3" flat> </v-switch>
         </v-col>
 
-        <v-btn @click="testeo"> test</v-btn>
-
         <v-col cols="4">
           <v-btn color="blue-grey" x-large class="ma-6 mx-1 ml-0 white--text">
             <v-icon right dark class="mx-0"> mdi-plus-thick </v-icon>
@@ -233,37 +231,19 @@ export default {
 
   },
   methods: {
-    testeo() {
-
-      var fechaSt = this.$store.state.valFecha + ' ' + this.$store.state.valHora
-
-      var fechaStore = moment(fechaSt, 'YYYY-MM-DD HH:mm:ss').format(formatoall)
-      var tiempoNow = moment().format(formatoall)
-
-      console.log("Heredero", fechaSt)
-      console.log("Tiempo STORE ", fechaStore)
-
-      const tiempoFuturo = moment(fechaStore).isAfter(moment(tiempoNow));
-
-
-      console.log("->", tiempoFuturo)
-
-      /*  if (tiempoFuturo) {
-  
-          console.log("FUNKAAA")
-        } else {
-          console.log("AQUI NO FUNKAA")
-        } */
-
-      //console.log(moment().format(formatoall))
-      //console.log(this.$store.state.fecha + "," + this.$store.state.hora)
-      //console.log("->", setFecha)
-    },
-
-
 
     validate() {
       this.$refs.form.validate()
+
+      //fechas
+      function subtractHours(date, hours) {
+        date.setHours(date.getHours() - hours);
+        return date;
+      };
+      var fechaStore = new Date(this.$store.state.valFecha + ' ' + this.$store.state.valHora) // tiempo INGRESADO
+      var fechaActual = new Date()// TIEMPO ACTUAL
+      const valOnehour = subtractHours(new Date(fechaActual), 1) // TIEMPO ACTUAL MENOS UNA HORA
+
       if (this.$store.state.profundidad != '' &&
         this.$store.state.reporte != '' &&
         this.$store.state.magnitud != '' &&
@@ -273,13 +253,56 @@ export default {
         this.$store.state.fecha != '') {
 
 
+        if (fechaStore.getTime() > fechaActual.getTime()) {
+
+          //// FUERA DE RANGO DE FECHA
+          this.$fire({
+            title: "SOLICITUD DENEGADA",
+            text: "La fecha ingresada es mayor a la fecha/hora actual, no se puede publicar.",
+            type: "error",
+            timer: 5000
+          }).then(r => {
+            console.log("DENEGADO")
+          });
+
+        } else {
+
+          if (valOnehour.getTime() < fechaStore.getTime()) {
+
+            // DENTRO DE RANGO DE DIFERENCIA DE 1 HORA
+            this.$confirm(
+              "Confirme si desea publicar un sismo de MAGNITUD: " + this.$store.state.magnitud,
+              "Confirmación de publicación de sismo.",
+              "question"
+            ).then(r => {
+              
+              this.$fire({
+                title: "Confirmación de publicación de sismo.",
+                text: "¡Publicación exitosa!",
+                type: "success",
+                timer: 5000
+              }).then(r => {
+                console.log("PUBLICACIÓN DENTRO DE RANGO DE UNA HORA, EXITOSA");
+                document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+              });
+            });
+
+          } else {
+
+            // FUERA DE RANGO DE DIFERENCIA DE 1 HORA
+            this.$confirm(
+              "Confirme si desea PUBLICAR UN SISMO PASADO con MAGNITUD: " + this.$store.state.magnitud,
+              "CONFIRMACIÓN DE PUBLICACION DE SISMO PASADO.",
+              "warning"
+            ).then(r => {
+              document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+              console.log("PUBLICACIÓN FUERA DE RANGO DE UNA HORA, EXITOSA");
+            });
+          }
+        }
 
 
 
-        document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
-        //if (moment(this.$store.state.hora, 'hh:mm').add(1, 'hour').format(formatoh) > moment().format('hh:mm')) {
-        //console.log("Este no :v ")
-        //}
 
 
       }
