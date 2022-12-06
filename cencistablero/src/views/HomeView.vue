@@ -275,7 +275,7 @@ export default {
               "Confirmación de publicación de sismo.",
               "question"
             ).then(r => {
-              
+
               this.$fire({
                 title: "Confirmación de publicación de sismo.",
                 text: "¡Publicación exitosa!",
@@ -295,8 +295,16 @@ export default {
               "CONFIRMACIÓN DE PUBLICACION DE SISMO PASADO.",
               "warning"
             ).then(r => {
-              document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
-              console.log("PUBLICACIÓN FUERA DE RANGO DE UNA HORA, EXITOSA");
+
+              this.$fire({
+                title: "Confirmación de publicación de sismo.",
+                text: "¡Publicación FUERA DE RANGO, exitosa!",
+                type: "success",
+                timer: 5000
+              }).then(r => {
+                console.log("PUBLICACIÓN FUERA DE RANGO DE UNA HORA, EXITOSA");
+                document.querySelectorAll(".btnshare").forEach((boton) => boton.click())
+              });
             });
           }
         }
