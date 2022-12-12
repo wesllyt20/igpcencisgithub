@@ -22,95 +22,104 @@
     <br />
 
     <v-container>
-      <v-row>
-        <v-col cols="6">
-          <v-row>
-            <v-col cols="6">
-              <v-select label="Región" :items="itemsreg" dense outlined></v-select>
-            </v-col>
-            <v-col cols="6">
-              <v-select label="Provincia" :items="itemspro" dense outlined></v-select>
-            </v-col>
-          </v-row>
-          <geojsonmap></geojsonmap>
-        </v-col>
-        <v-divider vertical></v-divider>
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-row>
+          <v-col cols="6">
+            <v-row>
+              <v-col cols="6">
+                <v-select v-model="region" label="Región" :items="itemsreg" dense outlined
+                  :rules="[v => !!v || 'Seleccionar la Región']" required></v-select>
+              </v-col>
+              <v-col cols="6">
+                <v-select v-model="provincia" label="Provincia" :items="itemspro" dense outlined
+                  :rules="[v => !!v || 'Seleccionar la Provincia']" required></v-select>
+              </v-col>
+            </v-row>
+            <maplocation></maplocation>
+          </v-col>
+          <v-divider vertical></v-divider>
 
-        <v-col cols="6">
-          <v-row class="ml-auto">
-            <v-dialog v-model="dialog" persistent max-width="350">
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn color="#26A69A" dark v-bind="attrs" v-on="on">
+          <v-col cols="6">
+
+            <v-row class="text-center mb-n10">
+              <v-col cols="3">
+                <b style="color: #00000; font-size: x-large">Latitud:</b>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field v-model="latitud" step="0.01" solo outlined dense type="number" required
+                  :rules="latitudRules">
+                </v-text-field>
+              </v-col>
+            </v-row>
+            <v-row class="text-center mb-n10">
+              <v-col cols="3">
+                <b style="color: #00000; font-size: x-large">Longitud:</b>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field v-model="longitud" step="0.01" solo outlined dense type="number" required
+                  :rules="longitudRules">
+                </v-text-field>
+              </v-col>
+            </v-row>
+            <v-row class="text-center">
+              <v-col cols="3">
+                <b style="color: #00000; font-size: x-large">Nombre:</b>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field v-model="nombre" solo outlined dense required :rules="nombreRuler"></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row justify="center">
+              <v-col cols="2" align="center">
+                <v-btn @click="validate" color="blue-grey" x-large class="white--text" :disabled="!valid">
                   Crear
                 </v-btn>
-              </template>
-              <v-card>
-                <v-card-title class="text-h4">
-                  <b> ¿Seguro que desea crear la Localidad?</b>
-                </v-card-title>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn depressed color="error" @click="dialog = false">
-                    Cancelar
-                  </v-btn>
-                  <v-btn cdepressed color="success" to="/"> Crear </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-row>
-          <v-row class="text-center">
-            <v-col cols="3">
-              <b style="color: #00000; font-size: x-large">Latitud:</b>
-            </v-col>
-            <v-col cols="4">
-              <v-text-field step="0.01" solo outlined dense hide-details type="number">
-              </v-text-field>
-            </v-col>
-          </v-row>
-          <v-row class="text-center">
-            <v-col cols="3">
-              <b style="color: #00000; font-size: x-large">Longitud:</b>
-            </v-col>
-            <v-col cols="4">
-              <v-text-field step="0.000001" solo outlined dense hide-details type="number">
-              </v-text-field>
-            </v-col>
-          </v-row>
-          <v-row class="text-center">
-            <v-col cols="3">
-              <b style="color: #00000; font-size: x-large">Nombre:</b>
-            </v-col>
-            <v-col cols="4">
-              <v-text-field solo outlined dense hide-details> </v-text-field>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-      <!--BAR NAVEGATION-->
-      <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
-        <v-list nav dense>
-          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-            <barnavegation></barnavegation>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
-      <!--End Bar NAVEGATION-->
+              </v-col>
+              <v-col cols="4" align="start">
+                <v-btn @click="clear" color="blue-grey" x-large class="white--text">
+                  Limpiar
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+
+        <!--BAR NAVEGATION-->
+        <v-navigation-drawer v-model="drawer" absolute bottom temporary right>
+          <v-list nav dense>
+            <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+
+              <barnavegation></barnavegation>
+            </v-list-item-group>
+          </v-list>
+        </v-navigation-drawer>
+        <!--End Bar NAVEGATION-->
+      </v-form>
     </v-container>
   </div>
 </template>
 <script>
-import geojsonmap from "@/components/addons/geojsonmap.vue";
+import maplocation from "@/components/addons/maplocation.vue";
 import barnavegation from "@/components/header/barnav/barnavegation.vue";
 export default {
   components: {
-    geojsonmap,
+    maplocation,
     barnavegation,
   },
   data() {
     return {
+      latitudRules: [(v) => !!v || "Falta indicar Latitud."],
+      longitudRules: [(v) => !!v || "Falta indicar Longitud."],
+      nombreRuler: [(v) => !!v || "Falta indicar Nombre."],
+      valid: true,
+      latitud: null,
+      longitud: null,
+      nombre: "",
       drawer: false,
       group: null,
       dialog: false,
+      region: null,
+      provincia: null,
       itemsreg: [
         "Seleccione una Región",
         "AMAZONAS",
@@ -184,10 +193,61 @@ export default {
       ],
     };
   },
+  methods: {
+    validate() {
+      this.$refs.form.validate()
+      if (this.nombre == null || this.latitud == null || this.longitud == null || this.region == null || this.provincia == null) {
+
+        this.$fire({
+          title: "Error",
+          text: "Faltan llenar datos.",
+          type: "error",
+          timer: 3000
+        }).then(r => {
+          console.log("Falta llenar datos")
+        });
+      } else {
+        this.$fire({
+          title: "¡Nueva localidad agregada!",
+          text: "Se agrego: " + this.region + "/" + this.provincia + "/" + this.nombre,
+          type: "success",
+          timer: 3000
+        }).then(r => {
+          this.clear()
+          console.log("SE AÑADIO EXITOSAMENTE")
+        });
+      }
+    },
+    clear() {
+      this.latitud = null
+      this.longitud = null
+      this.nombre = ""
+      this.region = null
+      this.provincia = null
+    }
+  },
   watch: {
     group() {
       this.drawer = false;
     },
+    latitud(val) {
+      this.$store.state.latLocation = val
+    },
+    longitud(val) {
+      this.$store.state.longLocation = val
+    },
+    nombre(val) {
+      console.log(val)
+      this.$store.state.nameLocation = val
+    },
+    region(val) {
+      console.log(val)
+      this.$store.state.regionLocation = val
+    },
+    provincia(val) {
+      console.log(val)
+      this.$store.state.provinciaLocation = val
+    }
   },
 };
 </script>

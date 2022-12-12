@@ -33,6 +33,14 @@ export default new Vuex.Store({
         latis: [],
         longs: [],
 
+        //Crear Localidad
+        nameLocation: null,
+        latLocation: 0,
+        longLocation: 0,
+        regionLocation: null,
+        provinciaLocation: null,
+
+
         //APIs 
         athena: [], // Api de Reportes Hydra
     },

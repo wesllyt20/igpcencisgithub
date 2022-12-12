@@ -3,7 +3,7 @@
     <v-row>
       <div>
         <v-col>
-          <v-btn-toggle tile multiple shaped>
+          <v-btn-toggle tile multiple shaped width="65px">
             <v-btn class="btnshare" color="#3b5998" @click="grupo1()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
@@ -23,7 +23,7 @@
       <div class="mx-4">
         <v-col>
           <v-btn-toggle tile multiple shaped>
-            <v-btn  class="btnshare" color="#3b5998" @click="grupo2()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data2" :key="item.id">
@@ -42,7 +42,7 @@
       <div class="mx-4">
         <v-col>
           <v-btn-toggle tile multiple shaped>
-            <v-btn  class="btnshare" color="#3b5998" @click="grupo3()">
+            <v-btn class="btnshare" color="#3b5998" @click="grupo3()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
             <div v-for="(item, r ) in data3" :key="item.id">
@@ -68,20 +68,28 @@
               <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn class="sharegr4" @click="activador4($event, r + 1)" v-bind="attrs" v-on="on">
-                    <img v-bind:src="'./img/' + item.img" width="35px" />
+                    <img class="ml-auto" v-bind:src="'./img/' + item.img" width="35px" />
                   </v-btn>
+
                 </template>
                 <span>{{ item.descripcion }}</span>
+                <p class="sub-name">Botón principal</p>
               </v-tooltip>
+
             </div>
-
-            <v-btn class="sharegr4" @click="acttest"><img v-bind:src="'./img/igp.png'" width="35px" /></v-btn>
-
           </v-btn-toggle>
+
         </v-col>
       </div>
-
     </v-row>
+    <!--
+    <v-row>
+      <v-col>
+        <div v-for="item in data1" :key="item.id">
+          <p class="sub-name">{{ item.nombre }}</p>
+        </div>
+      </v-col>
+    </v-row> -->
   </v-container>
 </template>
 <script>
@@ -106,11 +114,11 @@ export default {
     };
   },
   created() {
-    axios.get("https://api.npoint.io/511b4e352667b80a864e").then(r => this.data = r.data),
-      axios.get("https://api.npoint.io/511b4e352667b80a864e/0").then(r => this.data1 = r.data.grupo),
-      axios.get("https://api.npoint.io/511b4e352667b80a864e/1").then(r => this.data2 = r.data.grupo),
-      axios.get("https://api.npoint.io/511b4e352667b80a864e/2").then(r => this.data3 = r.data.grupo),
-      axios.get("https://api.npoint.io/511b4e352667b80a864e/3").then(r => this.data4 = r.data.grupo)
+    axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb").then(r => this.data = r.data),
+      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/0").then(r => this.data1 = r.data.grupo),
+      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/1").then(r => this.data2 = r.data.grupo),
+      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/2").then(r => this.data3 = r.data.grupo),
+      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/3").then(r => this.data4 = r.data.grupo)
 
   },
   methods: {
@@ -267,5 +275,9 @@ export default {
 
 .theme--light.v-btn:focus::before {
   opacity: 0;
+}
+
+.sub-name {
+  text-justify: auto;
 }
 </style>
