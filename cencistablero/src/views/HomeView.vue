@@ -41,7 +41,7 @@
 
       <br />
 
-      <v-row class="mx-1 ma-0 mt-n12 mb-8" align="center">
+      <v-row class="mx-1 ma-0 mt-n12 mb-n2" align="center">
         <btninstitute> </btninstitute> <!-- BTN institutos-->
         <v-app-bar-nav-icon x-large @click.stop="drawer = !drawer" class="pa-2 ml-12"></v-app-bar-nav-icon>
       </v-row>

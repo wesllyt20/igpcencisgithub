@@ -73,7 +73,6 @@
 
                 </template>
                 <span>{{ item.descripcion }}</span>
-                <p class="sub-name">Botón principal</p>
               </v-tooltip>
 
             </div>
@@ -82,14 +81,30 @@
         </v-col>
       </div>
     </v-row>
-    <!--
-    <v-row>
-      <v-col>
-        <div v-for="item in data1" :key="item.id">
-          <p class="sub-name">{{ item.nombre }}</p>
+
+    <v-row class="text-center">
+      <v-col cols="2" class="mr-16 mt-n6 ml-10">
+        <div class="nombres" id="nom1" v-for="item in data1" :key="item.id">
+          <b class="pl-5"> {{ item.nombre }}</b>
         </div>
       </v-col>
-    </v-row> -->
+      <v-col cols="2" class="mr-16 mt-n6 ml-n1">
+        <div class="nombres" id="nom2" v-for="item in data2" :key="item.id">
+          <b class="pl-6"> {{ item.nombre }}</b>
+        </div>
+      </v-col>
+      <v-col cols="2" class="mr-16 mt-n6 ml-n7">
+        <div class="nombres" id="nom3" v-for="item in data3" :key="item.id">
+          <b class="pl-8"> {{ item.nombre }}</b>
+        </div>
+      </v-col>
+      <v-col cols="3" class="mr-n10 mt-n6 ml-n11 ">
+        <div class="nombres" id="nom4" v-for="item in data4" :key="item.id">
+          <b class="pl-3"> {{ item.nombre }}</b>
+        </div>
+      </v-col>
+
+    </v-row>
   </v-container>
 </template>
 <script>
@@ -103,7 +118,6 @@ export default {
       data2: [],
       data3: [],
       data4: [],
-      test: "",
       cangr: [],
       text: 'center',
       pubestado: 2,
@@ -113,15 +127,19 @@ export default {
 
     };
   },
-  created() {
-    axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb").then(r => this.data = r.data),
-      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/0").then(r => this.data1 = r.data.grupo),
-      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/1").then(r => this.data2 = r.data.grupo),
-      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/2").then(r => this.data3 = r.data.grupo),
-      axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb/3").then(r => this.data4 = r.data.grupo)
+  async created() {
+    await axios.get("https://api.npoint.io/520e36dd9eea13e0d4cb").then(r => this.data = r.data),
+      this.data1 = this.data[0].grupo
+    this.data2 = this.data[1].grupo
+    this.data3 = this.data[2].grupo
+    this.data4 = this.data[3].grupo
 
   },
   methods: {
+    test() {
+      console.log("->", this.data)
+    },
+
     // Activadores Grupo 1 de botones
     activador1: function (event, r) {
       switch (r) {
@@ -279,5 +297,18 @@ export default {
 
 .sub-name {
   text-justify: auto;
+}
+
+.nombres {
+  clear: both;
+  display: inline-block;
+}
+
+#nom1 {
+  margin-left: 3px;
+}
+
+#nom4 {
+  width: auto;
 }
 </style>

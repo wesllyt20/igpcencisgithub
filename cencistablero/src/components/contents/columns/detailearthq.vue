@@ -33,7 +33,7 @@
           <b style="color: #00000; font-size: large">Fecha local:</b>
         </v-col>
         <v-col cols="6">
-          <v-text-field v-model="fecha" type="date" required min="2022-01-01" max="2022-12-31" solo outlined dense
+          <v-text-field v-model="fecha" type="date" required min="2023-01-01" max="2023-12-31" solo outlined dense
             :rules="fechaRules" :value=addFecha()>
           </v-text-field>
         </v-col>
