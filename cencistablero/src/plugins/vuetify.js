@@ -21,7 +21,7 @@ export default new Vuetify({
         danger: '#ff0000',
         white: '#FFFFFF',
         azulface: '#01579B',
-        btnshare: '#3b5998',
+        shared: '#3b5998',
       },
     },
   },

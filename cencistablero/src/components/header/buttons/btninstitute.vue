@@ -3,7 +3,7 @@
     <v-row>
       <div>
         <v-col>
-          <v-btn-toggle tile multiple shaped width="65px">
+          <v-btn-toggle tile multiple shaped >
             <v-btn class="btnshare" color="#3b5998" @click="grupo1()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
@@ -22,7 +22,7 @@
       </div>
       <div class="mx-4">
         <v-col>
-          <v-btn-toggle tile multiple shaped>
+          <v-btn-toggle tile multiple shaped >
             <v-btn class="btnshare" color="#3b5998" @click="grupo2()">
               <v-icon color="white">mdi-share</v-icon>
             </v-btn>
