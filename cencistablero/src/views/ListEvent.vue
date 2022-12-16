@@ -160,30 +160,16 @@ export default {
         }
 
         //FIRMA
+        var user = localStorage.getItem('user')
+        var range = localStorage.getItem('range')
         doc
           .setFont("helvetica")
           .setFontSize(12)
           .text(["Camacho, " + moment().format('LL')], 10, 173, null, null, 'left') // firma
 
-
-        var comboBox = new ComboBox();
-        comboBox.fieldName = "ChoiceField1";
-        comboBox.topIndex = 1;
-        comboBox.fontSize = 10
-        comboBox.Rect = [162, 172, 32, 8];
-        comboBox.setOptions(["Jacob Baños", "Efrain Fernandez", "Rolando Kcaña"]);
-        comboBox.value = "- Seleccionar -";
-        doc.addField(comboBox);
-        doc.text("--------------------------------", 153, 181)
-
-        var comboBox = new ComboBox();
-        comboBox.fieldName = "ChoiceField12";
-        comboBox.topIndex = 1;
-        comboBox.fontSize = 10
-        comboBox.Rect = [158, 180, 45, 7];
-        comboBox.setOptions(["Operador del CENSIS", "Responsable del CENSIS"]);
-        comboBox.value = "- Seleccionar -";
-        doc.addField(comboBox);
+          .text(user, 172, 178, null, null, 'center')
+        doc.text("--------------------------------------", 146, 181)
+          .text(range, 173, 184, null, null, 'center')
 
 
         //CELDAS
