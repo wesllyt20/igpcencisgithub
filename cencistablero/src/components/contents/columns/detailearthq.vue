@@ -92,7 +92,7 @@
     <v-row class="pa-3 mb-n10">
       <v-col cols="5">
         <v-chip id="chipctr">
-          <b>Próximo: {{ this.reporte + 1 }}</b>
+          <b>Próximo: {{ (this.reporte) * 1 + 1 }} </b>
         </v-chip>
       </v-col>
       <v-col cols="4">
@@ -141,6 +141,7 @@ export default {
       show: true,
       valid: true,
       horatest: "",
+      proximon: this.reporte + 1
 
 
     };
@@ -284,7 +285,5 @@ export default {
   background-color: orange;
   font-size: 24px;
   height: 80px;
-  width: 100%;
-  text-align: center !important;
 }
 </style>

@@ -29,12 +29,12 @@ export default {
   computed: {
     textopub() {
       return "REPORTE SÍSMICO: \n" +
-        "IGP/CENSIS/" + this.$store.state.namereport + " 2022-0" + this.$store.state.reporte +
+        "IGP/CENSIS/" + this.$store.state.namereport + " 2023-0" + this.$store.state.reporte +
         "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
         "\n Fecha y Hora UTC:" + this.$store.state.horautc +
         "\n Magnitud: " + this.$store.state.magnitud +
         "\n Profundidad: " + this.$store.state.profundidad +
-        " Km\n Latitud: " + this.$store.state.latitud +
+        "Km\n Latitud: " + this.$store.state.latitud +
         "\n Longitud: " + this.$store.state.longitud +
         "\n Referencia: " + this.$store.state.referencia +
         "\nhttps://www.igp.gob.pe/servicios/centro-sismologico-nacional/evento/2022-0" + this.$store.state.reporte

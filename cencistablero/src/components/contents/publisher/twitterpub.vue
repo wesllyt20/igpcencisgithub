@@ -8,8 +8,10 @@
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>
       </v-card-title>
-      <v-textarea class="pa-2" id="texto3" rows="11" v-on:focus="$event.target.select()" background-color="#FFFFFF"
-        ref="myinput" v-bind:value=textopub></v-textarea>
+      <v-textarea class="pa-2 mt-n4" id="texto3" rows="11" v-on:focus="$event.target.select()"
+        background-color="#FFFFFF" ref="myinput" v-model=mens></v-textarea>
+      <p :style="textStyle" class="ml-1 mt-n6 "> <b>{{ characterCount }} / 280 contador
+          de Caracteres</b></p>
     </v-card>
   </v-card>
 </template>
@@ -17,8 +19,7 @@
 export default {
   data() {
     return {
-      text: "This will get copied!",
-      valortext: null,
+      mens: ''
     };
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
   computed: {
     textopub() {
       return "REPORTE SÍSMICO: \n" +
-        "IGP/CENSIS/" + this.$store.state.namereport + " 2022-0" + this.$store.state.reporte +
+        "IGP/CENSIS/" + this.$store.state.namereport + " 2023-0" + this.$store.state.reporte +
         "\n Fecha y Hora Local:" + this.$store.state.fecha + ", " + this.$store.state.hora +
         "\n Fecha y Hora UTC:" + this.$store.state.horautc +
         "\n Magnitud: " + this.$store.state.magnitud +
@@ -38,6 +39,25 @@ export default {
         " Km\n Latitud: " + this.$store.state.latitud +
         "\n Longitud: " + this.$store.state.longitud +
         "\n Referencia: " + this.$store.state.referencia
+    },
+    characterCount() {
+      return this.mens.length;
+    },
+    textStyle() {
+
+      if (this.mens.length >= 280) {
+        return { color: '#F44336' } //alert('EXCEDE EL LIMITE DE 280 DIGITOS EL TWITTER') 
+      }
+      if (this.mens.length <= 280) {
+        return { color: '#FFFFFF' }
+      }
+
+    }
+  }
+  ,
+  watch: {
+    textopub(val) {
+      this.mens = val
     }
   }
 };
