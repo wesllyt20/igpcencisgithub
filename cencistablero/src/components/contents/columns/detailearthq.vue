@@ -108,7 +108,7 @@ import qrcode from '../publisher/qrcode.vue';
 import { mapState } from 'vuex';
 import moment from 'moment';
 
-const formatod = 'DD/MM/YYYY';
+// const formatod = 'DD/MM/YYYY';
 const formatoh = 'HH:mm:ss';
 const formatoall = 'DD/MM/YYYY HH:mm:ss';
 

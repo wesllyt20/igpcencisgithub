@@ -35,7 +35,7 @@ export default {
         "\n Fecha y Hora UTC:" + this.$store.state.horautc +
         "\n Magnitud: " + this.$store.state.magnitud +
         "\n Profundidad: " + this.$store.state.profundidad +
-        "Km\n Latitud: " + this.$store.state.latitud +
+        " Km\n Latitud: " + this.$store.state.latitud +
         "\n Longitud: " + this.$store.state.longitud +
         "\n Referencia: " + this.$store.state.referencia
     }
