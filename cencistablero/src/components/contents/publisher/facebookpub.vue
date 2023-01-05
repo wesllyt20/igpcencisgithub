@@ -8,7 +8,7 @@
           <v-icon>mdi-content-copy</v-icon>
         </v-btn>
       </v-card-title>
-      <v-textarea class="pa-2" id="texto2" rows="11" v-on:focus="$event.target.select()" ref="myinput"
+      <v-textarea class="pa-2 mt-n4" id="texto2" rows="11" v-on:focus="$event.target.select()" ref="myinput"
         background-color="#FFFFFF" v-bind:value=textopub></v-textarea>
     </v-card>
   </v-card>
