@@ -68,7 +68,7 @@ export default {
                timer: 3000
             }).then(r => {
 
-               this.$router.push('/')
+               this.$router.push('/home')
             });
          }
       },

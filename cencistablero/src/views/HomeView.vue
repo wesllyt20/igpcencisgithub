@@ -324,7 +324,7 @@ export default {
 }
 
 #texto {
-  color: #ffff;
+  color: #ffffff;
   font-size: large;
 }
 
