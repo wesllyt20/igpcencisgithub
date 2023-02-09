@@ -10,7 +10,7 @@
       <v-spacer></v-spacer>
       <v-row>
         <v-col cols="1" align="center" class="ml-auto ">
-          <v-btn to="/" icon class="pa-8 ml-3">
+          <v-btn to="/home" icon class="pa-8 ml-3">
             <v-icon>mdi-export</v-icon>
           </v-btn>
 

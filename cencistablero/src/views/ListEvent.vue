@@ -11,7 +11,7 @@
 
       <v-row>
         <v-col cols="1" align="center" class="ml-auto ">
-          <v-btn to="/" icon class="ml-1">
+          <v-btn to="/home" icon class="ml-1">
             <v-icon>mdi-export</v-icon>
           </v-btn>
 

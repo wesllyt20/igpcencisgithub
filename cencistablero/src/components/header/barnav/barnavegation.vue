@@ -18,7 +18,7 @@
 
       <v-divider></v-divider>
 
-      <v-list-item link to="/">
+      <v-list-item link to="/home">
         <v-list-item-icon>
           <v-icon class="mdi-icon">mdi-home</v-icon>
         </v-list-item-icon>
